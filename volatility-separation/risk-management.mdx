@@ -1,6 +1,6 @@
 ---
-title: 'Risk Management'
-description: 'Understanding risk management in VOLA Wave Protocol'
+title: "Risk Management"
+description: "Understanding risk management in VOLA Wave Protocol"
 ---
 
 # Risk Management
@@ -32,27 +32,28 @@ The first line of defense involves dynamic economic incentives that encourage us
 <Tabs>
   <Tab title="Dynamic Minting Fees">
     <div className="mb-4">
-      Minting fees adjust based on current market conditions and system Collateralization Ratio (CR):
+    Minting fees adjust based on current market conditions and system Collateralization Ratio (CR):
+
     </div>
-    
-    - **High CR Environment (&gt;200%)**: Lower fees to encourage minting USD.hype, helping to reduce overall system CR
+
+    - **High CR Environment (\>200%)**: Lower fees to encourage minting USD.hype, helping to reduce overall system CR
     - **Medium CR Environment (150-200%)**: Balanced fees that generate protocol revenue while maintaining stability
-    - **Low CR Environment (&lt;150%)**: Elevated fees to discourage further USD.hype minting, protecting the overall system
-    
+    - **Low CR Environment (\<150%)**: Elevated fees to discourage further USD.hype minting, protecting the overall system
+
     <Note>
       These dynamic adjustments create natural economic incentives that help maintain system balance without requiring direct intervention.
     </Note>
   </Tab>
-  
   <Tab title="Arbitrage Incentives">
     <div className="mb-4">
-      The protocol design encourages arbitrage opportunities that help maintain price stability:
+    The protocol design encourages arbitrage opportunities that help maintain price stability:
+
     </div>
-    
-    - **USD.hype Above $1** : Users are incentivized to mint and sell USD.hype, bringing the price back to $1
-    - **USD.hype Below $1** : Users are incentivized to buy and redeem USD.hype, bringing the price back to $1
+
+    - \*\* USD.hype Above $1 ** : Users are incentivized to mint and sell USD.hype, bringing the price back to $1
+    - \*\* USD.hype Below $1 ** : Users are incentivized to buy and redeem USD.hype, bringing the price back to $1
     - **Collateralization Imbalances**: Comparable incentives exist for correcting imbalances in the system's Collateralization Ratio
-    
+
     <Note>
       These arbitrage incentives create a self-correcting ecosystem that naturally trends toward equilibrium.
     </Note>
@@ -88,7 +89,7 @@ The Stability Pool forms the final defensive layer, providing substantial capita
 
 <Card>
   **Stability Pool Functions:**
-  
+
   - Acts as a buffer of last resort during extreme market downturns
   - Provides additional sHYPE liquidity to maintain system solvency
   - Enables graceful system recovery following severe market disruptions
@@ -99,32 +100,32 @@ The Stability Pool forms the final defensive layer, providing substantial capita
 
 The Stability Pool has predefined activation thresholds that trigger its protective measures:
 
-| System Collateralization Ratio | Stability Pool Action |
-| :----------------------------- | :-------------------- |
-| 130-150% | Enhanced monitoring, small stabilizing actions |
-| 120-130% | Moderate intervention, providing additional collateral as needed |
-| 110-120% | Significant intervention, active system stabilization |
-| Below 110% | Emergency protection measures to prevent system collapse |
+| System Collateralization Ratio | Stability Pool Action                                            |
+| :----------------------------- | :--------------------------------------------------------------- |
+| 130-150%                       | Enhanced monitoring, small stabilizing actions                   |
+| 120-130%                       | Moderate intervention, providing additional collateral as needed |
+| 110-120%                       | Significant intervention, active system stabilization            |
+| Below 110%                     | Emergency protection measures to prevent system collapse         |
 
 ## Risk Mitigation for Users
 
 <Columns>
   <Column>
     ### USD.hype Holders
-    
-    - Protected against volatility through over-collateralization
-    - Stablecoin value maintained at $1 through multiple defensive layers
-    - Redemption rights always preserved, even during market stress
-    - System designed to prioritize USD.hype stability above all else
+
+    * Protected against volatility through over-collateralization
+    * Stablecoin value maintained at $1 through multiple defensive layers
+    * Redemption rights always preserved, even during market stress
+    * System designed to prioritize USD.hype stability above all else
   </Column>
-  
+
   <Column>
     ### HYPE.v Holders
-    
-    - Protected from liquidation risks through floating leverage design
-    - System transparency allows informed risk management
-    - Dynamic pricing reflects current system conditions
-    - No margin calls or forced liquidations during price declines
+
+    * Protected from liquidation risks through floating leverage design
+    * System transparency allows informed risk management
+    * Dynamic pricing reflects current system conditions
+    * No margin calls or forced liquidations during price declines
   </Column>
 </Columns>
 
@@ -185,4 +186,4 @@ VOLA Protocol employs a continuous improvement approach to risk management:
   <Card title="User Scenarios" icon="users" href="/volatility-separation/user-scenarios">
     See how users can leverage the system safely
   </Card>
-</CardGroup> 
+</CardGroup>
