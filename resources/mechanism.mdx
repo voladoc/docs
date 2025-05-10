@@ -1,0 +1,124 @@
+---
+title: 'Mechanism Overview'
+description: 'Technical overview of VOLA Protocol mechanisms'
+---
+
+# Mechanism Overview
+
+This page provides a comprehensive technical overview of the core mechanisms that power the VOLA Protocol.
+
+## Protocol Architecture
+
+VOLA Protocol consists of two primary product lines, both built on robust technical foundations:
+
+<CardGroup cols={2}>
+  <Card title="Wave Protocol" icon="wave-square">
+    The volatility separation engine that powers USD.hype and HYPE.v
+  </Card>
+  <Card title="hbHYPE" icon="water">
+    The liquid staking solution for HYPE tokens
+  </Card>
+</CardGroup>
+
+## Wave Protocol Mechanisms
+
+The Wave Protocol employs several interconnected mechanisms to enable volatility separation:
+
+### Collateralization System
+
+<Steps>
+  <Step title="Deposit Collateral">
+    Users deposit sHYPE collateral into the protocol's smart contracts
+  </Step>
+  <Step title="Mint Synthetic Assets">
+    Users can mint USD.hype (stablecoin) and HYPE.v (volatility token) against their collateral
+  </Step>
+  <Step title="Maintain Collateralization Ratio">
+    The system enforces a minimum collateralization ratio (150%) at all times
+  </Step>
+  <Step title="Redemption Process">
+    Users can redeem their synthetic assets back for the underlying collateral
+  </Step>
+</Steps>
+
+### Leverage Calculation
+
+The leverage for HYPE.v is calculated using the formula:
+
+```
+Leverage (L) = 1 + (1 / (CR - 100%))
+```
+
+Where CR is the system's current Collateralization Ratio.
+
+### Rebalancing System
+
+The Rebalancing Pool acts as both a stability mechanism and a yield opportunity:
+
+- Users deposit USD.hype into the pool
+- The pool actively maintains system health by purchasing collateral during downturns
+- Participants earn rewards from protocol fees and trading profits
+
+## hbHYPE Mechanisms
+
+The hbHYPE liquid staking solution implements several key mechanisms:
+
+### Staking Flow
+
+<Steps>
+  <Step title="Deposit HYPE">
+    Users deposit HYPE tokens into the liquid staking contract
+  </Step>
+  <Step title="Receive hbHYPE">
+    Users receive hbHYPE tokens representing their staked position
+  </Step>
+  <Step title="Validator Delegation">
+    The protocol distributes staked HYPE across a carefully selected validator set
+  </Step>
+  <Step title="Value Accrual">
+    As staking rewards accumulate, the value of hbHYPE increases relative to HYPE
+  </Step>
+</Steps>
+
+### Reward Distribution
+
+The reward distribution mechanism:
+- Collects staking rewards from validators
+- Updates the hbHYPE/HYPE exchange rate to reflect accumulated rewards
+- Enables automatic compounding without rebasing
+- Deducts a small protocol fee for sustainability
+
+## Governance Mechanisms
+
+VOLA Protocol governance utilizes a vote-escrowed token model:
+
+- Users lock VOLA tokens to receive veVOLA
+- veVOLA grants voting power proportional to amount locked and lock duration
+- Governance proposals pass through a structured process with appropriate quorums
+- Timelocks provide security against malicious proposals
+
+## Technical Implementation
+
+All VOLA Protocol mechanisms are implemented through secure, audited smart contracts:
+
+- Modular architecture with well-defined interfaces
+- Comprehensive security features including circuit breakers and access controls
+- Gas-optimized for efficiency
+- Formal verification of critical components
+
+For detailed explanations of specific mechanisms, please refer to the protocol-specific documentation sections:
+
+<CardGroup cols={2}>
+  <Card title="Wave Protocol Mechanisms" icon="gears" href="/volatility-separation/mechanisms">
+    Detailed explanation of volatility separation mechanisms
+  </Card>
+  <Card title="Liquid Staking Mechanics" icon="sitemap" href="/liquid-staking/mechanics">
+    Comprehensive overview of liquid staking implementation
+  </Card>
+  <Card title="Governance Processes" icon="landmark" href="/governance/mechanisms">
+    Explanation of governance and voting mechanisms
+  </Card>
+  <Card title="Technical Architecture" icon="microchip" href="/liquid-staking/technology">
+    Deep dive into technical implementation details
+  </Card>
+</CardGroup> 
