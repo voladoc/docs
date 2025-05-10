@@ -1,0 +1,355 @@
+---
+title: 'Fee Structure'
+description: 'Understanding fees in the VOLA Protocol Wave System'
+---
+
+# Fee Structure
+
+VOLA Protocol's Wave system employs a dynamic fee structure designed to ensure protocol sustainability, incentivize system-balancing behaviors, and generate revenue for protocol stakeholders. This page explains the various fees, their purposes, and how they're calculated.
+
+## Fee Overview
+
+<Frame>
+  ![Fee Structure Overview](/images/fee-structure.png)
+</Frame>
+
+<CardGroup cols={3}>
+  <Card title="Minting Fees" icon="square-plus">
+    Charged when creating USD.hype and HYPE.v
+  </Card>
+  <Card title="Redemption Fees" icon="arrow-right-arrow-left">
+    Applied when converting synthetic assets back to collateral
+  </Card>
+  <Card title="Dynamic Modifiers" icon="sliders">
+    Fee adjustments based on system conditions
+  </Card>
+  <Card title="Flash Loan Fees" icon="bolt">
+    Charges for instantaneous borrowing
+  </Card>
+  <Card title="Revenue Distribution" icon="chart-pie">
+    How fee revenue is allocated
+  </Card>
+  <Card title="Fee Discounts" icon="tag">
+    Reductions available to certain users
+  </Card>
+</CardGroup>
+
+## Minting Fees
+
+<Card>
+  Minting fees are charged when users create USD.hype and/or HYPE.v from their deposited collateral.
+</Card>
+
+### Base Minting Fee
+
+<Tabs>
+  <Tab title="Structure">
+    <div className="mb-4">
+      The base minting fee has two components:
+    </div>
+    
+    - **Fixed Component**: 0.25% - Applied to all minting operations
+    - **Variable Component**: 0-0.75% - Adjusts based on system conditions
+    
+    <Note>
+      Total base minting fee ranges from 0.25% to 1.0% of the operation's value, depending on current system parameters.
+    </Note>
+  </Tab>
+  
+  <Tab title="Calculation">
+    <div className="mb-4">
+      Minting fees are calculated as a percentage of the dollar value of synthetic assets being created:
+    </div>
+    
+    ```
+    Minting Fee = (USD.hype Value + HYPE.v Value) × Fee Rate
+    ```
+    
+    The fee is paid in the collateral asset (sHYPE), deducted from the amount used for minting.
+    
+    **Example:**
+    - Minting $1,000 worth of synthetic assets
+    - Base fee rate: 0.5%
+    - Fee amount: $1,000 × 0.5% = $5 (paid in sHYPE equivalent)
+  </Tab>
+</Tabs>
+
+### Dynamic Fee Modifiers
+
+The variable component of the minting fee adjusts based on system conditions to incentivize system-balancing behaviors:
+
+<CardGroup cols={2}>
+  <Card title="CR-Based Adjustment" icon="chart-line">
+    Fees increase as the system Collateralization Ratio (CR) decreases, discouraging further USD.hype minting when the system has lower collateralization
+  </Card>
+  <Card title="Volatility Adjustment" icon="wave-square">
+    Fees increase during periods of high market volatility to provide additional system protection
+  </Card>
+  <Card title="Directional Skew Adjustment" icon="arrows-left-right">
+    Fees adjust based on the balance between USD.hype and HYPE.v demand to encourage balanced usage
+  </Card>
+  <Card title="Growth Adjustment" icon="chart-line-up">
+    Fees may be reduced during growth phases to encourage adoption (governance-controlled)
+  </Card>
+</CardGroup>
+
+<Warning>
+  During extreme market conditions, minting fees may temporarily increase above the standard range to protect system stability.
+</Warning>
+
+## Redemption Fees
+
+<Card>
+  Redemption fees are applied when users convert their synthetic assets (USD.hype and/or HYPE.v) back into the underlying collateral.
+</Card>
+
+### Base Redemption Fee
+
+<Tabs>
+  <Tab title="Structure">
+    <div className="mb-4">
+      The base redemption fee structure:
+    </div>
+    
+    - **Fixed Component**: 0.2% - Applied to all redemption operations
+    - **Variable Component**: 0-0.5% - Adjusts based on system conditions
+    
+    <Note>
+      Total base redemption fee ranges from 0.2% to 0.7% of the operation's value, typically lower than minting fees to ensure exit liquidity.
+    </Note>
+  </Tab>
+  
+  <Tab title="Calculation">
+    <div className="mb-4">
+      Redemption fees are calculated as a percentage of the dollar value of synthetic assets being redeemed:
+    </div>
+    
+    ```
+    Redemption Fee = (USD.hype Value + HYPE.v Value) × Fee Rate
+    ```
+    
+    The fee is deducted from the collateral amount returned to the user.
+    
+    **Example:**
+    - Redeeming $1,000 worth of synthetic assets
+    - Base fee rate: 0.3%
+    - Fee amount: $1,000 × 0.3% = $3 (deducted from returned collateral)
+  </Tab>
+</Tabs>
+
+### Dynamic Redemption Fee Modifiers
+
+The variable component of the redemption fee adjusts based on system conditions:
+
+<CardGroup cols={2}>
+  <Card title="CR-Based Adjustment" icon="chart-line">
+    Fees decrease as the system CR decreases, incentivizing redemptions that help increase the system's collateralization
+  </Card>
+  <Card title="Size Adjustment" icon="maximize">
+    Large redemptions may incur slightly higher fees to prevent market impact
+  </Card>
+  <Card title="Time-Based Fee" icon="clock">
+    Early redemptions within a short period after minting may incur a slightly higher fee
+  </Card>
+  <Card title="Stability Adjustment" icon="shield">
+    Fees may be reduced during periods of market stress to encourage system rebalancing
+  </Card>
+</CardGroup>
+
+<Note>
+  In some extreme cases, redemption fees may be temporarily reduced to zero to encourage synthetic asset redemptions when beneficial for system health.
+</Note>
+
+## Fee Schedule Examples
+
+<Card>
+  **Example Fee Scenarios Based on System Conditions**
+  
+  | System State | CR Level | Minting Fee | Redemption Fee | Rationale |
+  | :----------- | :------- | :---------- | :------------- | :-------- |
+  | Healthy | >250% | 0.25% | 0.3% | Low fees during healthy conditions |
+  | Normal | 200-250% | 0.5% | 0.3% | Standard fee environment |
+  | Caution | 175-200% | 0.75% | 0.25% | Higher mint fees, lower redemption fees |
+  | Alert | 150-175% | 1.0% | 0.2% | Discourage minting, encourage redemption |
+  | Emergency | <150% | 1.5%+ | 0.1% | Strongly discourage minting, strongly encourage redemption |
+</Card>
+
+## Flash Loan Fees
+
+<Card>
+  VOLA Protocol offers flash loan functionality for synthetic assets, enabling advanced DeFi strategies with instantaneous borrowing.
+</Card>
+
+- **Base Flash Loan Fee**: 0.05% of the borrowed amount
+- **Usage**: DeFi integrations, arbitrage, collateral swaps
+- **Requirement**: Loan must be repaid within the same transaction
+
+<Note>
+  Flash loans provide advanced users with enhanced capital efficiency while generating additional protocol revenue.
+</Note>
+
+## Fee Discount Programs
+
+<Card>
+  VOLA Protocol offers fee discounts to incentivize certain behaviors and reward loyal users.
+</Card>
+
+<Tabs>
+  <Tab title="veVOLA Discounts">
+    <div className="mb-4">
+      Users who lock VOLA tokens to receive veVOLA can access fee discounts:
+    </div>
+    
+    | veVOLA Tier | Fee Discount |
+    | :---------- | :----------- |
+    | Tier 1 (Low veVOLA) | 10% discount |
+    | Tier 2 (Medium veVOLA) | 25% discount |
+    | Tier 3 (High veVOLA) | 40% discount |
+    | Tier 4 (Maximum veVOLA) | 50% discount |
+    
+    <Note>
+      The veVOLA discount tiers are determined by the amount of VOLA locked and the lock duration, with longer locks receiving higher discounts.
+    </Note>
+  </Tab>
+  
+  <Tab title="Volume Discounts">
+    <div className="mb-4">
+      Users with high transaction volumes may qualify for additional discounts:
+    </div>
+    
+    - **Volume calculated**: Rolling 30-day period
+    - **Discount range**: 5-20% additional discount
+    - **Requirement**: Minimum volume thresholds (set by governance)
+    
+    <Note>
+      Volume discounts can be combined with veVOLA discounts up to a maximum combined discount determined by governance.
+    </Note>
+  </Tab>
+  
+  <Tab title="Promotional Discounts">
+    <div className="mb-4">
+      The protocol may occasionally offer time-limited promotional discounts:
+    </div>
+    
+    - **New user discounts**: Reduced fees for first-time users
+    - **Strategic partner discounts**: Fee reductions for protocol partners
+    - **Growth campaigns**: Temporary fee reductions to drive adoption
+    
+    <Note>
+      Promotional discounts are announced via official VOLA Protocol channels and may have specific qualification criteria.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Revenue Distribution
+
+<Card>
+  Fees collected by the protocol are distributed according to a governance-approved allocation system.
+</Card>
+
+<Columns>
+  <Column>
+    ### Current Revenue Allocation
+    
+    - **50% - Rebalancing Pool**: Rewards for participants providing stability
+    - **30% - veVOLA Holders**: Revenue share for governance participants
+    - **15% - Protocol Treasury**: Funds for ongoing development and operations
+    - **5% - Insurance Fund**: Reserve for extraordinary events
+  </Column>
+  
+  <Column>
+    ### Distribution Mechanism
+    
+    - **Frequency**: Revenue distribution occurs every 24 hours
+    - **Transparency**: All fee collection and distribution is on-chain and auditable
+    - **Governance**: Allocation percentages can be adjusted through governance proposals
+    - **Automation**: Distribution process is fully automated via smart contracts
+  </Column>
+</Columns>
+
+<Frame>
+  ![Revenue Distribution Chart](/images/revenue-chart.png)
+</Frame>
+
+## Fee Changes and Governance
+
+<Card>
+  While the dynamic components of fees adjust automatically based on system conditions, the base fee structure and major parameters are governed by VOLA token holders.
+</Card>
+
+<Steps>
+  <Step title="Fee Change Proposal">
+    A governance proposal to modify fee parameters is submitted
+  </Step>
+  <Step title="Community Discussion">
+    The proposal undergoes community review and discussion period
+  </Step>
+  <Step title="Voting Period">
+    veVOLA holders vote on the proposal, with voting power proportional to their veVOLA holdings
+  </Step>
+  <Step title="Implementation">
+    If approved, changes are implemented with a time delay for user adjustment
+  </Step>
+</Steps>
+
+<Warning>
+  Fee parameters critical to system safety have additional safeguards, including minimum quorum requirements and longer implementation delays.
+</Warning>
+
+## Fee Estimation Tools
+
+<Card>
+  VOLA Protocol provides several tools to help users estimate fees before performing operations:
+</Card>
+
+<CardGroup cols={2}>
+  <Card title="Fee Calculator" icon="calculator" href="https://app.vola.finance/calculator">
+    Interactive tool to calculate fees based on current system conditions
+  </Card>
+  <Card title="API Endpoints" icon="code" href="https://docs.vola.finance/resources/api">
+    Fee estimation endpoints for developers building on VOLA
+  </Card>
+  <Card title="Real-time Metrics" icon="gauge-high" href="https://app.vola.finance/metrics">
+    Dashboard showing current fee rates and historical trends
+  </Card>
+  <Card title="Transaction Preview" icon="eye" href="https://app.vola.finance/mint">
+    Pre-transaction preview in the app showing exact fee amounts
+  </Card>
+</CardGroup>
+
+## Cost Optimization Strategies
+
+<AccordionGroup>
+  <Accordion title="Timing Your Operations">
+    Fee-sensitive users may benefit from monitoring system conditions and timing their operations when fees are lower. The protocol's CR tends to fluctuate throughout market cycles, creating opportunities for lower fees.
+  </Accordion>
+  
+  <Accordion title="veVOLA Optimization">
+    Strategically locking VOLA for veVOLA can provide significant fee savings for active users. The optimal lock period depends on your expected transaction volume and frequency.
+  </Accordion>
+  
+  <Accordion title="Batch Processing">
+    Combining multiple small operations into fewer larger operations can reduce the overall fee impact, as you'll incur fewer separate transaction fees.
+  </Accordion>
+  
+  <Accordion title="System Alignment">
+    Performing operations that align with system health (e.g., redeeming USD.hype when CR is low, or minting when CR is high) can benefit from more favorable fee conditions.
+  </Accordion>
+</AccordionGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="User Scenarios" icon="users" href="/volatility-separation/user-scenarios">
+    See how fees apply to different user strategies
+  </Card>
+  <Card title="Mechanisms" icon="gears" href="/volatility-separation/mechanisms">
+    Understand how fees relate to the protocol's broader mechanisms
+  </Card>
+  <Card title="Governance" icon="landmark" href="/governance/mechanisms">
+    Learn how fee parameters are governed
+  </Card>
+  <Card title="Economic Model" icon="chart-line" href="/governance/economic-model">
+    Explore how fees contribute to the protocol's economic sustainability
+  </Card>
+</CardGroup> 

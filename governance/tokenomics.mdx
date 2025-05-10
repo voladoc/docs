@@ -1,0 +1,469 @@
+---
+title: 'Tokenomics'
+description: 'VOLA token economics, allocation, and utility'
+---
+
+# VOLA Tokenomics
+
+The VOLA token is the governance and utility token at the heart of the VOLA Protocol ecosystem, designed to align incentives among stakeholders and ensure long-term protocol sustainability.
+
+## Token Overview
+
+<Frame>
+  ![VOLA Token Overview](/images/vola-token-overview.png)
+</Frame>
+
+<CardGroup cols={3}>
+  <Card title="Token Type" icon="file-contract">
+    ERC-20 compatible governance & utility token
+  </Card>
+  <Card title="Max Supply" icon="coins">
+    100,000,000 VOLA (fixed cap)
+  </Card>
+  <Card title="Launch Date" icon="calendar">
+    Q2 2023
+  </Card>
+  <Card title="Native Chain" icon="link">
+    Ethereum (with multi-chain bridging)
+  </Card>
+  <Card title="Initial Supply" icon="rocket">
+    20% at TGE, 80% through emissions
+  </Card>
+  <Card title="Ticker" icon="tag">
+    VOLA
+  </Card>
+</CardGroup>
+
+## Token Utility
+
+<Card>
+  VOLA is designed with multiple utility functions that create sustainable value capture.
+</Card>
+
+<Tabs>
+  <Tab title="Governance">
+    <div className="mb-4">
+      VOLA holders can lock their tokens to receive veVOLA (vote-escrowed VOLA), providing governance rights:
+    </div>
+    
+    - Vote on protocol parameters and upgrades
+    - Propose governance actions
+    - Determine protocol fee distributions
+    - Guide protocol development priorities
+    - Approve strategic integrations
+    
+    <Note>
+      Governance power scales with both the amount of VOLA locked and the lock duration, with maximum power achieved at a 4-year lock.
+    </Note>
+  </Tab>
+  
+  <Tab title="Economic Benefits">
+    <div className="mb-4">
+      VOLA tokens provide holders with multiple economic benefits:
+    </div>
+    
+    - Share of protocol revenue through fee distribution
+    - Boosted rewards across protocol products
+    - Fee discounts on protocol operations
+    - Access to exclusive VOLA-gated features
+    - Participation in special ecosystem opportunities
+    
+    <Warning>
+      The value of these benefits correlates with protocol adoption and usage, creating a positive feedback loop between protocol success and token value.
+    </Warning>
+  </Tab>
+  
+  <Tab title="System Integrity">
+    <div className="mb-4">
+      VOLA plays a critical role in maintaining system integrity:
+    </div>
+    
+    - Incentivizes actions that benefit system health
+    - Attracts stakeholders committed to long-term success
+    - Distributes governance to motivated participants
+    - Creates economic alignment among ecosystem participants
+    - Rewards behavior that increases protocol security
+    
+    <Note>
+      This utility function ensures that protocol participants have "skin in the game" and are incentivized to act in the best interest of the ecosystem.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Token Allocation
+
+<Card>
+  The total VOLA supply of 100,000,000 tokens is allocated across several key stakeholder groups.
+</Card>
+
+<Frame>
+  ![VOLA Token Allocation](/images/vola-allocation.png)
+</Frame>
+
+| Allocation Category | Percentage | Amount | Purpose |
+| :------------------ | :--------- | :----- | :------ |
+| **Community Treasury** | 25% | 25,000,000 | Funding ongoing development, grants, and ecosystem growth |
+| **User Incentives** | 30% | 30,000,000 | Rewards for protocol participants and liquidity providers |
+| **Team & Advisors** | 20% | 20,000,000 | Compensating core team and key advisors |
+| **Initial Investors** | 15% | 15,000,000 | Seed and private funding rounds |
+| **Strategic Partners** | 5% | 5,000,000 | Key ecosystem and integration partnerships |
+| **Public Sale** | 5% | 5,000,000 | Community participation and initial distribution |
+
+## Emission Schedule
+
+<Card>
+  VOLA follows a carefully designed emission schedule to ensure sustainable distribution over time.
+</Card>
+
+<Columns>
+  <Column>
+    ### Launch Distribution
+    
+    At protocol launch, approximately 20% of the total supply is unlocked:
+    
+    - Public sale participants: 5% fully unlocked
+    - Team & advisors: 5% initial unlock
+    - Initial investors: 3% initial unlock
+    - Community treasury: 5% initial unlock
+    - Strategic partners: 2% initial unlock
+  </Column>
+  
+  <Column>
+    ### Ongoing Emissions
+    
+    The remaining 80% is emitted over 4 years:
+    
+    - User incentives: Linear release over 4 years
+    - Team & advisors: 3-year vesting with 1-year cliff
+    - Initial investors: 2-year vesting with 6-month cliff
+    - Community treasury: 4-year linear release
+    - Strategic partners: 2-year linear release
+  </Column>
+</Columns>
+
+<Frame>
+  ![Emission Schedule](/images/vola-emission-schedule.png)
+</Frame>
+
+<Note>
+  This gradual emission schedule ensures that token distribution aligns with protocol growth and adoption, preventing market oversupply while supporting necessary incentives.
+</Note>
+
+## veVOLA Mechanism
+
+<Card>
+  The vote-escrowed VOLA (veVOLA) system is central to the token's governance and reward mechanisms.
+</Card>
+
+### veVOLA Basics
+
+<Steps>
+  <Step title="Locking Mechanism">
+    Users can lock their VOLA tokens for periods ranging from 1 week to 4 years.
+  </Step>
+  <Step title="Voting Power">
+    veVOLA voting power scales with both the amount locked and the lock duration.
+  </Step>
+  <Step title="Reward Boosting">
+    veVOLA holders receive boosted rewards across protocol products (up to 2.5x).
+  </Step>
+  <Step title="Fee Sharing">
+    veVOLA holders receive a share of protocol fees proportional to their veVOLA balance.
+  </Step>
+</Steps>
+
+### veVOLA Formula
+
+<Card>
+  **Voting Power and Reward Boost Calculation:**
+  
+  The amount of veVOLA received for locking VOLA is calculated as:
+  
+  ```
+  veVOLA = VOLA amount × (lock duration in weeks ÷ 208 weeks)
+  ```
+  
+  Where 208 weeks represents the maximum 4-year lock period.
+  
+  For example:
+  - 1,000 VOLA locked for 1 year (52 weeks) = 250 veVOLA
+  - 1,000 VOLA locked for 4 years (208 weeks) = 1,000 veVOLA
+</Card>
+
+<Warning>
+  Once VOLA is locked, it cannot be unlocked before the end of the chosen lock period. This mechanism encourages long-term alignment with the protocol's success.
+</Warning>
+
+### veVOLA Benefits
+
+<CardGroup cols={3}>
+  <Card title="Governance Power" icon="landmark">
+    Voting weight on protocol decisions
+  </Card>
+  <Card title="Boost Multiplier" icon="chart-line">
+    Up to 2.5x boost on protocol rewards
+  </Card>
+  <Card title="Fee Share" icon="hand-holding-dollar">
+    Proportional share of protocol revenue
+  </Card>
+  <Card title="Gauge Weight" icon="weight-scale">
+    Influence on incentive distribution
+  </Card>
+  <Card title="Fee Discounts" icon="receipt">
+    Reduced fees on protocol operations
+  </Card>
+  <Card title="Special Access" icon="key">
+    Eligibility for exclusive features
+  </Card>
+</CardGroup>
+
+## Fee Distribution
+
+<Card>
+  Protocol fees from both the Wave Protocol and hbHYPE liquid staking are distributed according to the following model:
+</Card>
+
+<Frame>
+  ![Fee Distribution Model](/images/fee-distribution.png)
+</Frame>
+
+<Columns>
+  <Column>
+    ### Fee Sources
+    
+    - Wave Protocol minting fees
+    - Wave Protocol redemption fees
+    - Wave Protocol flash loan fees
+    - hbHYPE liquid staking rewards fee
+    - Integration partnership fees
+    - Other ecosystem product fees
+  </Column>
+  
+  <Column>
+    ### Distribution Channels
+    
+    - veVOLA holders (30%)
+    - Rebalancing Pool (50%)
+    - Protocol Treasury (15%)
+    - Insurance Fund (5%)
+  </Column>
+</Columns>
+
+<Note>
+  This distribution model ensures that protocol revenue flows to both token holders (creating value accrual) and to critical protocol functions that maintain system health.
+</Note>
+
+## Incentive Design
+
+<Card>
+  The VOLA tokenomics model incorporates several mechanisms designed to create sustainable, aligned incentives.
+</Card>
+
+<Tabs>
+  <Tab title="Liquidity Mining">
+    <div className="mb-4">
+      Strategic VOLA emissions to liquidity providers follow a dynamic model:
+    </div>
+    
+    - Initial high emissions to bootstrap liquidity
+    - Gradual reduction to sustainable levels
+    - Concentration in strategic pools
+    - veVOLA boosting to reward loyal users
+    - Performance-based adjustments
+    
+    <Warning>
+      Unlike many failed liquidity mining programs, VOLA's model includes critical anti-mercenary protections and sustainability mechanisms.
+    </Warning>
+  </Tab>
+  
+  <Tab title="Gauge System">
+    <div className="mb-4">
+      VOLA implements a gauge voting system for incentive direction:
+    </div>
+    
+    - veVOLA holders vote on where incentives should flow
+    - Biweekly epochs for gauge weight adjustments
+    - Dynamic reward allocation based on votes
+    - Gauge options include protocol products and partner integrations
+    - Strategic options to maximize protocol growth
+    
+    <Note>
+      This system ensures that incentives are directed where the community believes they will have the greatest impact on protocol success.
+    </Note>
+  </Tab>
+  
+  <Tab title="Protocol Health">
+    <div className="mb-4">
+      Special incentives target actions that improve system security and health:
+    </div>
+    
+    - Enhanced rewards for Rebalancing Pool participation
+    - Targeted emissions during specific system states
+    - Incentives for product utilization equilibrium
+    - Rewards for early participation in new products
+    - Bonuses for protocol referrals and growth actions
+    
+    <Note>
+      These incentives ensure that participants are rewarded for actions that contribute to protocol sustainability and security.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Token Economics Analysis
+
+<Card>
+  The VOLA token model is designed with several features that create sustainable value capture.
+</Card>
+
+### Value Accrual Mechanisms
+
+<CardGroup cols={2}>
+  <Card title="Fee Share" icon="money-bill-transfer">
+    Direct distribution of protocol revenue to veVOLA holders
+  </Card>
+  <Card title="Protocol Buybacks" icon="circle-arrow-left">
+    Treasury-driven token buybacks during specific market conditions
+  </Card>
+  <Card title="Utility Value" icon="plug">
+    Fee discounts and product access create utility-driven demand
+  </Card>
+  <Card title="Governance Value" icon="landmark">
+    Decision-making power over a growing protocol treasury
+  </Card>
+</CardGroup>
+
+### Supply Dynamics
+
+<Columns>
+  <Column>
+    ### Supply Reduction Factors
+    
+    - Token locking through veVOLA (time-based scarcity)
+    - Potential governance-approved burning mechanisms
+    - Long vesting schedules reducing available supply
+    - Protocol buybacks from treasury
+    - Gauge incentives favoring long-term holding
+  </Column>
+  
+  <Column>
+    ### Supply Control Mechanisms
+    
+    - Fixed maximum supply cap (100M VOLA)
+    - Emissions tied to protocol growth metrics
+    - Governance oversight of treasury emissions
+    - Dynamic adjustment of incentive rates
+    - Multi-year emission schedule avoiding oversupply
+  </Column>
+</Columns>
+
+## Token Governance Rights
+
+<Card>
+  VOLA governance operates on a progressive decentralization model, with increasing community control over time.
+</Card>
+
+### Governance Powers
+
+<Tabs>
+  <Tab title="Protocol Parameters">
+    <div className="mb-4">
+      veVOLA holders can vote on key protocol parameters:
+    </div>
+    
+    - Fee rates and structures
+    - Minimum Collateralization Ratio
+    - Rebalancing thresholds
+    - hbHYPE validator management
+    - Incentive distribution rates
+    - Risk management parameters
+  </Tab>
+  
+  <Tab title="Treasury Management">
+    <div className="mb-4">
+      Governance controls the substantial protocol treasury:
+    </div>
+    
+    - Development funding allocation
+    - Grant program management
+    - Strategic investment decisions
+    - Ecosystem growth initiatives
+    - Partnership funding
+    - Marketing and growth expenditures
+  </Tab>
+  
+  <Tab title="Strategic Direction">
+    <div className="mb-4">
+      High-level strategic decisions require governance approval:
+    </div>
+    
+    - New product launches
+    - Major protocol upgrades
+    - Cross-chain expansions
+    - Strategic partnerships
+    - Fee distribution model changes
+    - Tokenomics adjustments
+  </Tab>
+</Tabs>
+
+### Governance Process
+
+<Steps>
+  <Step title="Proposal Submission">
+    Proposals can be submitted by holders of at least 100,000 veVOLA (or 0.1% of total supply).
+  </Step>
+  <Step title="Discussion Period">
+    7-day discussion period for community review and feedback.
+  </Step>
+  <Step title="Voting Period">
+    5-day voting period where veVOLA holders cast their votes.
+  </Step>
+  <Step title="Execution">
+    Successful proposals (>50% approval with quorum requirements) are implemented with appropriate timelocks.
+  </Step>
+</Steps>
+
+<Note>
+  Critical system parameters have additional safety mechanisms, including higher quorum requirements, longer timelocks, and technical review requirements.
+</Note>
+
+## Token Launch Strategy
+
+<Card>
+  VOLA's launch is designed to ensure fair distribution and bootstrap protocol usage.
+</Card>
+
+<Steps>
+  <Step title="Private Funding Rounds">
+    Limited private rounds with strong vesting to align investors with long-term success.
+  </Step>
+  <Step title="Public Sale">
+    Fair-launch public sale with participation caps to ensure broad distribution.
+  </Step>
+  <Step title="Initial Incentives">
+    Targeted incentives for early protocol adoption across key products.
+  </Step>
+  <Step title="Strategic Partnerships">
+    Collaborations with ecosystem partners to expand reach and integration.
+  </Step>
+</Steps>
+
+<Warning>
+  Unlike many token launches focused on short-term price action, VOLA prioritizes sustainable adoption, fair distribution, and long-term alignment of incentives.
+</Warning>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Mechanisms" icon="gears" href="/governance/mechanisms">
+    Learn about VOLA governance mechanisms
+  </Card>
+  <Card title="Economic Model" icon="chart-line" href="/governance/economic-model">
+    Explore the broader economic model of the protocol
+  </Card>
+  <Card title="Parameters" icon="sliders" href="/governance/parameters">
+    Review governance-controlled parameters
+  </Card>
+  <Card title="Participation Guide" icon="hand-point-up" href="/governance/participation">
+    Learn how to participate in governance
+  </Card>
+</CardGroup> 

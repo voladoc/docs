@@ -1,0 +1,842 @@
+---
+title: 'Protocol Parameters'
+description: 'Governance-controlled parameters in VOLA Protocol'
+---
+
+# Protocol Parameters
+
+VOLA Protocol's behavior is determined by a set of configurable parameters that can be adjusted through governance. This page documents these parameters, their current values, and their impact on the system.
+
+## Parameter Overview
+
+<Frame>
+  ![Parameter Overview](/images/parameter-overview.png)
+</Frame>
+
+<Card>
+  Protocol parameters are categorized based on the system they govern and are updated through governance proposals with appropriate approval thresholds.
+</Card>
+
+<CardGroup cols={3}>
+  <Card title="Wave Protocol" icon="wave-square">
+    Parameters governing volatility separation
+  </Card>
+  <Card title="Liquid Staking" icon="water">
+    Parameters controlling hbHYPE operations
+  </Card>
+  <Card title="Governance" icon="landmark">
+    Parameters defining governance mechanics
+  </Card>
+  <Card title="Fee Structure" icon="hand-holding-dollar">
+    Parameters setting protocol fees
+  </Card>
+  <Card title="Security" icon="shield">
+    Parameters governing risk controls
+  </Card>
+  <Card title="Treasury" icon="vault">
+    Parameters for treasury management
+  </Card>
+</CardGroup>
+
+## Wave Protocol Parameters
+
+<Card>
+  These parameters control the core functionality of the volatility separation mechanism.
+</Card>
+
+### Collateralization Parameters
+
+<Tabs>
+  <Tab title="Current Values">
+    <div className="mb-4">
+      Key collateralization parameters and their current settings:
+    </div>
+    
+    | Parameter | Current Value | Description | Last Updated |
+    | :-------- | :------------ | :---------- | :----------- |
+    | Minimum Collateralization Ratio | 150% | Lowest allowed CR for the system | 2023-08-15 |
+    | Target Collateralization Ratio | 200% | Optimal CR that fee mechanisms encourage | 2023-08-15 |
+    | Global Mint Cap | $10M | Maximum total USD.hype that can be minted | 2023-09-01 |
+    | Individual Mint Cap | $1M | Maximum USD.hype per address | 2023-09-01 |
+    | Mint Buffer | 5% | Additional collateral buffer for new mints | 2023-08-15 |
+    | CR Emergency Threshold | 130% | Trigger for emergency stability measures | 2023-08-15 |
+    
+    <Note>
+      Collateralization parameters are designed with conservative initial values and can be adjusted as the protocol demonstrates stability.
+    </Note>
+  </Tab>
+  
+  <Tab title="Parameter Impact">
+    <div className="mb-4">
+      How these parameters affect the system:
+    </div>
+    
+    <CardGroup cols={2}>
+      <Card title="Minimum CR" icon="shield">
+        <div className="mb-2 text-sm">
+          **Higher value**: Increases system security, reduces HYPE.v leverage, decreases capital efficiency
+        </div>
+        <div className="text-sm">
+          **Lower value**: Improves capital efficiency, increases HYPE.v leverage, reduces system security margin
+        </div>
+      </Card>
+      <Card title="Target CR" icon="bullseye">
+        <div className="mb-2 text-sm">
+          **Higher value**: More conservative system state, lower average leverage
+        </div>
+        <div className="text-sm">
+          **Lower value**: More aggressive system state, higher average leverage
+        </div>
+      </Card>
+      <Card title="Mint Caps" icon="maximize">
+        <div className="mb-2 text-sm">
+          **Higher value**: Allows more protocol growth, potentially higher risk
+        </div>
+        <div className="text-sm">
+          **Lower value**: More conservative growth, limited protocol capacity
+        </div>
+      </Card>
+      <Card title="Emergency Threshold" icon="triangle-exclamation">
+        <div className="mb-2 text-sm">
+          **Higher value**: Earlier activation of emergency measures
+        </div>
+        <div className="text-sm">
+          **Lower value**: Later activation, allows system to operate closer to minimum CR
+        </div>
+      </Card>
+    </CardGroup>
+    
+    <Warning>
+      Adjustments to these parameters should be made carefully as they directly affect system security and stability.
+    </Warning>
+  </Tab>
+  
+  <Tab title="Update Process">
+    <div className="mb-4">
+      Protocol parameter update requirements:
+    </div>
+    
+    - **Quorum**: 15% of total veVOLA
+    - **Approval Threshold**: 66% majority
+    - **Discussion Period**: 7 days
+    - **Voting Period**: 5 days
+    - **Timelock**: 3 days
+    - **Implementation**: Automatic execution after timelock
+    
+    <Note>
+      Critical security parameters like Minimum CR have additional safeguards, including maximum adjustment limits per proposal (e.g., no more than 10% change at once).
+    </Note>
+  </Tab>
+</Tabs>
+
+### Fee Parameters
+
+<Card>
+  These parameters control the fee structure of the Wave Protocol.
+</Card>
+
+<Columns>
+  <Column>
+    ### Base Fee Rates
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Base Minting Fee | 0.5% | Standard fee for minting operations |
+    | Base Redemption Fee | 0.3% | Standard fee for redemption operations |
+    | Flash Loan Fee | 0.05% | Fee for instantaneous borrowing |
+    | Emergency Exit Fee | 1.0% | Higher fee for emergency redemptions |
+  </Column>
+  
+  <Column>
+    ### Dynamic Fee Modifiers
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | CR Fee Multiplier | 0.5-2.0x | Fee adjustment based on system CR |
+    | Volatility Multiplier | 1.0-1.5x | Fee adjustment during high volatility |
+    | Size Multiplier | 1.0-1.2x | Fee adjustment for large operations |
+    | Lower CR Boundary | 175% | CR threshold for fee increases |
+    | Upper CR Boundary | 225% | CR threshold for fee decreases |
+  </Column>
+</Columns>
+
+<Note>
+  Fee parameters are designed to incentivize actions that benefit system health while generating sustainable protocol revenue.
+</Note>
+
+## Liquid Staking Parameters
+
+<Card>
+  These parameters govern the operation of the hbHYPE liquid staking solution.
+</Card>
+
+### Staking Management Parameters
+
+<Tabs>
+  <Tab title="Current Values">
+    <div className="mb-4">
+      Key liquid staking parameters and their current settings:
+    </div>
+    
+    | Parameter | Current Value | Description | Last Updated |
+    | :-------- | :------------ | :---------- | :----------- |
+    | Protocol Fee | 5% | Percentage of staking rewards retained as fee | 2023-07-01 |
+    | Validator Maximum Stake | 5% | Maximum stake allocated to any single validator | 2023-07-01 |
+    | Minimum Stake Amount | 0.1 HYPE | Smallest amount that can be staked | 2023-07-01 |
+    | Reward Collection Frequency | 24 hours | How often rewards are processed | 2023-07-01 |
+    | Emergency Unstake Fee | 1% | Fee for accelerated emergency withdrawals | 2023-07-01 |
+    | Validator Set Size | 25 | Target number of validators in the set | 2023-08-15 |
+    
+    <Note>
+      These parameters are set to balance security, efficiency, and competitive returns for users.
+    </Note>
+  </Tab>
+  
+  <Tab title="Parameter Impact">
+    <div className="mb-4">
+      How these parameters affect the liquid staking system:
+    </div>
+    
+    <CardGroup cols={2}>
+      <Card title="Protocol Fee" icon="percentage">
+        <div className="mb-2 text-sm">
+          **Higher value**: More protocol revenue, lower net user yield
+        </div>
+        <div className="text-sm">
+          **Lower value**: Higher net user yield, less protocol revenue
+        </div>
+      </Card>
+      <Card title="Validator Maximum" icon="chart-pie">
+        <div className="mb-2 text-sm">
+          **Higher value**: Less diversification, potentially higher yield
+        </div>
+        <div className="text-sm">
+          **Lower value**: More diversification, reduced single-validator risk
+        </div>
+      </Card>
+      <Card title="Validator Set Size" icon="sitemap">
+        <div className="mb-2 text-sm">
+          **Higher value**: Greater diversification, increased operational complexity
+        </div>
+        <div className="text-sm">
+          **Lower value**: Simplified operations, potentially higher concentration risk
+        </div>
+      </Card>
+      <Card title="Reward Frequency" icon="clock">
+        <div className="mb-2 text-sm">
+          **Higher frequency**: More updates, higher gas costs, better user experience
+        </div>
+        <div className="text-sm">
+          **Lower frequency**: Less operational overhead, less frequent updates
+        </div>
+      </Card>
+    </CardGroup>
+    
+    <Warning>
+      Changes to liquid staking parameters can affect competitiveness with other staking solutions, user experience, and security profile.
+    </Warning>
+  </Tab>
+  
+  <Tab title="Update Process">
+    <div className="mb-4">
+      Liquid staking parameter update requirements:
+    </div>
+    
+    - **Quorum**: 10% of total veVOLA
+    - **Approval Threshold**: 60% majority
+    - **Discussion Period**: 7 days
+    - **Voting Period**: 5 days
+    - **Timelock**: 2 days
+    - **Implementation**: Automatic execution after timelock
+    
+    <Note>
+      Protocol fee changes have higher quorum requirements (15%) due to their direct impact on both user returns and protocol sustainability.
+    </Note>
+  </Tab>
+</Tabs>
+
+### Validator Selection Parameters
+
+<Card>
+  These parameters govern how validators are selected and evaluated for the liquid staking system.
+</Card>
+
+<Columns>
+  <Column>
+    ### Selection Criteria Weights
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Security Score Weight | 40% | Importance of security factors in selection |
+    | Performance Score Weight | 30% | Importance of performance factors in selection |
+    | Strategic Score Weight | 20% | Importance of ecosystem positioning |
+    | Decentralization Score Weight | 10% | Importance of network decentralization |
+  </Column>
+  
+  <Column>
+    ### Operational Parameters
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Validator Review Frequency | 7 days | How often validator set is reviewed |
+    | Performance Threshold | 97% | Minimum acceptable performance level |
+    | Rebalancing Threshold | 1% | Minimum imbalance to trigger reallocation |
+    | Maximum Delegation Change | 2% | Maximum amount adjusted per rebalance |
+  </Column>
+</Columns>
+
+<Note>
+  Validator selection parameters ensure the optimal balance between performance, security, and strategic positioning for airdrop capture.
+</Note>
+
+## Governance Parameters
+
+<Card>
+  These parameters control the governance system operation and voting mechanics.
+</Card>
+
+### Voting Parameters
+
+<Tabs>
+  <Tab title="Current Values">
+    <div className="mb-4">
+      Key governance parameters and their current settings:
+    </div>
+    
+    | Parameter | Current Value | Description | Last Updated |
+    | :-------- | :------------ | :---------- | :----------- |
+    | Proposal Submission Threshold | 100,000 veVOLA | Minimum veVOLA to submit proposals | 2023-06-15 |
+    | Quorum Base | 10% | Standard quorum for most proposals | 2023-06-15 |
+    | Standard Majority | 60% | Standard approval threshold | 2023-06-15 |
+    | Super Majority | 75% | Threshold for critical decisions | 2023-06-15 |
+    | Discussion Period | 7 days | Standard discussion timeframe | 2023-06-15 |
+    | Voting Period | 5 days | Standard voting timeframe | 2023-06-15 |
+    | Timelock Period | 2 days | Standard delay before execution | 2023-06-15 |
+    
+    <Note>
+      These parameters are designed to balance inclusive participation with efficient decision-making.
+    </Note>
+  </Tab>
+  
+  <Tab title="Parameter Impact">
+    <div className="mb-4">
+      How these parameters affect governance:
+    </div>
+    
+    <CardGroup cols={2}>
+      <Card title="Submission Threshold" icon="filter">
+        <div className="mb-2 text-sm">
+          **Higher value**: Fewer proposals, higher quality bar
+        </div>
+        <div className="text-sm">
+          **Lower value**: More inclusive proposal submission, potentially more noise
+        </div>
+      </Card>
+      <Card title="Quorum" icon="users">
+        <div className="mb-2 text-sm">
+          **Higher value**: Requires broader participation, more representative
+        </div>
+        <div className="text-sm">
+          **Lower value**: Easier to reach decision threshold, less representative
+        </div>
+      </Card>
+      <Card title="Majority Thresholds" icon="chart-pie">
+        <div className="mb-2 text-sm">
+          **Higher value**: More consensus required, harder to pass proposals
+        </div>
+        <div className="text-sm">
+          **Lower value**: More decisions pass, potential for contentious changes
+        </div>
+      </Card>
+      <Card title="Timeframes" icon="calendar">
+        <div className="mb-2 text-sm">
+          **Longer periods**: More time for consideration, slower decision-making
+        </div>
+        <div className="text-sm">
+          **Shorter periods**: Faster decision-making, less time for analysis
+        </div>
+      </Card>
+    </CardGroup>
+    
+    <Warning>
+      Changes to governance parameters can significantly affect decision-making dynamics and should be approached carefully.
+    </Warning>
+  </Tab>
+  
+  <Tab title="Update Process">
+    <div className="mb-4">
+      Meta-governance parameter update requirements:
+    </div>
+    
+    - **Quorum**: 25% of total veVOLA
+    - **Approval Threshold**: 75% super-majority
+    - **Discussion Period**: 14 days
+    - **Voting Period**: 7 days
+    - **Timelock**: 7 days
+    - **Implementation**: Automatic execution after timelock
+    
+    <Note>
+      Changes to the governance system itself have the highest thresholds to ensure broad consensus for any modifications to the collective decision-making framework.
+    </Note>
+  </Tab>
+</Tabs>
+
+### veVOLA Parameters
+
+<Card>
+  These parameters control the behavior of the veVOLA (vote-escrowed VOLA) system.
+</Card>
+
+<Columns>
+  <Column>
+    ### Core veVOLA Parameters
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Minimum Lock Duration | 1 week | Shortest allowed lock period |
+    | Maximum Lock Duration | 4 years | Longest allowed lock period |
+    | Decay Rate | Linear | How voting power declines over time |
+    | Maximum Boost | 2.5x | Maximum reward boost for longest locks |
+    | Lock Extension | Allowed | Whether existing locks can be extended |
+    | Early Unlock | Not Allowed | Whether tokens can be unlocked early |
+  </Column>
+  
+  <Column>
+    ### Delegation Parameters
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Delegation Enabled | Yes | Whether voting power delegation is allowed |
+    | Delegation Changes | Anytime | How often delegation can be changed |
+    | Self-Delegation | Allowed | Whether delegates can also delegate |
+    | Rewards Transfer | Not Transferred | Whether economic rewards transfer with delegation |
+    | Delegation Cap | None | Maximum voting power any delegate can receive |
+  </Column>
+</Columns>
+
+<Note>
+  veVOLA parameters are crucial for aligning long-term incentives and ensuring that governance power is distributed to committed stakeholders.
+</Note>
+
+## Fee Distribution Parameters
+
+<Card>
+  These parameters control how protocol revenue is distributed among various stakeholders.
+</Card>
+
+### Revenue Allocation Parameters
+
+<Tabs>
+  <Tab title="Current Values">
+    <div className="mb-4">
+      Current revenue distribution parameters:
+    </div>
+    
+    | Parameter | Current Value | Description | Last Updated |
+    | :-------- | :------------ | :---------- | :----------- |
+    | veVOLA Holder Share | 30% | Percentage of fees distributed to veVOLA holders | 2023-06-01 |
+    | Rebalancing Pool Share | 50% | Percentage of fees distributed to stability providers | 2023-06-01 |
+    | Treasury Share | 15% | Percentage of fees allocated to protocol treasury | 2023-06-01 |
+    | Insurance Fund Share | 5% | Percentage of fees allocated to insurance reserves | 2023-06-01 |
+    | Distribution Frequency | 24 hours | How often fee distribution occurs | 2023-06-01 |
+    | Claim Window | 90 days | How long users have to claim distributed fees | 2023-06-01 |
+    
+    <Note>
+      These parameters balance direct value accrual to token holders with protocol sustainability and system security.
+    </Note>
+  </Tab>
+  
+  <Tab title="Parameter Impact">
+    <div className="mb-4">
+      How these parameters affect stakeholders:
+    </div>
+    
+    <CardGroup cols={2}>
+      <Card title="veVOLA Share" icon="user-group">
+        <div className="mb-2 text-sm">
+          **Higher value**: More direct rewards for governance participants
+        </div>
+        <div className="text-sm">
+          **Lower value**: Less direct value accrual to token holders
+        </div>
+      </Card>
+      <Card title="Rebalancing Share" icon="scale-balanced">
+        <div className="mb-2 text-sm">
+          **Higher value**: Stronger incentives for stability provision
+        </div>
+        <div className="text-sm">
+          **Lower value**: Reduced stability provider compensation
+        </div>
+      </Card>
+      <Card title="Treasury Share" icon="building-columns">
+        <div className="mb-2 text-sm">
+          **Higher value**: More resources for long-term development
+        </div>
+        <div className="text-sm">
+          **Lower value**: Less funding for protocol growth initiatives
+        </div>
+      </Card>
+      <Card title="Insurance Share" icon="shield">
+        <div className="mb-2 text-sm">
+          **Higher value**: Faster accumulation of safety reserves
+        </div>
+        <div className="text-sm">
+          **Lower value**: Slower building of risk mitigation resources
+        </div>
+      </Card>
+    </CardGroup>
+    
+    <Warning>
+      The fee distribution model significantly impacts stakeholder incentives and protocol sustainability, so changes should be evaluated carefully.
+    </Warning>
+  </Tab>
+  
+  <Tab title="Update Process">
+    <div className="mb-4">
+      Fee distribution parameter update requirements:
+    </div>
+    
+    - **Quorum**: 15% of total veVOLA
+    - **Approval Threshold**: 66% majority
+    - **Discussion Period**: 7 days
+    - **Voting Period**: 5 days
+    - **Timelock**: 3 days
+    - **Implementation**: Automatic execution after timelock
+    
+    <Note>
+      Fee distribution changes are considered significant economic parameter adjustments due to their direct impact on stakeholder rewards and protocol sustainability.
+    </Note>
+  </Tab>
+</Tabs>
+
+### Boost Parameters
+
+<Card>
+  These parameters control how veVOLA provides boosted rewards across protocol products.
+</Card>
+
+<Columns>
+  <Column>
+    ### Boost Formula Parameters
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Maximum Boost | 2.5x | Highest possible reward multiplier |
+    | Boost Curve | Linear | How boost scales with lock amount/duration |
+    | Minimum veVOLA for Boost | 1 veVOLA | Minimum required for any boost |
+    | Global Boost Budget | 80% | Maximum share of rewards that can be boosted |
+    | Boost Calculation Period | 7 days | How often boost factors are recalculated |
+  </Column>
+  
+  <Column>
+    ### Product-Specific Boosts
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Rebalancing Pool Boost | Enabled (max 2.5x) | Boost applies to stability pool rewards |
+    | Liquidity Provision Boost | Enabled (max 2.0x) | Boost applies to liquidity mining rewards |
+    | Fee Discount Boost | Enabled (max 50%) | Boost applies to protocol fee discounts |
+    | Governance Reward Boost | Enabled (max 2.0x) | Boost applies to governance incentives |
+  </Column>
+</Columns>
+
+<Note>
+  Boost parameters are crucial for incentivizing long-term alignment through VOLA locking while ensuring fair reward distribution.
+</Note>
+
+## Security Parameters
+
+<Card>
+  These parameters govern various risk management and security aspects of the protocol.
+</Card>
+
+### Risk Management Parameters
+
+<Tabs>
+  <Tab title="Current Values">
+    <div className="mb-4">
+      Key security parameters and their current settings:
+    </div>
+    
+    | Parameter | Current Value | Description | Last Updated |
+    | :-------- | :------------ | :---------- | :----------- |
+    | Circuit Breaker Threshold | 20% | Price change % that triggers protective measures | 2023-07-01 |
+    | Oracle Deviation Tolerance | 5% | Maximum allowed deviation between oracle sources | 2023-07-01 |
+    | Rebalancing Trigger | 10% | CR deviation that activates rebalancing | 2023-07-01 |
+    | Emergency Shutdown Threshold | 120% | CR level that can trigger emergency shutdown | 2023-07-01 |
+    | Rate Limiting - Mint | $1M/hour | Maximum system-wide minting rate | 2023-07-01 |
+    | Rate Limiting - Redeem | $2M/hour | Maximum system-wide redemption rate | 2023-07-01 |
+    
+    <Note>
+      These parameters are set conservatively to prioritize system security, especially during the early stages of the protocol.
+    </Note>
+  </Tab>
+  
+  <Tab title="Parameter Impact">
+    <div className="mb-4">
+      How these parameters affect system security:
+    </div>
+    
+    <CardGroup cols={2}>
+      <Card title="Circuit Breaker" icon="plug-circle-exclamation">
+        <div className="mb-2 text-sm">
+          **Higher value**: Less sensitive, fewer interventions
+        </div>
+        <div className="text-sm">
+          **Lower value**: More sensitive, more frequent protective actions
+        </div>
+      </Card>
+      <Card title="Oracle Tolerance" icon="satellite-dish">
+        <div className="mb-2 text-sm">
+          **Higher value**: Less disruption from price source variance
+        </div>
+        <div className="text-sm">
+          **Lower value**: Stricter requirements for price consensus
+        </div>
+      </Card>
+      <Card title="Rebalancing Trigger" icon="arrows-rotate">
+        <div className="mb-2 text-sm">
+          **Higher value**: Less frequent rebalancing operations
+        </div>
+        <div className="text-sm">
+          **Lower value**: More active management of system health
+        </div>
+      </Card>
+      <Card title="Rate Limiting" icon="gauge-high">
+        <div className="mb-2 text-sm">
+          **Higher limits**: Greater system capacity, potentially higher risk
+        </div>
+        <div className="text-sm">
+          **Lower limits**: More controlled growth, greater protection
+        </div>
+      </Card>
+    </CardGroup>
+    
+    <Warning>
+      Changes to security parameters should be approached with extreme caution as they directly affect the protocol's ability to withstand market stress and unusual conditions.
+    </Warning>
+  </Tab>
+  
+  <Tab title="Update Process">
+    <div className="mb-4">
+      Security parameter update requirements:
+    </div>
+    
+    - **Quorum**: 20% of total veVOLA
+    - **Approval Threshold**: 75% supermajority
+    - **Discussion Period**: 10 days
+    - **Voting Period**: 7 days
+    - **Timelock**: 5 days
+    - **Implementation**: Automatic execution after timelock
+    
+    <Note>
+      Security parameters have the highest thresholds and longest processes due to their critical importance for system safety.
+    </Note>
+  </Tab>
+</Tabs>
+
+### Insurance Parameters
+
+<Card>
+  These parameters govern the operation of the protocol's insurance mechanisms.
+</Card>
+
+<Columns>
+  <Column>
+    ### Insurance Fund Parameters
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Target Fund Size | $1M | Goal for insurance fund reserves |
+    | Utilization Threshold | 130% CR | System state that enables fund usage |
+    | Maximum Deployment | 50% | Maximum portion of fund usable per event |
+    | Replenishment Priority | High | Priority for rebuilding after usage |
+    | Insurance Asset Allocation | 80% stablecoins | Portfolio composition guidelines |
+  </Column>
+  
+  <Column>
+    ### Activation Parameters
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Activation Authority | Multi-sig & Governance | Who can activate insurance measures |
+    | Emergency Response Time | 12 hours | Maximum response window for activation |
+    | Minimum Activation Quorum | 15% | Minimum veVOLA participation for emergency vote |
+    | Expedited Voting Period | 24 hours | Shortened voting for emergency actions |
+    | Post-Activation Review | Required | Mandatory governance review after usage |
+  </Column>
+</Columns>
+
+<Note>
+  Insurance parameters balance having adequate protection with efficient capital usage, ensuring resources are available during emergencies while not sitting completely idle during normal operations.
+</Note>
+
+## Treasury Parameters
+
+<Card>
+  These parameters govern the management and operation of the protocol treasury.
+</Card>
+
+### Treasury Management Parameters
+
+<Tabs>
+  <Tab title="Current Values">
+    <div className="mb-4">
+      Key treasury parameters and their current settings:
+    </div>
+    
+    | Parameter | Current Value | Description | Last Updated |
+    | :-------- | :------------ | :---------- | :----------- |
+    | Stablecoin Allocation | 40% | Target allocation to stable assets | 2023-06-01 |
+    | VOLA Allocation | 15% | Target allocation to protocol token | 2023-06-01 |
+    | Ecosystem Token Allocation | 20% | Target allocation to ecosystem tokens | 2023-06-01 |
+    | Blue-chip Allocation | 15% | Target allocation to major crypto assets | 2023-06-01 |
+    | Yield Allocation | 10% | Target allocation to yield-generating positions | 2023-06-01 |
+    | Operational Runway Target | 24 months | Minimum stablecoin equivalent for operations | 2023-06-01 |
+    
+    <Note>
+      These parameters guide treasury management strategy to balance capital preservation with growth potential and operational needs.
+    </Note>
+  </Tab>
+  
+  <Tab title="Parameter Impact">
+    <div className="mb-4">
+      How these parameters affect treasury management:
+    </div>
+    
+    <CardGroup cols={2}>
+      <Card title="Asset Allocations" icon="chart-pie">
+        <div className="mb-2 text-sm">
+          **Higher stable allocation**: More conservative, lower growth potential
+        </div>
+        <div className="text-sm">
+          **Higher growth allocation**: Greater upside, increased volatility risk
+        </div>
+      </Card>
+      <Card title="VOLA Allocation" icon="tag">
+        <div className="mb-2 text-sm">
+          **Higher allocation**: More token support, greater treasury exposure
+        </div>
+        <div className="text-sm">
+          **Lower allocation**: Less exposure to token, less market support
+        </div>
+      </Card>
+      <Card title="Runway Target" icon="road">
+        <div className="mb-2 text-sm">
+          **Longer runway**: More security, less capital for growth
+        </div>
+        <div className="text-sm">
+          **Shorter runway**: More risk, more capital deployed for growth
+        </div>
+      </Card>
+      <Card title="Yield Allocation" icon="seedling">
+        <div className="mb-2 text-sm">
+          **Higher allocation**: Greater passive income, more smart contract risk
+        </div>
+        <div className="text-sm">
+          **Lower allocation**: Less yield generation, lower risk exposure
+        </div>
+      </Card>
+    </CardGroup>
+    
+    <Warning>
+      Treasury management has long-term implications for protocol sustainability and should balance between risk management and growth opportunities.
+    </Warning>
+  </Tab>
+  
+  <Tab title="Update Process">
+    <div className="mb-4">
+      Treasury parameter update requirements:
+    </div>
+    
+    - **Quorum**: 10% of total veVOLA
+    - **Approval Threshold**: 60% majority
+    - **Discussion Period**: 7 days
+    - **Voting Period**: 5 days
+    - **Timelock**: 2 days
+    - **Implementation**: Manual execution by treasury multi-sig
+    
+    <Note>
+      Treasury parameters serve as guidelines for the treasury management committee rather than strict rules, allowing some flexibility to adapt to market conditions.
+    </Note>
+  </Tab>
+</Tabs>
+
+### Grant Program Parameters
+
+<Card>
+  These parameters govern the protocol's grant program for ecosystem development.
+</Card>
+
+<Columns>
+  <Column>
+    ### Grant Structure Parameters
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Quarterly Grant Budget | 2% of Treasury | Maximum quarterly allocation to grants |
+    | Maximum Grant Size | $50,000 | Largest single grant without special approval |
+    | Expedited Grant Limit | $5,000 | Maximum for streamlined approval process |
+    | Grant Committee Size | 5 members | Number of members on grant committee |
+    | Grant Rounds | Quarterly | Frequency of formal grant rounds |
+  </Column>
+  
+  <Column>
+    ### Grant Process Parameters
+    
+    | Parameter | Current Value | Description |
+    | :-------- | :------------ | :---------- |
+    | Application Window | 30 days | Period for submitting grant applications |
+    | Review Period | 14 days | Time for committee evaluation |
+    | Milestone Requirement | >$10,000 | Grants requiring milestone-based funding |
+    | Community Review | Required | Whether community input is required |
+    | Reporting Frequency | Monthly | How often grantees must report progress |
+    | Retroactive Funding | Allowed | Whether post-completion funding is permitted |
+  </Column>
+</Columns>
+
+<Note>
+  Grant program parameters ensure efficient and transparent distribution of ecosystem funding to maximize protocol growth and community engagement.
+</Note>
+
+## Parameter Dashboard
+
+<Card>
+  Protocol parameters can be monitored and analyzed through the governance dashboard.
+</Card>
+
+<Frame>
+  ![Parameter Dashboard](/images/parameter-dashboard.png)
+</Frame>
+
+<CardGroup cols={2}>
+  <Card title="Parameter Explorer" icon="sliders" href="https://app.vola.finance/governance/parameters">
+    Interactive tool to explore current parameter values and history
+  </Card>
+  <Card title="Simulation Tool" icon="flask" href="https://app.vola.finance/governance/simulator">
+    Model the impact of parameter changes on protocol behavior
+  </Card>
+  <Card title="Change Proposals" icon="file-edit" href="https://app.vola.finance/governance/proposals">
+    View active and past parameter change proposals
+  </Card>
+  <Card title="Parameter Documentation" icon="book" href="https://docs.vola.finance/parameters">
+    Detailed technical documentation of all parameters
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Governance Mechanisms" icon="gears" href="/governance/mechanisms">
+    Learn how governance proposals modify these parameters
+  </Card>
+  <Card title="Economic Model" icon="chart-line" href="/governance/economic-model">
+    Understand how parameters affect protocol economics
+  </Card>
+  <Card title="Tokenomics" icon="coins" href="/governance/tokenomics">
+    Explore the token economics behind parameter governance
+  </Card>
+  <Card title="Participation Guide" icon="hand-point-up" href="/governance/participation">
+    Learn how to participate in parameter governance
+  </Card>
+</CardGroup> 

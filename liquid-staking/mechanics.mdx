@@ -1,0 +1,400 @@
+---
+title: 'Mechanics'
+description: 'Detailed explanation of how hbHYPE liquid staking works'
+---
+
+# Liquid Staking Mechanics
+
+VOLA Protocol's liquid staking solution (hbHYPE) employs a sophisticated set of mechanisms that work together to provide users with a seamless, efficient staking experience. This page provides an in-depth exploration of how these mechanisms function.
+
+## System Architecture
+
+<Frame>
+  ![hbHYPE System Architecture](/images/hbhype-architecture.png)
+</Frame>
+
+The liquid staking system architecture consists of several interconnected components:
+
+<CardGroup cols={2}>
+  <Card title="Token Contract" icon="file-contract">
+    Core smart contract that handles the hbHYPE token logic
+  </Card>
+  <Card title="Staking Manager" icon="sitemap">
+    System that manages validator selection and delegation
+  </Card>
+  <Card title="Rewards Processor" icon="coins">
+    Component that captures and distributes staking rewards
+  </Card>
+  <Card title="Security Module" icon="shield-halved">
+    Protection mechanisms against validator and protocol risks
+  </Card>
+</CardGroup>
+
+## Staking Flow
+
+<Steps>
+  <Step title="User Deposits HYPE">
+    User connects wallet to the VOLA Protocol interface and initiates a staking transaction with their desired amount of HYPE.
+  </Step>
+  <Step title="Token Minting">
+    The protocol mints hbHYPE tokens to represent the user's staked position based on the current exchange rate.
+  </Step>
+  <Step title="Validator Delegation">
+    The deposited HYPE is strategically distributed across the protocol's validator set according to the current allocation strategy.
+  </Step>
+  <Step title="Proof of Stake">
+    Validators use the delegated HYPE to participate in consensus, generating rewards for the network.
+  </Step>
+</Steps>
+
+<Note>
+  This entire process happens in a single transaction from the user's perspective, abstracting away the complexity of validator selection and delegation.
+</Note>
+
+## Token Exchange Mechanism
+
+<Card>
+  hbHYPE operates as a non-rebasing token whose value against HYPE increases over time, reflecting accumulated staking rewards.
+</Card>
+
+### Initial Exchange Rate
+
+When the protocol launches, the exchange rate begins at:
+
+```
+1 hbHYPE = 1 HYPE
+```
+
+### Exchange Rate Appreciation
+
+As staking rewards accrue, the exchange rate increases:
+
+```
+New Exchange Rate = Current Exchange Rate × (1 + (Rewards / Total Staked HYPE))
+```
+
+<Columns>
+  <Column>
+    ### Example Calculation
+    
+    Initial:
+    - 1,000,000 HYPE staked in protocol
+    - Exchange rate: 1 hbHYPE = 1 HYPE
+    
+    After rewards:
+    - 5,000 HYPE rewards received
+    - New exchange rate: 1 × (1 + (5,000/1,000,000)) = 1.005
+    - 1 hbHYPE now equals 1.005 HYPE
+  </Column>
+  
+  <Column>
+    ### User Perspective
+    
+    If a user stakes 100 HYPE:
+    
+    Initial:
+    - Receives 100 hbHYPE
+    - Worth 100 HYPE
+    
+    After rewards:
+    - Still holds 100 hbHYPE
+    - Now worth 100.5 HYPE
+    - Represents 0.5 HYPE in earned rewards
+  </Column>
+</Columns>
+
+<Note>
+  This accumulation approach eliminates the need for rebasing or reward claiming, automatically compounding returns for all token holders.
+</Note>
+
+## Validator Selection and Management
+
+<Card>
+  A critical component of the liquid staking system is how it selects and manages validators to optimize for security, performance, and reward capture.
+</Card>
+
+### Validator Selection Criteria
+
+<Tabs>
+  <Tab title="Security Metrics">
+    <div className="mb-4">
+      Primary security factors in validator assessment:
+    </div>
+    
+    - **Historical Uptime**: Consistent online presence and block production
+    - **Slashing History**: Clean record with no or minimal slashing events
+    - **Infrastructure Quality**: Robust technical setup with redundancy
+    - **Security Practices**: Demonstrated adherence to security best practices
+    - **Technical Competence**: Proven ability to correctly operate validator nodes
+  </Tab>
+  
+  <Tab title="Performance Metrics">
+    <div className="mb-4">
+      Performance factors considered in selection:
+    </div>
+    
+    - **Reward Efficiency**: Consistent delivery of expected staking returns
+    - **Response Time**: Quick reactions to network updates and issues
+    - **Commission Rates**: Competitive and stable fee structure
+    - **Block Production**: Consistent and reliable block creation
+    - **Technical Support**: Responsive team for issue resolution
+  </Tab>
+  
+  <Tab title="Strategic Metrics">
+    <div className="mb-4">
+      Strategic considerations for ecosystem positioning:
+    </div>
+    
+    - **Ecosystem Participation**: Active involvement in the HYPE community
+    - **Airdrop Eligibility**: Likelihood of qualifying for ecosystem airdrops
+    - **Decentralization Impact**: Contribution to network decentralization
+    - **Community Reputation**: Standing within the validator community
+    - **Geographic Diversity**: Distribution across multiple regions
+  </Tab>
+</Tabs>
+
+### Validator Distribution Strategy
+
+<Card>
+  VOLA employs a sophisticated allocation strategy to distribute stake across validators.
+</Card>
+
+<Columns>
+  <Column>
+    ### Distribution Principles
+    
+    - **Risk Diversification**: No single validator receives more than 5% of total stake
+    - **Performance Weighting**: Higher-performing validators receive larger allocations
+    - **Strategic Positioning**: Allocations optimized for airdrop capture and ecosystem rewards
+    - **Dynamic Adjustment**: Regular rebalancing based on performance metrics
+  </Column>
+  
+  <Column>
+    ### Implementation
+    
+    - **Scoring System**: Validators receive a composite score based on multiple metrics
+    - **Tiered Allocation**: Validators grouped into tiers with corresponding allocation ranges
+    - **Automated Monitoring**: Continuous evaluation of validator performance
+    - **Governance Oversight**: Key decisions reviewed by risk management committee
+  </Column>
+</Columns>
+
+<Note>
+  The validator set is regularly reviewed and adjusted to ensure optimal performance and risk management. Major changes to the validator set are announced to the community.
+</Note>
+
+## Reward Collection and Distribution
+
+<Card>
+  The process of collecting and distributing staking rewards is a key mechanism in the hbHYPE system.
+</Card>
+
+<Steps>
+  <Step title="Reward Generation">
+    Validators earn rewards from the HYPE network for block production and consensus participation.
+  </Step>
+  <Step title="Reward Collection">
+    The protocol's reward collection mechanism regularly harvests rewards from all validators.
+  </Step>
+  <Step title="Exchange Rate Update">
+    Collected rewards trigger an update to the hbHYPE/HYPE exchange rate.
+  </Step>
+  <Step title="Implicit Distribution">
+    All hbHYPE holders benefit from the increased exchange rate proportional to their holdings.
+  </Step>
+</Steps>
+
+### Reward Types
+
+<CardGroup cols={3}>
+  <Card title="Base Staking Rewards" icon="coins">
+    Regular HYPE rewards from network consensus participation (~2.9% APY)
+  </Card>
+  <Card title="Ecosystem Airdrops" icon="parachute-box">
+    Additional token distributions from the HYPE ecosystem
+  </Card>
+  <Card title="Protocol Incentives" icon="gift">
+    VOLA token rewards for hbHYPE holders
+  </Card>
+</CardGroup>
+
+<Warning>
+  Airdrops that require claiming may have a delay between snapshot and distribution as the protocol processes the claims on behalf of all hbHYPE holders.
+</Warning>
+
+## Unbonding and Withdrawal
+
+<Card>
+  The unbonding and withdrawal process allows users to exit their staking position and retrieve their HYPE tokens.
+</Card>
+
+<Steps>
+  <Step title="Withdrawal Request">
+    User initiates a withdrawal request through the VOLA interface, specifying the amount of hbHYPE to redeem.
+  </Step>
+  <Step title="Unbonding Period">
+    The requested HYPE enters the network's mandatory unbonding period (approximately 7 days for Hyperliquid).
+  </Step>
+  <Step title="Exchange Rate Calculation">
+    The amount of HYPE to return is calculated based on the exchange rate at the time of the request.
+  </Step>
+  <Step title="HYPE Return">
+    After the unbonding period completes, the HYPE becomes available for the user to claim.
+  </Step>
+</Steps>
+
+<Note>
+  During the unbonding period, the unbonding HYPE no longer earns staking rewards, but the user maintains their hbHYPE tokens until the process completes.
+</Note>
+
+### Unbonding Queue Management
+
+<Card>
+  To maintain protocol stability and predictable liquidity, the unbonding process is managed through a queue system.
+</Card>
+
+<Columns>
+  <Column>
+    ### Queue Mechanism
+    
+    - **First-In-First-Out (FIFO)**: Withdrawal requests are processed in the order received
+    - **Batch Processing**: Requests are grouped into regular processing batches
+    - **Validator Selection**: Withdrawals are sourced from validators optimally to maintain balance
+    - **Emergency Buffer**: Protocol maintains a buffer for accelerated withdrawals if needed
+  </Column>
+  
+  <Column>
+    ### Withdrawal Periods
+    
+    Standard withdrawal timeline:
+    
+    1. **Request Submission**: T+0
+    2. **Queue Processing**: T+1 (typically within 24 hours)
+    3. **Network Unbonding**: T+1 to T+8 (~7 days)
+    4. **Claim Availability**: T+8 onwards
+    
+    The total process takes approximately 8 days from request to availability.
+  </Column>
+</Columns>
+
+## Slashing Protection
+
+<Card>
+  The protocol implements several mechanisms to protect users from validator slashing events.
+</Card>
+
+<Tabs>
+  <Tab title="Risk Mitigation">
+    <div className="mb-4">
+      Primary risk reduction strategies:
+    </div>
+    
+    - **Validator Diversity**: Spreading stake across multiple validators minimizes single-validator risk
+    - **Performance Monitoring**: Continuous tracking of validator behavior to identify risks early
+    - **Quick Reallocation**: Ability to shift stake away from problematic validators
+    - **Conservative Selection**: Prioritizing validators with strong security track records
+  </Tab>
+  
+  <Tab title="Impact Absorption">
+    <div className="mb-4">
+      When slashing does occur, the impact is minimized through:
+    </div>
+    
+    - **Distributed Effect**: Slashing impact is spread across all hbHYPE holders proportionally
+    - **Limited Exposure**: Maximum 5% allocation per validator caps potential loss
+    - **Progressive Insurance Fund**: Development of a protocol-owned insurance buffer
+    - **Governance Response**: Parameter adjustments to strengthen protection if needed
+  </Tab>
+</Tabs>
+
+<Warning>
+  While the protocol implements extensive protection mechanisms, liquid staking still carries inherent validator risk. The protocol's design aims to minimize this risk, but it cannot be eliminated entirely.
+</Warning>
+
+## Smart Contract Architecture
+
+<Card>
+  The hbHYPE system is built on a modular smart contract architecture designed for security, upgradability, and efficiency.
+</Card>
+
+<Columns>
+  <Column>
+    ### Core Contracts
+    
+    - **Token Contract**: ERC-20 implementation with exchange rate logic
+    - **Staking Manager**: Handles validator delegation and withdrawal
+    - **Reward Processor**: Collects and distributes staking rewards
+    - **Validator Registry**: Maintains validator set and performance data
+    - **Oracle Contract**: Provides exchange rate and network data
+  </Column>
+  
+  <Column>
+    ### Security Features
+    
+    - **Time-Locked Upgrades**: Protocol changes require delay period
+    - **Multi-Signature Control**: Critical functions require multiple approvals
+    - **Circuit Breakers**: Emergency pause mechanisms for extreme scenarios
+    - **Access Controls**: Strict permission system for contract interactions
+    - **Audit Trail**: Comprehensive event logging for transparency
+  </Column>
+</Columns>
+
+<Note>
+  The contract architecture follows best practices for security, including formal verification of critical components, comprehensive testing, and multiple independent audits.
+</Note>
+
+## Protocol Parameters
+
+<Card>
+  Key protocol parameters governing the operation of the liquid staking system:
+</Card>
+
+| Parameter | Value | Description | Management |
+| :-------- | :---- | :---------- | :--------- |
+| Min Stake Amount | 0.1 HYPE | Minimum amount that can be staked | Governance |
+| Max Single Validator Allocation | 5% | Maximum stake placed with any single validator | Risk Committee |
+| Reward Collection Frequency | 24 hours | How often rewards are harvested and processed | Technical |
+| Validator Evaluation Period | 7 days | Frequency of validator performance assessment | Technical |
+| Validator Set Size | 20-30 | Target number of validators in the set | Governance |
+| Fee Rate | 5% | Percentage of rewards retained as protocol fee | Governance |
+| Emergency Unstake Fee | 1% | Additional fee for accelerated emergency withdrawals | Governance |
+
+<Note>
+  These parameters are subject to governance adjustment as the protocol evolves, with a focus on optimizing security, performance, and user experience.
+</Note>
+
+## Cross-Component Interaction
+
+The power of the hbHYPE system comes from the seamless interaction between these mechanisms:
+
+<Steps>
+  <Step title="User Experience">
+    Simple one-click staking interface abstracts away complex validator management
+  </Step>
+  <Step title="Risk Management">
+    Multiple layers of protection work together to secure user funds
+  </Step>
+  <Step title="Reward Optimization">
+    Strategic validator selection and allocation maximizes returns
+  </Step>
+  <Step title="Capital Efficiency">
+    Liquid token design enables continued use of assets while earning staking rewards
+  </Step>
+</Steps>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Advantages" icon="trophy" href="/liquid-staking/advantages">
+    Explore the benefits of these mechanisms for users
+  </Card>
+  <Card title="Risk Management" icon="shield" href="/liquid-staking/risk-management">
+    Learn how these mechanisms protect user funds
+  </Card>
+  <Card title="Yield" icon="seedling" href="/liquid-staking/yield">
+    Understand how these mechanisms generate returns
+  </Card>
+  <Card title="Comparison" icon="scale-balanced" href="/liquid-staking/comparison">
+    See how these mechanisms compare to alternatives
+  </Card>
+</CardGroup> 
