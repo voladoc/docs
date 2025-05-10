@@ -1,0 +1,409 @@
+---
+title: 'Mechanisms'
+description: 'Detailed explanation of VOLA Protocol volatility separation mechanisms'
+---
+
+# Volatility Separation Mechanisms
+
+VOLA Protocol's Volatility Separation Engine employs several sophisticated mechanisms that work in harmony to enable the precise decomposition of asset volatility. This page provides an in-depth exploration of these mechanisms.
+
+## System Architecture Overview
+
+<Frame>
+  ![System Architecture](/images/system-architecture.png)
+</Frame>
+
+The Wave Protocol architecture consists of several interconnected components:
+
+<CardGroup cols={2}>
+  <Card title="Core Protocol" icon="cube">
+    Smart contracts that handle collateral management, minting, and redemption
+  </Card>
+  <Card title="Oracle System" icon="satellite-dish">
+    Price feed infrastructure that provides accurate asset pricing
+  </Card>
+  <Card title="Rebalancing Module" icon="arrows-rotate">
+    System that maintains protocol health through active management
+  </Card>
+  <Card title="Governance Layer" icon="landmark">
+    Community-controlled parameter adjustment mechanism
+  </Card>
+</CardGroup>
+
+## Collateralization Mechanism
+
+<Tabs>
+  <Tab title="Collateral Management">
+    <Steps>
+      <Step title="Collateral Deposit">
+        Users deposit sHYPE as collateral into the protocol's smart contracts.
+      </Step>
+      <Step title="Collateral Tracking">
+        The system maintains a record of all deposited collateral and generated synthetic assets.
+      </Step>
+      <Step title="Collateralization Ratio Calculation">
+        The protocol continuously calculates the system-wide Collateralization Ratio:
+        ```
+        CR = Total Collateral Value / Total USD.hype Value
+        ```
+      </Step>
+      <Step title="Minimum CR Enforcement">
+        All user actions are validated against the minimum CR requirement (typically 150%).
+      </Step>
+    </Steps>
+    
+    <Note>
+      The collateralization mechanism ensures that USD.hype remains fully backed by collateral at all times, maintaining its stable value.
+    </Note>
+  </Tab>
+  
+  <Tab title="Position Management">
+    <div className="mb-4">
+      Each user's position is individually tracked, with these key attributes:
+    </div>
+    
+    - **Deposited Collateral**: Amount of sHYPE the user has deposited
+    - **Minted USD.hype**: Amount of stable tokens the user has generated
+    - **Minted HYPE.v**: Amount of volatility tokens the user has generated
+    - **Position CR**: Individual position's collateralization ratio
+    - **Health Factor**: Indicator of position safety relative to minimum requirements
+    
+    <Warning>
+      While the system as a whole has a global CR, each user's position must independently maintain the minimum required CR during minting operations.
+    </Warning>
+  </Tab>
+</Tabs>
+
+## Minting Mechanism
+
+The minting process is the core functionality that allows users to transform their collateral into separate financial instruments.
+
+<Steps>
+  <Step title="User Input">
+    User specifies:
+    - Amount of sHYPE collateral to deposit
+    - Desired proportion of USD.hype and HYPE.v to mint
+  </Step>
+  <Step title="Validation">
+    System validates the request against current constraints:
+    - Ensures minimum CR requirements are met
+    - Verifies the system has capacity for additional minting
+    - Checks that user inputs are within allowable parameters
+  </Step>
+  <Step title="Price Calculation">
+    Using oracle price data, the system calculates the current values of:
+    - sHYPE collateral
+    - Mintable USD.hype (stable at $1 each)
+    - Corresponding HYPE.v (determined by the invariant formula)
+  </Step>
+  <Step title="Asset Creation">
+    System mints the requested synthetic assets to the user's wallet
+  </Step>
+</Steps>
+
+<Card>
+  **Minting Formula:**
+  
+  For a collateral amount \(C\) with value \(V_C\), a user can mint:
+  
+  - USD.hype amount = \(V_C / CR_{min}\)
+  - HYPE.v value = \(V_C - \text{USD.hype value}\)
+  
+  Where \(CR_{min}\) is the minimum Collateralization Ratio.
+</Card>
+
+### Custom Ratio Minting
+
+Users can mint custom ratios of USD.hype and HYPE.v by specifying their preferences:
+
+<Tabs>
+  <Tab title="Maximum Stability">
+    <div className="mb-4">
+      Mint maximum USD.hype, no HYPE.v:
+    </div>
+    
+    ```
+    USD.hype amount = Collateral Value / Minimum CR
+    HYPE.v amount = 0
+    ```
+    
+    This approach prioritizes stability and downside protection.
+  </Tab>
+  
+  <Tab title="Maximum Leverage">
+    <div className="mb-4">
+      Mint only HYPE.v, no USD.hype:
+    </div>
+    
+    ```
+    USD.hype amount = 0
+    HYPE.v value = Collateral Value
+    ```
+    
+    This approach maximizes leverage and potential upside.
+  </Tab>
+  
+  <Tab title="Custom Allocation">
+    <div className="mb-4">
+      Mint specific ratio of USD.hype and HYPE.v:
+    </div>
+    
+    For example, to create a 50:50 value split with 100 sHYPE at $10 (total value $1,000):
+    
+    ```
+    USD.hype amount = $500 ÷ $1 = 500 USD.hype
+    HYPE.v value = $500
+    ```
+    
+    Custom allocations allow precise risk management.
+  </Tab>
+</Tabs>
+
+## Redemption Mechanism
+
+<Card>
+  The redemption mechanism allows users to convert their synthetic assets back into the underlying collateral at any time, providing guaranteed exit liquidity.
+</Card>
+
+<Steps>
+  <Step title="Redemption Request">
+    User initiates redemption of USD.hype and/or HYPE.v
+  </Step>
+  <Step title="Asset Valuation">
+    System calculates the current value of assets being redeemed:
+    - USD.hype valued at $1 each
+    - HYPE.v valued based on current collateral price and leverage factor
+  </Step>
+  <Step title="Collateral Calculation">
+    System determines the amount of collateral to return:
+    ```
+    Returned Collateral = (USD.hype Value + HYPE.v Value) / Collateral Price
+    ```
+  </Step>
+  <Step title="Asset Burning">
+    Redeemed synthetic assets are burned (removed from circulation)
+  </Step>
+  <Step title="Collateral Release">
+    Calculated amount of collateral is returned to the user
+  </Step>
+</Steps>
+
+<Note>
+  The redemption mechanism guarantees that users can always exit their positions by returning synthetic assets and receiving underlying collateral, regardless of market conditions.
+</Note>
+
+## Dynamic Leverage Adjustment
+
+<Card>
+  The dynamic leverage adjustment is a key innovation that enables HYPE.v to provide leverage without liquidation risk.
+</Card>
+
+### Leverage Calculation
+
+<Columns>
+  <Column>
+    The leverage multiple for HYPE.v is calculated using the formula:
+    
+    ```
+    Leverage (L) = 1 + (1 / (CR - 100%))
+    ```
+    
+    Where CR is the system's current Collateralization Ratio.
+    
+    This formula ensures that:
+    - As CR increases, leverage decreases
+    - As CR decreases, leverage increases
+    - The system remains solvent under all conditions
+  </Column>
+  
+  <Column>
+    **Example Calculations:**
+    
+    - At CR = 200%: L = 1 + (1/(200%-100%)) = 1 + 1 = 2x
+    - At CR = 150%: L = 1 + (1/(150%-100%)) = 1 + 2 = 3x
+    - At CR = 300%: L = 1 + (1/(300%-100%)) = 1 + 0.5 = 1.5x
+    
+    This dynamic adjustment means leverage automatically responds to changing market conditions without requiring user intervention.
+  </Column>
+</Columns>
+
+### Leverage Adjustment Process
+
+<Steps>
+  <Step title="CR Monitoring">
+    System continuously monitors the global Collateralization Ratio
+  </Step>
+  <Step title="Trigger Detection">
+    When CR changes due to price movements or user actions, a leverage update is triggered
+  </Step>
+  <Step title="Leverage Recalculation">
+    New leverage factor is calculated using the formula above
+  </Step>
+  <Step title="Value Adjustment">
+    HYPE.v valuations are updated to reflect the new leverage factor
+  </Step>
+</Steps>
+
+<Note>
+  This dynamic adjustment is fully automatic and requires no user intervention, making it significantly more capital efficient and user-friendly than traditional leverage mechanisms.
+</Note>
+
+## Price Stability Mechanisms
+
+<Card>
+  USD.hype maintains its $1 value through multiple reinforcing stability mechanisms.
+</Card>
+
+<Tabs>
+  <Tab title="Overcollateralization">
+    <div className="mb-4">
+      The primary stability mechanism is strict overcollateralization:
+    </div>
+    
+    - All USD.hype is backed by at least 150% of its value in collateral
+    - This buffer absorbs market volatility
+    - Additional collateral is required as the system CR decreases
+    - System parameters adjust to maintain healthy CR
+  </Tab>
+  
+  <Tab title="Arbitrage Incentives">
+    <div className="mb-4">
+      Market-based stability is enforced through arbitrage opportunities:
+    </div>
+    
+    **If USD.hype > $1:**
+    - Users are incentivized to mint more USD.hype and sell at the premium
+    - This increases supply and brings the price back to $1
+    
+    **If USD.hype < $1:**
+    - Users are incentivized to buy USD.hype at a discount and redeem for collateral
+    - This decreases supply and brings the price back to $1
+  </Tab>
+  
+  <Tab title="Fee Adjustments">
+    <div className="mb-4">
+      Dynamic fee adjustments encourage system-balancing behaviors:
+    </div>
+    
+    - Minting fees increase when the system needs to discourage USD.hype creation
+    - Redemption fees decrease to encourage USD.hype removal when necessary
+    - Parameter adjustments respond to market conditions and system metrics
+  </Tab>
+</Tabs>
+
+## Rebalancing Pool Mechanism
+
+<Card>
+  The Rebalancing Pool is both a risk management tool and a yield-generating mechanism for participants.
+</Card>
+
+<Steps>
+  <Step title="Pool Participation">
+    Users can deposit USD.hype into the Rebalancing Pool and receive spTokens (Stability Pool Tokens)
+  </Step>
+  <Step title="Active Management">
+    The pool actively manages the system CR by:
+    - Purchasing collateral during price decreases to strengthen system CR
+    - Selling collateral during price increases to capture profits
+    - Performing strategic market operations to maintain system health
+  </Step>
+  <Step title="Reward Distribution">
+    Participants earn rewards from:
+    - Protocol fees (minting and redemption)
+    - Trading profits from rebalancing operations
+    - VOLA incentives for providing system stability
+  </Step>
+  <Step title="Enhanced Rewards">
+    veVOLA holders receive boosted rewards (up to 2.5x) for participation
+  </Step>
+</Steps>
+
+<Warning>
+  While the Rebalancing Pool generally provides positive returns, it can experience temporary losses during extreme market volatility as it absorbs system risk.
+</Warning>
+
+## Oracle Mechanism
+
+<Card>
+  The protocol relies on a robust oracle system to provide accurate, manipulation-resistant price data.
+</Card>
+
+<Columns>
+  <Column>
+    ### Oracle Design
+    
+    - Multiple independent price sources
+    - Time-weighted average price (TWAP) calculations
+    - Outlier rejection algorithms
+    - Fallback mechanisms for data interruptions
+    - Chainlink integration for reliable price feeds
+  </Column>
+  
+  <Column>
+    ### Oracle Protection
+    
+    - Circuit breakers for extreme price movements
+    - Governance-controlled validation parameters
+    - Deviation tolerance thresholds
+    - Regular price source audits
+    - Anti-manipulation safeguards
+  </Column>
+</Columns>
+
+<Note>
+  The integrity of price data is critical to the system's operation, which is why VOLA Protocol implements multiple layers of oracle security.
+</Note>
+
+## Protocol Parameter Management
+
+<Card>
+  Key protocol parameters are managed through a combination of algorithmic adjustments and governance oversight.
+</Card>
+
+| Parameter | Description | Management Method |
+| :-------- | :---------- | :---------------- |
+| Minimum CR | Lowest allowed collateralization ratio | Governance-controlled with safety limits |
+| Base Fees | Standard minting and redemption fees | Algorithm-adjusted, governance-bounded |
+| Dynamic Fee Multipliers | Factors that adjust fees based on system conditions | Algorithm-controlled, governance-overridable |
+| Rebalancing Thresholds | CR levels that trigger rebalancing actions | Governance-set with expert input |
+| Maximum Mint Capacity | System-wide limits on synthetic asset creation | Algorithm-calculated, governance-bounded |
+
+<Note>
+  This hybrid approach balances the benefits of algorithmic responsiveness with community governance for long-term strategic decisions.
+</Note>
+
+## Cross-Component Interaction
+
+The power of VOLA Protocol comes from the seamless interaction between these mechanisms:
+
+<Steps>
+  <Step title="Reinforcing Stability">
+    Overcollateralization, fee adjustments, and arbitrage incentives work together to maintain USD.hype's peg
+  </Step>
+  <Step title="Risk Distribution">
+    Dynamic leverage adjustment and the Rebalancing Pool distribute risk efficiently across the system
+  </Step>
+  <Step title="Market Responsiveness">
+    Oracle feeds and automated parameter adjustments enable the system to adapt to changing market conditions
+  </Step>
+  <Step title="User Flexibility">
+    Custom minting ratios and guaranteed redemptions provide users with precise control over their risk exposure
+  </Step>
+</Steps>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Core Concepts" icon="book" href="/volatility-separation/core-concepts">
+    Review the fundamental principles behind these mechanisms
+  </Card>
+  <Card title="Risk Management" icon="shield" href="/volatility-separation/risk-management">
+    Learn how these mechanisms contribute to system safety
+  </Card>
+  <Card title="Fee Structure" icon="hand-holding-dollar" href="/volatility-separation/fee-structure">
+    Understand the economic incentives built into these mechanisms
+  </Card>
+  <Card title="User Scenarios" icon="users" href="/volatility-separation/user-scenarios">
+    See these mechanisms in action through practical examples
+  </Card>
+</CardGroup> 
