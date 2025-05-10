@@ -48,7 +48,7 @@ The Wave Protocol architecture consists of several interconnected components:
         ```
       </Step>
       <Step title="Minimum CR Enforcement">
-        All user actions are validated against the minimum CR requirement (typically 150%).
+        All user actions are validated against the minimum CR requirement (typically 150 percent).
       </Step>
     </Steps>
     
@@ -104,12 +104,12 @@ The minting process is the core functionality that allows users to transform the
 <Card>
   **Minting Formula:**
   
-  For a collateral amount \(C\) with value \(V_C\), a user can mint:
+  For a collateral amount C with value V_C, a user can mint:
   
-  - USD.hype amount = \(V_C / CR_{min}\)
-  - HYPE.v value = \(V_C - \text{USD.hype value}\)
+  - USD.hype amount = V_C / CR_min
+  - HYPE.v value = V_C - (USD.hype value)
   
-  Where \(CR_{min}\) is the minimum Collateralization Ratio.
+  Where CR_min is the minimum Collateralization Ratio.
 </Card>
 
 ### Custom Ratio Minting
@@ -151,8 +151,8 @@ Users can mint custom ratios of USD.hype and HYPE.v by specifying their preferen
     For example, to create a 50:50 value split with 100 sHYPE at $10 (total value $1,000):
     
     ```
-    USD.hype amount = $500 ÷ $1 = 500 USD.hype
-    HYPE.v value = $500
+    USD.hype amount = 500 ÷ 1 = 500 USD.hype
+    HYPE.v value = 500
     ```
     
     Custom allocations allow precise risk management.
@@ -205,7 +205,7 @@ Users can mint custom ratios of USD.hype and HYPE.v by specifying their preferen
     The leverage multiple for HYPE.v is calculated using the formula:
     
     ```
-    Leverage (L) = 1 + (1 / (CR - 100%))
+    Leverage (L) = 1 + 1/(CR - 100 percent)
     ```
     
     Where CR is the system's current Collateralization Ratio.
@@ -219,9 +219,9 @@ Users can mint custom ratios of USD.hype and HYPE.v by specifying their preferen
   <Column>
     **Example Calculations:**
     
-    - At CR = 200%: L = 1 + (1/(200%-100%)) = 1 + 1 = 2x
-    - At CR = 150%: L = 1 + (1/(150%-100%)) = 1 + 2 = 3x
-    - At CR = 300%: L = 1 + (1/(300%-100%)) = 1 + 0.5 = 1.5x
+    - At CR = 200 percent: L = 1 + 1 = 2x
+    - At CR = 150 percent: L = 1 + 2 = 3x
+    - At CR = 300 percent: L = 1 + 0.5 = 1.5x
     
     This dynamic adjustment means leverage automatically responds to changing market conditions without requiring user intervention.
   </Column>
@@ -260,7 +260,7 @@ Users can mint custom ratios of USD.hype and HYPE.v by specifying their preferen
       The primary stability mechanism is strict overcollateralization:
     </div>
     
-    - All USD.hype is backed by at least 150% of its value in collateral
+    - All USD.hype is backed by at least 150 percent of its value in collateral
     - This buffer absorbs market volatility
     - Additional collateral is required as the system CR decreases
     - System parameters adjust to maintain healthy CR
