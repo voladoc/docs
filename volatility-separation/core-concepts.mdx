@@ -1,0 +1,290 @@
+---
+title: 'Core Concepts'
+description: 'Understanding the fundamental principles of VOLA Protocol volatility separation'
+---
+
+# Core Concepts
+
+VOLA Protocol's Volatility Separation Engine is built upon several fundamental financial and mathematical principles that enable the precise separation of asset volatility. Understanding these core concepts is essential for grasping how the protocol functions.
+
+## Volatility Decomposition Framework
+
+<Frame>
+  ![Volatility Decomposition](/images/volatility-decomposition.png)
+</Frame>
+
+At its foundation, VOLA's volatility separation approach is based on the mathematical principle that any asset can be decomposed into:
+
+1. A stable component (fixed value)
+2. A volatility component (absorbs all price movements)
+
+This decomposition allows users to gain precise exposure to exactly the risk profile they desire.
+
+## Price-Value Invariant
+
+<Card>
+  The most critical mathematical foundation of the protocol is the Price-Value Invariant:
+  
+  ```
+  Total Value of Collateral (sHYPE) = Total Value of Derivatives (USD.hype + HYPE.v)
+  ```
+  
+  This invariant ensures that the system always maintains proper collateralization while enabling the transfer of volatility between different asset classes.
+</Card>
+
+<Note>
+  This fundamental equation must remain balanced at all times, and forms the basis for how the protocol dynamically adjusts leverage and risk distribution between USD.hype and HYPE.v.
+</Note>
+
+## Collateralization Ratio (CR)
+
+<Tabs>
+  <Tab title="Definition">
+    <div className="mb-4">
+      The Collateralization Ratio (CR) is a key metric that represents the ratio of total collateral value to the value of stable assets:
+    </div>
+    
+    ```
+    CR = Total Collateral Value / Total USD.hype Value
+    ```
+    
+    For example, if there is $100 million in sHYPE collateral and $50 million in USD.hype, the CR is 200%.
+    
+    The CR determines several critical aspects of the system, including:
+    - HYPE.v leverage factor
+    - System stability parameters
+    - Minting and redemption fees
+  </Tab>
+  
+  <Tab title="Significance">
+    <CardGroup cols={2}>
+      <Card title="Higher CR (e.g., 250%)" icon="shield-check">
+        - Increased system security
+        - Lower HYPE.v leverage
+        - Lower minting fees
+        - Greater capacity for USD.hype minting
+      </Card>
+      <Card title="Lower CR (e.g., 150%)" icon="triangle-exclamation">
+        - Reduced security buffer
+        - Higher HYPE.v leverage
+        - Higher minting fees
+        - Restricted capacity for USD.hype minting
+      </Card>
+    </CardGroup>
+    
+    <Note>
+      The protocol is designed to maintain a healthy CR by dynamically adjusting economic incentives that naturally guide user behavior toward system balance.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Dynamic Leverage Mechanism
+
+<Steps>
+  <Step title="Leverage Calculation">
+    HYPE.v employs a dynamic leverage mechanism that automatically adjusts based on the system's Collateralization Ratio:
+    
+    ```
+    Leverage (L) = 1 + (1 / (CR - 100%))
+    ```
+  </Step>
+  
+  <Step title="Automatic Adjustment">
+    As CR changes due to price movements or user actions, HYPE.v's leverage automatically adjusts:
+    - When CR increases → leverage decreases
+    - When CR decreases → leverage increases
+  </Step>
+  
+  <Step title="Price Impact">
+    When sHYPE price changes, the impact on HYPE.v is amplified by the current leverage factor:
+    
+    ```
+    HYPE.v % Change ≈ sHYPE % Change × Current Leverage
+    ```
+  </Step>
+  
+  <Step title="No Liquidation Design">
+    Unlike traditional leverage platforms, the dynamic leverage design means positions are never forcibly liquidated, as leverage automatically adjusts to maintain system solvency.
+  </Step>
+</Steps>
+
+<Card>
+  **Example Calculation:**
+  
+  If the system's CR is 200%:
+  
+  ```
+  Leverage = 1 + (1 / (200% - 100%)) = 1 + (1 / 100%) = 1 + 1 = 2x
+  ```
+  
+  At this leverage, if sHYPE price rises 10%, HYPE.v would rise approximately 20%.
+</Card>
+
+## Over-Collateralization Strategy
+
+<Columns>
+  <Column>
+    ### Purpose
+    
+    The protocol maintains strict over-collateralization to ensure:
+    
+    - USD.hype maintains its $1 peg under all market conditions
+    - System remains solvent even during extreme market volatility
+    - Users can always redeem their synthetic assets for underlying collateral
+    - Confidence in the protocol's stability and reliability
+  </Column>
+  
+  <Column>
+    ### Implementation
+    
+    Over-collateralization is enforced through:
+    
+    - Minimum CR requirements (typically 150% or higher)
+    - Dynamic fee structures that incentivize healthy CR
+    - Rebalancing mechanisms to maintain system health
+    - Protocol-owned stability buffers as an additional safeguard
+    - Governance-controlled risk parameters
+  </Column>
+</Columns>
+
+<Warning>
+  While over-collateralization provides strong security, users should understand that extreme market conditions can still impact the value of HYPE.v, potentially causing significant price decreases in worst-case scenarios.
+</Warning>
+
+## Minting and Redemption Mechanics
+
+<Tabs>
+  <Tab title="Minting Process">
+    <Steps>
+      <Step title="Deposit Collateral">
+        User deposits sHYPE into the protocol.
+      </Step>
+      <Step title="Choose Minting Ratio">
+        User decides how much USD.hype and/or HYPE.v to mint based on their risk preference.
+      </Step>
+      <Step title="System Calculation">
+        Protocol calculates the appropriate amount of each asset based on current prices and system parameters.
+      </Step>
+      <Step title="Asset Creation">
+        Protocol mints the requested assets and delivers them to the user's wallet.
+      </Step>
+    </Steps>
+    
+    <Note>
+      The protocol enforces minimum CR requirements during minting to ensure system safety.
+    </Note>
+  </Tab>
+  
+  <Tab title="Redemption Process">
+    <Steps>
+      <Step title="Initiate Redemption">
+        User selects USD.hype and/or HYPE.v to redeem.
+      </Step>
+      <Step title="System Calculation">
+        Protocol calculates the equivalent amount of sHYPE based on current prices.
+      </Step>
+      <Step title="Asset Burn">
+        The redeemed USD.hype and/or HYPE.v are burned (removed from circulation).
+      </Step>
+      <Step title="Collateral Return">
+        The corresponding amount of sHYPE is returned to the user's wallet.
+      </Step>
+    </Steps>
+    
+    <Note>
+      Redemption is always available regardless of market conditions, providing users with guaranteed exit liquidity.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Risk Tranching System
+
+<Card>
+  At a conceptual level, VOLA Protocol implements a risk tranching system that separates a single asset's risk profile into distinct tranches:
+  
+  - **Senior Tranche (USD.hype)**: Absorbs no volatility, maintains stable value
+  - **Junior Tranche (HYPE.v)**: Absorbs all volatility with amplified movements
+  
+  This tranching allows different user types to access precisely the risk profile that matches their investment goals.
+</Card>
+
+<Columns>
+  <Column>
+    ### Financial Engineering Precedent
+    
+    This concept has strong precedent in traditional finance:
+    
+    - Collateralized Debt Obligations (CDOs)
+    - Mortgage-backed securities tranching
+    - Structured products with differential risk layers
+    
+    VOLA brings this sophisticated financial engineering on-chain with greater transparency and accessibility.
+  </Column>
+  
+  <Column>
+    ### DeFi Innovation
+    
+    VOLA enhances these concepts with DeFi innovations:
+    
+    - Full transparency of all positions and collateral
+    - No counterparty risk or intermediaries
+    - Instant settlement and 24/7 access
+    - Programmable interactions with other protocols
+    - On-chain verification of all operations
+  </Column>
+</Columns>
+
+## Feedback Stabilization Mechanisms
+
+<Card>
+  The protocol incorporates multiple self-stabilizing feedback loops to maintain system health:
+  
+  - **Dynamic Fee Structure**: Fees adjust based on system conditions to incentivize balancing behavior
+  - **Arbitrage Incentives**: Price deviations create profitable opportunities that help restore equilibrium
+  - **Rebalancing Pools**: Dedicated capital pools that actively stabilize the system during imbalances
+  - **Governance Parameters**: Community-controlled risk parameters that can be adjusted to respond to changing conditions
+</Card>
+
+<Note>
+  These stabilization mechanisms work together to create a robust system that can withstand significant market volatility while maintaining its core functionality.
+</Note>
+
+## Mathematical Model Advantages
+
+<CardGroup cols={3}>
+  <Card title="Capital Efficiency" icon="money-bill-transfer">
+    Optimizes capital usage compared to traditional over-collateralized stablecoins
+  </Card>
+  <Card title="Risk Precision" icon="bullseye">
+    Allows users to select their exact desired risk exposure
+  </Card>
+  <Card title="Liquidation-Free" icon="shield-check">
+    Eliminates forced liquidations through innovative mathematics
+  </Card>
+  <Card title="Self-Balancing" icon="scale-balanced">
+    Creates natural economic incentives that guide the system toward balance
+  </Card>
+  <Card title="Transparent Risk" icon="eye">
+    All risk parameters and system health metrics are fully visible on-chain
+  </Card>
+  <Card title="Composable Design" icon="puzzle-piece">
+    Built to interact seamlessly with other DeFi protocols
+  </Card>
+</CardGroup>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Mechanisms" icon="gears" href="/volatility-separation/mechanisms">
+    Explore the detailed mechanisms that bring these concepts to life
+  </Card>
+  <Card title="Risk Management" icon="shield" href="/volatility-separation/risk-management">
+    Learn how the protocol manages risk across different market conditions
+  </Card>
+  <Card title="User Scenarios" icon="users" href="/volatility-separation/user-scenarios">
+    See how these concepts apply to real-world usage scenarios
+  </Card>
+  <Card title="Fee Structure" icon="hand-holding-dollar" href="/volatility-separation/fee-structure">
+    Understand the economic incentives that drive protocol behavior
+  </Card>
+</CardGroup> 
