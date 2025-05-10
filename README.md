@@ -1,49 +1,75 @@
-# Mintlify 文档网站框架
+# VOLA Protocol Documentation
 
-这是一个基于 Mintlify 构建的精美文档网站。Mintlify 是一个专为开发者设计的现代化文档平台，支持 AI 功能，开箱即用的美观设计，以及丰富的组件库。
+This repository contains the official documentation for VOLA Protocol, built with Mintlify.
 
-## 功能特点
+## Overview
 
-- **美观的界面设计** - 开箱即用的精美主题和组件
-- **Markdown/MDX 支持** - 使用熟悉的 Markdown 语法编写文档
-- **丰富的组件库** - 卡片、标签页、手风琴、提示框等多种组件
-- **响应式设计** - 在各种设备上都有良好的显示效果
-- **自动化部署** - 通过 GitHub 集成实现自动化部署
-- **代码高亮** - 支持多种编程语言的代码高亮
-- **支持暗黑模式** - 内置明暗主题切换功能
+VOLA Protocol is a suite of innovative financial products running on HyperEVM, featuring:
 
-## 开始使用
+- Wave Protocol (volatility separation engine)
+- HYPE Liquid Staking (liquid staking solution)
 
-### 安装
+## File Structure
 
-1. 安装 Mintlify CLI 工具：
+The documentation is organized as follows:
 
-```bash
-npm i -g mintlify
+```
+/
+├── index.mdx                  # Homepage
+├── introduction/              # Introduction section
+│   ├── core-products.mdx      # Core products overview
+│   ├── use-cases.mdx          # Use cases and strategies
+│   ├── team.mdx               # Team information
+│   └── important-links.mdx    # Important links and resources
+├── liquid-staking/            # Liquid staking section
+│   ├── overview.mdx           # Liquid staking overview
+│   ├── advantages.mdx         # Benefits of liquid staking
+│   ├── comparison.mdx         # Comparison with alternatives
+│   ├── mechanics.mdx          # How it works
+│   ├── technology.mdx         # Technical implementation
+│   ├── yield.mdx              # Yield information
+│   └── risk-management.mdx    # Risk management
+├── volatility-separation/     # Volatility separation section
+│   ├── overview.mdx           # Volatility separation overview
+│   ├── core-concepts.mdx      # Fundamental concepts
+│   ├── mechanisms.mdx         # How it works
+│   ├── risk-management.mdx    # Risk management
+│   ├── fee-structure.mdx      # Fee structure
+│   └── user-scenarios.mdx     # User scenarios and examples
+├── governance/                # Governance section
+│   ├── overview.mdx           # Governance overview
+│   ├── tokenomics.mdx         # Token economics
+│   ├── mechanisms.mdx         # Governance mechanisms
+│   ├── parameters.mdx         # Governance parameters
+│   └── economic-model.mdx     # Economic model
+└── resources/                 # Resources section
+    ├── deployed-addresses.mdx # Contract addresses
+    ├── mechanism.mdx          # Technical mechanisms
+    ├── audits.mdx             # Security audits
+    ├── risks.mdx              # Risk disclosures
+    └── terms.mdx              # Terms of service
 ```
 
-2. 在文档根目录运行以下命令预览文档：
+## Local Development
 
-```bash
-mintlify dev
-```
+To run the documentation locally:
 
-### 编辑文档
+1. Install dependencies: `npm install`
+2. Start the development server: `npx mintlify dev`
+3. Open your browser at: `http://localhost:3000`
 
-1. 所有文档都是 MDX 文件（Markdown + JSX）
-2. 在 `docs.json` 文件中配置导航、主题等全局设置
-3. 遵循 Mintlify 的目录结构组织你的文档
+## Contributing
 
-### 发布更新
+To contribute to the documentation:
 
-1. 安装 Mintlify 的 GitHub App 以自动化部署
-2. 将更改推送到默认分支，更改将自动部署到生产环境
+1. Fork this repository
+2. Create a new branch for your changes
+3. Make your changes
+4. Submit a pull request
 
-## 常见问题
+## Contact
 
-- Mintlify dev 不能运行 - 运行 `mintlify install` 重新安装依赖
-- 页面加载显示 404 - 确保在包含 `docs.json` 的文件夹中运行命令
+For questions or support regarding the documentation:
 
-## 了解更多
-
-访问 [Mintlify 官方文档](https://mintlify.com/docs) 了解更多详细内容和高级用法。
+- Email: contact@vola.finance
+- Discord: https://discord.gg/volaprotocol

@@ -16,44 +16,44 @@
           {
             "group": "Introduction",
             "pages": [
-              "index",
-              "introduction/core-products",
-              "introduction/use-cases",
-              "introduction/team",
-              "introduction/important-links"
+              { "name": "Overview", "route": "index" },
+              { "name": "Core Products", "route": "introduction/core-products" },
+              { "name": "Use Cases", "route": "introduction/use-cases" },
+              { "name": "Team", "route": "introduction/team" },
+              { "name": "Important Links", "route": "introduction/important-links" }
             ]
           },
           {
             "group": "Liquid Staking",
             "pages": [
-              "liquid-staking/overview",
-              "liquid-staking/advantages",
-              "liquid-staking/comparison",
-              "liquid-staking/mechanics",
-              "liquid-staking/technology",
-              "liquid-staking/yield",
-              "liquid-staking/risk-management"
+              { "name": "Overview", "route": "liquid-staking/overview" },
+              { "name": "Advantages", "route": "liquid-staking/advantages" },
+              { "name": "Comparison", "route": "liquid-staking/comparison" },
+              { "name": "Mechanics", "route": "liquid-staking/mechanics" },
+              { "name": "Technology", "route": "liquid-staking/technology" },
+              { "name": "Yield", "route": "liquid-staking/yield" },
+              { "name": "Risk Management", "route": "liquid-staking/risk-management" }
             ]
           },
           {
             "group": "Volatility Separation",
             "pages": [
-              "volatility-separation/overview",
-              "volatility-separation/core-concepts",
-              "volatility-separation/mechanisms",
-              "volatility-separation/risk-management",
-              "volatility-separation/fee-structure",
-              "volatility-separation/user-scenarios"
+              { "name": "Overview", "route": "volatility-separation/overview" },
+              { "name": "Core Concepts", "route": "volatility-separation/core-concepts" },
+              { "name": "Mechanisms", "route": "volatility-separation/mechanisms" },
+              { "name": "Risk Management", "route": "volatility-separation/risk-management" },
+              { "name": "Fee Structure", "route": "volatility-separation/fee-structure" },
+              { "name": "User Scenarios", "route": "volatility-separation/user-scenarios" }
             ]
           },
           {
             "group": "Governance",
             "pages": [
-              "governance/overview",
-              "governance/tokenomics",
-              "governance/mechanisms",
-              "governance/parameters",
-              "governance/economic-model"
+              { "name": "Overview", "route": "governance/overview" },
+              { "name": "Tokenomics", "route": "governance/tokenomics" },
+              { "name": "Mechanisms", "route": "governance/mechanisms" },
+              { "name": "Parameters", "route": "governance/parameters" },
+              { "name": "Economic Model", "route": "governance/economic-model" }
             ]
           }
         ]
@@ -64,11 +64,11 @@
           {
             "group": "Developer Resources",
             "pages": [
-              "resources/deployed-addresses",
-              "resources/mechanism",
-              "resources/audits",
-              "resources/risks",
-              "resources/terms"
+              { "name": "Deployed Addresses", "route": "resources/deployed-addresses" },
+              { "name": "Mechanism", "route": "resources/mechanism" },
+              { "name": "Audits", "route": "resources/audits" },
+              { "name": "Risks", "route": "resources/risks" },
+              { "name": "Terms", "route": "resources/terms" }
             ]
           }
         ]

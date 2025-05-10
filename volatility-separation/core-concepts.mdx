@@ -1,0 +1,274 @@
+---
+title: 'Core Concepts'
+description: 'Fundamental principles of volatility separation in VOLA Protocol'
+---
+
+# Core Concepts of Volatility Separation
+
+This page explains the foundational principles that underpin VOLA Protocol's volatility separation technology. Understanding these concepts will help you grasp how the system works and why it represents a paradigm shift in DeFi risk management.
+
+## Volatility Separation Fundamentals
+
+<Card>
+  **Volatility Separation Definition:**
+  
+  The financial engineering process of decomposing a single asset's risk-return profile into distinct components with different volatility characteristics, allowing precise risk control without liquidation risk.
+</Card>
+
+### Core Principle: Asset Decomposition
+
+<Frame>
+  ![Asset Decomposition](/images/asset-decomposition.png)
+</Frame>
+
+In traditional finance and DeFi, assets carry bundled risk and return characteristics. VOLA's approach breaks this bundle apart:
+
+<Columns>
+  <Column>
+    **Traditional Asset:**
+    
+    A single token (e.g., sHYPE) represents:
+    - Full price exposure
+    - Full price volatility
+    - Undifferentiated risk profile
+    - Limited capital efficiency
+  </Column>
+  
+  <Column>
+    **Decomposed Components:**
+    
+    The same value split into complementary tokens:
+    - **USD.hype**: Stable value component
+    - **HYPE.v**: Volatility component
+    - Targeted risk exposure
+    - Enhanced capital efficiency
+  </Column>
+</Columns>
+
+<Note>
+  The mathematics of volatility separation ensures that the combined value of the decomposed components (USD.hype + HYPE.v) always equals the value of the original asset (sHYPE), maintaining value conservation.
+</Note>
+
+## Mathematical Foundation
+
+<Card>
+  The volatility separation engine is built on sophisticated mathematical principles that enable precise risk transfer while maintaining system solvency.
+</Card>
+
+### Value Conservation Law
+
+The fundamental equation that governs the system:
+
+```
+sHYPE Collateral Value ($) = USD.hype Total Supply × $1 + HYPE.v Total Supply × HYPE.v Price
+```
+
+This equation must always hold true, ensuring that:
+1. The system remains fully collateralized
+2. Value is neither created nor destroyed, only redistributed
+3. The stability of USD.hype and the leverage of HYPE.v are mathematically guaranteed
+
+### Floating Leverage Mechanism
+
+<Frame>
+  ![Floating Leverage](/images/floating-leverage.png)
+</Frame>
+
+HYPE.v's leverage is determined by the system's Collateralization Ratio (CR):
+
+```
+Leverage (L) = 1 + (1 / (CR - 100%))
+```
+
+<Tabs>
+  <Tab title="How It Works">
+    - As CR increases, leverage decreases (more conservative)
+    - As CR decreases, leverage increases (more aggressive)
+    - This automatic adjustment ensures system solvency
+    - No external price feeds or oracles needed for leverage calculation
+  </Tab>
+  
+  <Tab title="Numerical Examples">
+    | System CR | Calculation | Resulting Leverage |
+    | :-------- | :---------- | :----------------- |
+    | 400% | 1 + (1 / (400% - 100%)) | 1 + (1 / 300%) = 1.33x |
+    | 300% | 1 + (1 / (300% - 100%)) | 1 + (1 / 200%) = 1.5x |
+    | 200% | 1 + (1 / (200% - 100%)) | 1 + (1 / 100%) = 2x |
+    | 150% | 1 + (1 / (150% - 100%)) | 1 + (1 / 50%) = 3x |
+    | 125% | 1 + (1 / (125% - 100%)) | 1 + (1 / 25%) = 5x |
+  </Tab>
+</Tabs>
+
+## The Three Pillars of Volatility Separation
+
+<CardGroup cols={3}>
+  <Card title="Price Stability" icon="dollar-sign">
+    USD.hype maintains a stable $1 value regardless of market volatility
+  </Card>
+  <Card title="Risk Isolation" icon="shield-halved">
+    Volatility is isolated within HYPE.v, protecting USD.hype holders
+  </Card>
+  <Card title="Capital Efficiency" icon="chart-pie">
+    Users can optimize capital allocation based on risk preferences
+  </Card>
+</CardGroup>
+
+### Stability Mechanisms
+
+USD.hype achieves its stability through several mechanisms:
+
+<Steps>
+  <Step title="Over-collateralization">
+    The protocol maintains a minimum Collateralization Ratio above 100% at all times
+  </Step>
+  <Step title="Risk Absorption">
+    HYPE.v absorbs all price volatility, shielding USD.hype from market movements
+  </Step>
+  <Step title="Protocol Incentives">
+    Fee structures incentivize actions that restore the target CR during market stress
+  </Step>
+  <Step title="Stability Pool">
+    A dedicated pool of capital provides an additional layer of protection
+  </Step>
+</Steps>
+
+## Liquidation-Free System Design
+
+<Card>
+  Unlike traditional leverage platforms, VOLA Protocol's volatility separation engine operates without forced liquidations of user positions.
+</Card>
+
+<Columns>
+  <Column>
+    **Traditional Leverage:**
+    
+    - Fixed leverage multiple
+    - Margin requirements
+    - Liquidation thresholds
+    - Forced selling when thresholds are breached
+    - Potential for cascading liquidations
+    - Liquidation penalties
+  </Column>
+  
+  <Column>
+    **VOLA's Approach:**
+    
+    - Floating leverage that adjusts automatically
+    - No margin requirements
+    - No liquidation thresholds
+    - No forced selling of positions
+    - System stability maintained mathematically
+    - No liquidation penalties
+  </Column>
+</Columns>
+
+<Warning>
+  While the system does not impose liquidations, users should understand that HYPE.v can still lose value in market downturns. The absence of liquidation risk doesn't eliminate market risk.
+</Warning>
+
+## Price Discovery Mechanism
+
+The HYPE.v price is determined through a mathematical relationship:
+
+```
+HYPE.v Price = (sHYPE Total Value - USD.hype Total Supply) / HYPE.v Total Supply
+```
+
+This ensures:
+1. Transparent price discovery
+2. Direct relationship to the underlying asset
+3. Mathematically guaranteed backing
+
+## Protocol Parameters
+
+Key parameters that govern the volatility separation engine:
+
+| Parameter | Description | Impact |
+| :-------- | :---------- | :----- |
+| Minimum Collateralization Ratio | Lowest allowed system CR | Affects maximum available leverage and system risk |
+| Target Collateralization Ratio | Optimal system CR | Baseline for system operations and incentives |
+| Minting Fee | Fee for creating assets | Controls minting behavior and provides protocol revenue |
+| Redemption Fee | Fee for redeeming assets | Controls redemption behavior, especially during volatility |
+| Dynamic Fee Parameters | How fees adjust with CR | Incentivizes behavior that returns CR to target during market stress |
+
+<Note>
+  These parameters can be adjusted through governance to optimize protocol performance in different market conditions.
+</Note>
+
+## Conceptual Differences from Other Approaches
+
+<AccordionGroup>
+  <Accordion title="vs. Stablecoin Systems">
+    Unlike most stablecoin systems which either rely on external collateral types or algorithmic mechanisms:
+    
+    - VOLA doesn't require diverse collateral types (multi-collateral)
+    - No algorithmic "rebasing" or similar mechanisms
+    - Doesn't rely on interest rate adjustments for stability
+    - Creates a complementary volatile asset alongside the stable asset
+  </Accordion>
+  
+  <Accordion title="vs. Traditional Leverage">
+    Unlike perpetual futures, margin trading, or other leverage products:
+    
+    - No funding fees for maintaining positions
+    - No fixed leverage (adjusts automatically)
+    - No liquidation risk
+    - No borrowing/lending required for creating leverage
+  </Accordion>
+  
+  <Accordion title="vs. Asset Derivatives">
+    Unlike options, futures, or structured products:
+    
+    - No expiration dates
+    - No strike prices to select
+    - No complex payoff structures
+    - Simpler user experience
+    - Continuous exposure rather than binary outcomes
+  </Accordion>
+</AccordionGroup>
+
+## The VOLA Innovation
+
+VOLA Protocol's approach to volatility separation represents several key innovations:
+
+<CardGroup cols={2}>
+  <Card title="Mathematical Purity" icon="calculator">
+    Uses mathematical principles rather than market mechanisms for stability
+  </Card>
+  <Card title="Risk Redistribution" icon="arrow-right-arrow-left">
+    Redistributes rather than eliminates risk, offering a zero-sum system
+  </Card>
+  <Card title="Composability" icon="puzzle-piece">
+    Both resulting assets are fully composable with other DeFi protocols
+  </Card>
+  <Card title="Capital Efficiency" icon="coins">
+    Unlocks new capital efficiency by allowing targeted deployment
+  </Card>
+</CardGroup>
+
+## Real-World Analogies
+
+<Tabs>
+  <Tab title="Investment Portfolio">
+    Think of volatility separation like splitting an investment portfolio into stable bonds (USD.hype) and leveraged stocks (HYPE.v), but with perfect mathematical balance and correlation.
+  </Tab>
+  
+  <Tab title="Insurance">
+    Similar to how insurance separates risk by having some parties assume risk (insurers/HYPE.v holders) while others pay to avoid it (policyholders/USD.hype holders).
+  </Tab>
+  
+  <Tab title="Energy System">
+    Like separating potential energy and kinetic energy - the total energy remains constant, but it can exist in different forms serving different purposes.
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Mechanism Details" icon="gears" href="/volatility-separation/mechanisms">
+    Explore the detailed mechanisms behind volatility separation
+  </Card>
+  <Card title="Risk Management" icon="shield" href="/volatility-separation/risk-management">
+    Learn about the risk management framework
+  </Card>
+</CardGroup> 

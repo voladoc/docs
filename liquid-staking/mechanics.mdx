@@ -1,0 +1,285 @@
+---
+title: 'Mechanics'
+description: 'How VOLA Protocol liquid staking works under the hood'
+---
+
+# Liquid Staking Mechanics
+
+This page explains the technical mechanics behind VOLA Protocol's liquid staking solution, helping you understand how hbHYPE works under the hood.
+
+## Core Mechanism
+
+<Frame>
+  ![Liquid Staking Mechanics](/images/liquid-staking-mechanics.png)
+</Frame>
+
+The hbHYPE liquid staking system operates through a well-defined process that maintains both security and liquidity.
+
+<Steps>
+  <Step title="User Deposits HYPE">
+    Users deposit their HYPE tokens into VOLA Protocol's smart contracts.
+  </Step>
+  <Step title="Smart Contract Issues hbHYPE">
+    The protocol mints hbHYPE tokens at the current exchange rate, representing the user's staked position.
+  </Step>
+  <Step title="Protocol Stakes HYPE">
+    The deposited HYPE is staked across a diversified set of validators on the Hyperliquid network.
+  </Step>
+  <Step title="Staking Rewards Accrue">
+    As staking rewards are generated, they're reinvested automatically to compound returns.
+  </Step>
+  <Step title="Exchange Rate Increases">
+    The hbHYPE/HYPE exchange rate increases over time, reflecting accrued rewards.
+  </Step>
+  <Step title="Redemption Process">
+    When users redeem hbHYPE, they receive the equivalent amount of HYPE plus accrued rewards, subject to the network unbonding period.
+  </Step>
+</Steps>
+
+## Exchange Rate Mechanism
+
+The hbHYPE token uses an accumulative (non-rebasing) exchange rate model:
+
+<Card>
+  **Exchange Rate Calculation:**
+  
+  ```
+  hbHYPE/HYPE Exchange Rate = Total HYPE Managed by Protocol / Total hbHYPE Supply
+  ```
+  
+  This rate increases as staking rewards accrue, meaning each hbHYPE token becomes worth more HYPE over time.
+</Card>
+
+<Tabs>
+  <Tab title="Initial State">
+    When the protocol launches:
+    
+    - 1 hbHYPE = 1 HYPE (initial 1:1 ratio)
+    - User deposits 100 HYPE → Receives 100 hbHYPE
+    - Total HYPE managed: 100
+    - Total hbHYPE supply: 100
+    - Exchange rate: 1.0
+  </Tab>
+  
+  <Tab title="After Rewards">
+    After staking rewards accrue:
+    
+    - Protocol now manages 103 HYPE (original 100 + 3 in rewards)
+    - Total hbHYPE supply remains 100
+    - New exchange rate: 103/100 = 1.03
+    - 1 hbHYPE is now worth 1.03 HYPE
+    - User's 100 hbHYPE is now worth 103 HYPE
+  </Tab>
+  
+  <Tab title="Deposit After Rewards">
+    New user deposits after rewards have accrued:
+    
+    - Current exchange rate is 1.03
+    - User deposits 100 HYPE
+    - User receives 100/1.03 = 97.09 hbHYPE
+    - This 97.09 hbHYPE is worth 100 HYPE at current rate
+  </Tab>
+</Tabs>
+
+<Note>
+  This token model means hbHYPE balances remain constant while their value in HYPE increases over time, simplifying integration with other DeFi protocols compared to rebasing tokens.
+</Note>
+
+## Validator Selection and Management
+
+<CardGroup cols={2}>
+  <Card title="Decentralized Approach" icon="network-wired">
+    HYPE is distributed across multiple validators to enhance security and decentralization
+  </Card>
+  <Card title="Selection Criteria" icon="filter">
+    Validators are selected based on performance, reliability, security, and community impact
+  </Card>
+  <Card title="Continuous Monitoring" icon="eye">
+    Validator performance is continuously monitored for optimal returns and security
+  </Card>
+  <Card title="Strategic Adjustment" icon="sliders">
+    Validator distribution is adjusted based on performance and airdrop optimization
+  </Card>
+</CardGroup>
+
+### Validator Diversification Strategy
+
+<Columns>
+  <Column>
+    **Diversification Categories:**
+    
+    - **Performance-optimized validators**: Selected for maximum staking yields
+    - **Community validators**: Supporting network decentralization
+    - **Ecosystem validators**: Strategic positioning for airdrop capture
+    - **Infrastructure providers**: Professional validation services
+  </Column>
+  
+  <Column>
+    **Allocation Strategy:**
+    
+    Exact allocation percentages are adjusted dynamically based on:
+    - Historical performance metrics
+    - Security assessments
+    - Commission rate changes
+    - Ecosystem airdrop patterns
+    - Community governance decisions
+  </Column>
+</Columns>
+
+## Deposit and Minting Process
+
+<Steps>
+  <Step title="User Initiates Deposit">
+    User connects wallet to the VOLA App and specifies HYPE amount to stake.
+  </Step>
+  <Step title="Smart Contract Interaction">
+    User approves the HYPE token transfer and confirms the staking transaction.
+  </Step>
+  <Step title="Exchange Rate Check">
+    Smart contract retrieves the current hbHYPE/HYPE exchange rate.
+  </Step>
+  <Step title="hbHYPE Calculation">
+    ```
+    hbHYPE to mint = HYPE deposited / current exchange rate
+    ```
+  </Step>
+  <Step title="Minting">
+    Protocol mints the calculated hbHYPE amount and transfers it to the user.
+  </Step>
+  <Step title="Stake Distribution">
+    Protocol distributes the deposited HYPE across validators according to the allocation strategy.
+  </Step>
+</Steps>
+
+### Minimum Deposit and Fees
+
+<Card>
+  - **Minimum Deposit**: No minimum (gas costs make very small deposits inefficient)
+  - **Deposit Fee**: 0% (protocol covers gas costs for staking operations)
+  - **Management Fee**: Small percentage of staking rewards to sustain protocol operations
+</Card>
+
+## Redemption and Unbonding
+
+The redemption process handles the conversion of hbHYPE back to HYPE:
+
+<Steps>
+  <Step title="User Initiates Redemption">
+    User specifies amount of hbHYPE to redeem for HYPE.
+  </Step>
+  <Step title="hbHYPE Burning">
+    The specified hbHYPE tokens are burned from user's wallet.
+  </Step>
+  <Step title="HYPE Calculation">
+    ```
+    HYPE to receive = hbHYPE redeemed × current exchange rate
+    ```
+  </Step>
+  <Step title="Unbonding Process">
+    Protocol initiates unbonding of equivalent HYPE from validators.
+  </Step>
+  <Step title="Waiting Period">
+    User waits through the Hyperliquid network's mandatory unbonding period (~7 days).
+  </Step>
+  <Step title="HYPE Distribution">
+    After the unbonding period, HYPE is transferred to the user's wallet.
+  </Step>
+</Steps>
+
+### Redemption Options
+
+<Tabs>
+  <Tab title="Standard Redemption">
+    - Subject to the network's unbonding period (~7 days)
+    - No redemption fee
+    - Receives full value in HYPE based on current exchange rate
+  </Tab>
+  
+  <Tab title="Liquidity Markets">
+    - For users who need immediate liquidity
+    - Trade hbHYPE for other assets on secondary markets
+    - Subject to market rates and slippage
+    - Bypass unbonding period
+  </Tab>
+</Tabs>
+
+<Warning>
+  During the unbonding period, your HYPE stops earning staking rewards, but your position is secured and will be delivered after the unbonding completes.
+</Warning>
+
+## Reward Collection and Distribution
+
+<Card>
+  Staking rewards are handled automatically by the protocol:
+  
+  1. **Collection**: Protocol collects staking rewards from validators
+  2. **Reinvestment**: Rewards are automatically restaked to compound returns
+  3. **Value Accrual**: As rewards are restaked, the hbHYPE/HYPE exchange rate increases
+  4. **User Benefit**: All hbHYPE holders benefit proportionally from rewards
+</Card>
+
+### Reward Types
+
+The protocol manages multiple reward streams:
+
+| Reward Type | Source | Distribution Method |
+| :---------- | :----- | :----------------- |
+| Base Staking Rewards | HYPE network inflation | Automatic (via exchange rate) |
+| Validator Commission Rebates | Optional validator partnerships | Automatic (via exchange rate) |
+| Ecosystem Airdrops | HYPE ecosystem projects | Passed through to hbHYPE holders |
+| VOLA Protocol Incentives | VOLA token emissions | According to governance decisions |
+
+## Security Measures
+
+<Tabs>
+  <Tab title="Smart Contract Security">
+    - Multi-layered testing framework
+    - Comprehensive audit program with leading security firms
+    - Bug bounty program to incentivize vulnerability discovery
+    - Time-locked upgrades with mandatory delay periods
+    - Emergency pause functionality for critical situations
+  </Tab>
+  
+  <Tab title="Validator Security">
+    - Strict validator selection criteria
+    - Performance and security monitoring
+    - Diversification to reduce single-validator risk
+    - Slashing protection mechanisms
+    - Regular re-evaluation of validator set
+  </Tab>
+  
+  <Tab title="Operational Security">
+    - Multi-signature control of critical functions
+    - Regular security reviews
+    - Transparent incident response procedures
+    - Comprehensive documentation and disclosure policy
+    - Regular security assessments and penetration testing
+  </Tab>
+</Tabs>
+
+## Technical Architecture
+
+<Card>
+  The hbHYPE liquid staking system consists of several key smart contract components:
+  
+  - **hbHYPE Token Contract**: ERC-20 compatible token implementation with exchange rate mechanics
+  - **Staking Manager**: Handles HYPE deposits, withdrawals, and validator interactions
+  - **Validator Registry**: Maintains the current validator set and performance metrics
+  - **Exchange Rate Oracle**: Calculates and updates the hbHYPE/HYPE exchange rate
+  - **Governance Module**: Allows protocol parameter updates through governance voting
+</Card>
+
+<Note>
+  All smart contracts are designed with modularity and upgradeability in mind, allowing for future improvements while maintaining security.
+</Note>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Technology Details" icon="microchip" href="/liquid-staking/technology">
+    Explore the technical implementation details of the liquid staking protocol
+  </Card>
+  <Card title="Yield Information" icon="chart-line" href="/liquid-staking/yield">
+    Learn more about the different sources of yield with hbHYPE
+  </Card>
+</CardGroup> 
