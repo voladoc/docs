@@ -1,32 +1,49 @@
-# Mintlify Starter Kit
+# Mintlify 文档网站框架
 
-Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including
+这是一个基于 Mintlify 构建的精美文档网站。Mintlify 是一个专为开发者设计的现代化文档平台，支持 AI 功能，开箱即用的美观设计，以及丰富的组件库。
 
-- Guide pages
-- Navigation
-- Customizations
-- API Reference pages
-- Use of popular components
+## 功能特点
 
-### Development
+- **美观的界面设计** - 开箱即用的精美主题和组件
+- **Markdown/MDX 支持** - 使用熟悉的 Markdown 语法编写文档
+- **丰富的组件库** - 卡片、标签页、手风琴、提示框等多种组件
+- **响应式设计** - 在各种设备上都有良好的显示效果
+- **自动化部署** - 通过 GitHub 集成实现自动化部署
+- **代码高亮** - 支持多种编程语言的代码高亮
+- **支持暗黑模式** - 内置明暗主题切换功能
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the documentation changes locally. To install, use the following command
+## 开始使用
 
-```
+### 安装
+
+1. 安装 Mintlify CLI 工具：
+
+```bash
 npm i -g mintlify
 ```
 
-Run the following command at the root of your documentation (where docs.json is)
+2. 在文档根目录运行以下命令预览文档：
 
-```
+```bash
 mintlify dev
 ```
 
-### Publishing Changes
+### 编辑文档
 
-Install our Github App to auto propagate changes from your repo to your deployment. Changes will be deployed to production automatically after pushing to the default branch. Find the link to install on your dashboard. 
+1. 所有文档都是 MDX 文件（Markdown + JSX）
+2. 在 `docs.json` 文件中配置导航、主题等全局设置
+3. 遵循 Mintlify 的目录结构组织你的文档
 
-#### Troubleshooting
+### 发布更新
 
-- Mintlify dev isn't running - Run `mintlify install` it'll re-install dependencies.
-- Page loads as a 404 - Make sure you are running in a folder with `docs.json`
+1. 安装 Mintlify 的 GitHub App 以自动化部署
+2. 将更改推送到默认分支，更改将自动部署到生产环境
+
+## 常见问题
+
+- Mintlify dev 不能运行 - 运行 `mintlify install` 重新安装依赖
+- 页面加载显示 404 - 确保在包含 `docs.json` 的文件夹中运行命令
+
+## 了解更多
+
+访问 [Mintlify 官方文档](https://mintlify.com/docs) 了解更多详细内容和高级用法。

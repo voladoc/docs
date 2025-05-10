@@ -1,55 +1,74 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "VOLA Protocol Documentation",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#6644FF",
+    "light": "#8866FF",
+    "dark": "#4422DD"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Protocol",
         "groups": [
           {
-            "group": "Get Started",
+            "group": "Introduction",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "introduction/core-products",
+              "introduction/use-cases",
+              "introduction/team",
+              "introduction/important-links"
             ]
           },
           {
-            "group": "Essentials",
+            "group": "Liquid Staking",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "liquid-staking/overview",
+              "liquid-staking/advantages",
+              "liquid-staking/comparison",
+              "liquid-staking/mechanics",
+              "liquid-staking/technology",
+              "liquid-staking/yield",
+              "liquid-staking/risk-management"
+            ]
+          },
+          {
+            "group": "Volatility Separation",
+            "pages": [
+              "volatility-separation/overview",
+              "volatility-separation/core-concepts",
+              "volatility-separation/mechanisms",
+              "volatility-separation/risk-management",
+              "volatility-separation/fee-structure",
+              "volatility-separation/user-scenarios"
+            ]
+          },
+          {
+            "group": "Governance",
+            "pages": [
+              "governance/overview",
+              "governance/tokenomics",
+              "governance/mechanisms",
+              "governance/parameters",
+              "governance/economic-model"
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "Resources",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Developer Resources",
             "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "resources/deployed-addresses",
+              "resources/mechanism",
+              "resources/audits",
+              "resources/risks",
+              "resources/terms"
             ]
           }
         ]
@@ -58,19 +77,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Website",
+          "href": "https://vola.finance",
+          "icon": "globe"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "Twitter",
+          "href": "https://twitter.com/HyperbaseX",
+          "icon": "twitter"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Discord",
+          "href": "https://discord.gg/volaprotocol",
+          "icon": "discord"
         }
       ]
     }
@@ -82,21 +101,21 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "Contact",
+        "href": "mailto:contact@vola.finance"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Launch App",
+      "href": "https://app.vola.finance"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "twitter": "https://twitter.com/HyperbaseX",
+      "github": "https://github.com/volaprotocol",
+      "discord": "https://discord.gg/volaprotocol"
     }
   }
 }

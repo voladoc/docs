@@ -1,0 +1,450 @@
+---
+title: 'Mintlify 组件库'
+description: '学习如何使用 Mintlify 丰富的组件库创建精美的交互式文档'
+---
+
+# Mintlify 组件库
+
+Mintlify 提供了丰富的内置组件，可以帮助你创建美观、交互性强的文档。本指南将介绍最常用的组件及其用法。
+
+## 布局组件
+
+### 卡片 (Card)
+
+卡片组件是展示内容最常用的方式之一，支持标题、图标、链接和内容。
+
+<Card title="这是一个卡片标题" icon="star">
+  这是卡片内容，可以包含任何 Markdown 或组件。
+</Card>
+
+**使用方法：**
+
+```jsx
+<Card title="这是一个卡片标题" icon="star">
+  这是卡片内容，可以包含任何 Markdown 或组件。
+</Card>
+```
+
+### 卡片组 (CardGroup)
+
+卡片组可以将多个卡片组织在一起，支持设置列数。
+
+<CardGroup cols={2}>
+  <Card title="第一张卡片" icon="bolt">
+    第一张卡片的内容
+  </Card>
+  <Card title="第二张卡片" icon="book">
+    第二张卡片的内容
+  </Card>
+  <Card title="第三张卡片" icon="globe">
+    第三张卡片的内容
+  </Card>
+  <Card title="第四张卡片" icon="code">
+    第四张卡片的内容
+  </Card>
+</CardGroup>
+
+**使用方法：**
+
+```jsx
+<CardGroup cols={2}>
+  <Card title="第一张卡片" icon="bolt">
+    第一张卡片的内容
+  </Card>
+  <Card title="第二张卡片" icon="book">
+    第二张卡片的内容
+  </Card>
+</CardGroup>
+```
+
+### 列 (Columns)
+
+列组件可以将内容分成多列显示。
+
+<Columns>
+  <Column>
+    ## 第一列
+    这是第一列的内容，可以包含任何 Markdown 或组件。
+  </Column>
+  <Column>
+    ## 第二列
+    这是第二列的内容，可以包含任何 Markdown 或组件。
+  </Column>
+</Columns>
+
+**使用方法：**
+
+```jsx
+<Columns>
+  <Column>
+    ## 第一列
+    这是第一列的内容
+  </Column>
+  <Column>
+    ## 第二列
+    这是第二列的内容
+  </Column>
+</Columns>
+```
+
+## 交互组件
+
+### 标签页 (Tabs)
+
+标签页可以在同一区域显示不同的内容，用户可以通过点击标签切换。
+
+<Tabs>
+  <Tab title="HTML">
+    ```html
+    <div class="example">
+      <h1>Hello World</h1>
+    </div>
+    ```
+  </Tab>
+  <Tab title="CSS">
+    ```css
+    .example {
+      color: blue;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    ```
+  </Tab>
+  <Tab title="JavaScript">
+    ```javascript
+    function greet() {
+      console.log('Hello World!');
+    }
+    ```
+  </Tab>
+</Tabs>
+
+**使用方法：**
+
+```jsx
+<Tabs>
+  <Tab title="HTML">
+    ```html
+    <div class="example">
+      <h1>Hello World</h1>
+    </div>
+    ```
+  </Tab>
+  <Tab title="CSS">
+    // CSS 代码
+  </Tab>
+</Tabs>
+```
+
+### 手风琴 (Accordion)
+
+手风琴组件可以折叠/展开内容，节省页面空间。
+
+<AccordionGroup>
+  <Accordion title="点击展开第一部分" icon="lightbulb">
+    这是第一部分的详细内容。可以包含任何 Markdown 或组件。
+  </Accordion>
+  <Accordion title="点击展开第二部分" icon="code">
+    这是第二部分的详细内容。可以包含任何 Markdown 或组件。
+  </Accordion>
+</AccordionGroup>
+
+**使用方法：**
+
+```jsx
+<AccordionGroup>
+  <Accordion title="点击展开第一部分" icon="lightbulb">
+    这是第一部分的详细内容
+  </Accordion>
+  <Accordion title="点击展开第二部分" icon="code">
+    这是第二部分的详细内容
+  </Accordion>
+</AccordionGroup>
+```
+
+### 步骤 (Steps)
+
+步骤组件可以展示分步骤的教程或指南。
+
+<Steps>
+  <Step title="第一步">
+    这是第一步的详细说明。可以包含任何 Markdown 或组件。
+  </Step>
+  <Step title="第二步">
+    这是第二步的详细说明。可以包含任何 Markdown 或组件。
+  </Step>
+  <Step title="第三步">
+    这是第三步的详细说明。可以包含任何 Markdown 或组件。
+  </Step>
+</Steps>
+
+**使用方法：**
+
+```jsx
+<Steps>
+  <Step title="第一步">
+    这是第一步的详细说明
+  </Step>
+  <Step title="第二步">
+    这是第二步的详细说明
+  </Step>
+</Steps>
+```
+
+## 提示组件
+
+### 提示框 (Note/Warning/Info)
+
+不同类型的提示框可以强调重要信息。
+
+<Note>
+  这是一个普通提示，用于强调重要信息。
+</Note>
+
+<Warning>
+  这是一个警告提示，用于提醒用户注意可能的问题。
+</Warning>
+
+<Info>
+  这是一个信息提示，用于提供补充信息。
+</Info>
+
+**使用方法：**
+
+```jsx
+<Note>
+  这是一个普通提示，用于强调重要信息。
+</Note>
+
+<Warning>
+  这是一个警告提示，用于提醒用户注意可能的问题。
+</Warning>
+
+<Info>
+  这是一个信息提示，用于提供补充信息。
+</Info>
+```
+
+### 提示气泡 (Tooltip)
+
+提示气泡可以在用户悬停时显示额外信息。
+
+这是一个<Tooltip tip="这是提示内容">提示气泡</Tooltip>示例。
+
+**使用方法：**
+
+```jsx
+这是一个<Tooltip tip="这是提示内容">提示气泡</Tooltip>示例。
+```
+
+## 代码相关组件
+
+### 代码块 (Code)
+
+代码块可以显示代码，支持语法高亮。
+
+```javascript
+function hello() {
+  console.log('Hello, Mintlify!');
+}
+```
+
+**使用方法：**
+
+```
+```javascript
+function hello() {
+  console.log('Hello, Mintlify!');
+}
+```
+```
+
+### 代码组 (CodeGroup)
+
+代码组可以展示多个相关代码片段。
+
+<CodeGroup>
+  ```bash npm
+  npm install mintlify
+  ```
+  ```bash yarn
+  yarn add mintlify
+  ```
+  ```bash pnpm
+  pnpm add mintlify
+  ```
+</CodeGroup>
+
+**使用方法：**
+
+```
+<CodeGroup>
+  ```bash npm
+  npm install mintlify
+  ```
+  ```bash yarn
+  yarn add mintlify
+  ```
+</CodeGroup>
+```
+
+## 媒体组件
+
+### 图片 (Frame)
+
+Frame 组件可以为图片添加美观的边框。
+
+<Frame>
+  ![示例图片](https://mintlify.com/img/hero.png)
+</Frame>
+
+**使用方法：**
+
+```jsx
+<Frame>
+  ![示例图片](https://mintlify.com/img/hero.png)
+</Frame>
+```
+
+### 视频 (Video)
+
+Video 组件可以嵌入视频。
+
+```jsx
+<Video url="https://youtu.be/example" />
+```
+
+## 扩展组件
+
+### 可扩展内容 (Expandable)
+
+Expandable 组件可以展开/折叠内容。
+
+<Expandable title="点击展开查看更多内容">
+  这里是展开后才能看到的内容。可以包含任何 Markdown 或组件。
+</Expandable>
+
+**使用方法：**
+
+```jsx
+<Expandable title="点击展开查看更多内容">
+  这里是展开后才能看到的内容
+</Expandable>
+```
+
+### 图标 (Icon)
+
+Icon 组件可以显示各种图标。
+
+<Icon name="star" size="lg" /> <Icon name="bolt" size="lg" /> <Icon name="globe" size="lg" />
+
+**使用方法：**
+
+```jsx
+<Icon name="star" size="lg" />
+```
+
+## 常见问题
+
+<AccordionGroup>
+  <Accordion title="如何使用自定义图标？">
+    Mintlify 支持 FontAwesome 图标库。在组件的 `icon` 属性中使用图标名称即可。
+    
+    例如：`<Card icon="star" />`
+  </Accordion>
+  
+  <Accordion title="可以在组件中嵌套其他组件吗？">
+    是的，大多数 Mintlify 组件都支持嵌套。例如，你可以在 Card 组件中嵌套 Tabs 组件，或者在 Step 组件中嵌套 CodeGroup 组件。
+  </Accordion>
+  
+  <Accordion title="如何自定义组件样式？">
+    Mintlify 组件支持在 `docs.json` 中配置主题样式，或者通过 CSS 类进行自定义。详细信息请参考 Mintlify 官方文档中的主题设置部分。
+  </Accordion>
+</AccordionGroup>
+
+## 高级用法
+
+### 组件属性
+
+大多数组件都支持以下属性：
+
+- **className**: 自定义 CSS 类
+- **style**: 内联样式
+
+例如：
+
+```jsx
+<Card title="自定义样式" className="custom-card" style={{ border: '2px solid blue' }}>
+  这是一个带有自定义样式的卡片。
+</Card>
+```
+
+### 组件组合
+
+通过组合不同的组件，可以创建复杂且交互性强的文档：
+
+<Steps>
+  <Step title="选择你需要的组件">
+    <CardGroup cols={2}>
+      <Card title="布局组件" icon="columns">
+        用于组织页面结构
+      </Card>
+      <Card title="交互组件" icon="hand-pointer">
+        增加页面交互性
+      </Card>
+    </CardGroup>
+  </Step>
+  <Step title="组合使用">
+    <Tabs>
+      <Tab title="简单组合">
+        可以将卡片放入列中
+        
+        ```jsx
+        <Columns>
+          <Column>
+            <Card title="左侧卡片">内容</Card>
+          </Column>
+          <Column>
+            <Card title="右侧卡片">内容</Card>
+          </Column>
+        </Columns>
+        ```
+      </Tab>
+      <Tab title="复杂组合">
+        可以在步骤中使用标签页和代码组
+        
+        ```jsx
+        <Steps>
+          <Step title="第一步">
+            <Tabs>
+              <Tab title="方式一">内容</Tab>
+              <Tab title="方式二">内容</Tab>
+            </Tabs>
+          </Step>
+        </Steps>
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+</Steps>
+
+## 更多资源
+
+探索更多关于 Mintlify 组件的资源：
+
+<CardGroup cols={2}>
+  <Card
+    title="官方组件文档"
+    icon="book-open"
+    href="https://mintlify.com/docs/components/overview"
+  >
+    查看 Mintlify 官方的组件文档，了解完整的组件列表和用法。
+  </Card>
+  <Card
+    title="示例展示"
+    icon="eye"
+    href="https://mintlify.com/customers"
+  >
+    浏览使用 Mintlify 创建的文档网站，获取灵感。
+  </Card>
+</CardGroup> 

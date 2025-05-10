@@ -1,0 +1,195 @@
+---
+title: '快速入门指南'
+description: '学习如何使用Mintlify快速创建漂亮的文档网站'
+---
+
+# Mintlify 快速入门指南
+
+欢迎使用 Mintlify！本指南将帮助你快速上手创建一个精美的文档网站。
+
+## 什么是 Mintlify？
+
+Mintlify 是一个现代化的文档平台，专为开发者设计，具有以下特点：
+- 开箱即用的美观设计
+- 基于 Markdown/MDX 的简单编写体验
+- 丰富的组件库和交互元素
+- 支持 AI 功能，增强文档体验
+- 强大的自定义选项
+
+## 基本工作流程
+
+<Steps>
+  <Step title="设置项目">
+    首先，你需要设置一个 Mintlify 项目。最简单的方法是：
+    
+    1. 通过 [Mintlify 官网](https://mintlify.com/) 创建账号
+    2. 在 Dashboard 中创建新项目
+    3. 或者克隆 Mintlify 的示例模板开始
+  </Step>
+  
+  <Step title="安装开发工具">
+    安装 Mintlify CLI 以在本地预览你的文档：
+    
+    ```bash
+    npm i -g mintlify
+    ```
+    
+    在文档根目录运行以下命令启动本地预览：
+    
+    ```bash
+    mintlify dev
+    ```
+  </Step>
+  
+  <Step title="编辑配置文件">
+    `docs.json` 是 Mintlify 的核心配置文件，你可以在其中设置：
+    
+    - 网站名称和主题
+    - 导航结构
+    - 颜色和样式
+    - Logo 和图标
+    - 页脚和社交链接
+  </Step>
+  
+  <Step title="创建文档内容">
+    使用 MDX 文件创建你的文档内容。每个文件应包含：
+    
+    ```mdx
+    ---
+    title: '页面标题'
+    description: '页面描述'
+    ---
+    
+    # 内容标题
+    
+    你的内容...
+    ```
+  </Step>
+
+  <Step title="部署文档">
+    将你的更改推送到 GitHub 仓库，安装 Mintlify GitHub App 后，更改将自动部署到你的文档站点。
+  </Step>
+</Steps>
+
+## 使用组件
+
+Mintlify 提供了丰富的组件库，可以让你的文档更加生动和交互式。
+
+### 卡片组件
+
+<CardGroup cols={2}>
+  <Card 
+    title="Markdown 基础" 
+    icon="markdown"
+    href="/essentials/markdown"
+  >
+    掌握 Markdown 和 MDX 语法，轻松编写文档。
+  </Card>
+  <Card
+    title="组件库"
+    icon="puzzle-piece"
+    href="/essentials/reusable-snippets"
+  >
+    使用内置组件快速创建交互式文档。
+  </Card>
+  <Card
+    title="代码示例"
+    icon="code"
+    href="/essentials/code"
+  >
+    添加代码块和语法高亮，提高文档可读性。
+  </Card>
+  <Card
+    title="自定义主题"
+    icon="paintbrush"
+    href="/essentials/settings"
+  >
+    定制你的网站外观，打造品牌一致性。
+  </Card>
+</CardGroup>
+
+### 提示框
+
+<Note>
+  提示框可以用来强调重要信息，引起用户注意。
+</Note>
+
+<Warning>
+  警告框可以用来突出显示可能的问题或需要特别注意的事项。
+</Warning>
+
+<Info>
+  信息框提供附加信息，帮助用户更好地理解内容。
+</Info>
+
+### 标签页
+
+<Tabs>
+  <Tab title="React">
+    ```jsx
+    import React from 'react';
+    
+    function App() {
+      return <h1>Hello, Mintlify!</h1>;
+    }
+    
+    export default App;
+    ```
+  </Tab>
+  <Tab title="Vue">
+    ```vue
+    <template>
+      <h1>Hello, Mintlify!</h1>
+    </template>
+    
+    <script>
+    export default {
+      name: 'App'
+    }
+    </script>
+    ```
+  </Tab>
+  <Tab title="Angular">
+    ```typescript
+    import { Component } from '@angular/core';
+    
+    @Component({
+      selector: 'app-root',
+      template: '<h1>Hello, Mintlify!</h1>'
+    })
+    export class AppComponent {}
+    ```
+  </Tab>
+</Tabs>
+
+## 文档结构最佳实践
+
+一个良好的文档结构应该包含以下几个部分：
+
+1. **首页** - 简介和主要导航
+2. **快速入门** - 帮助用户快速上手
+3. **核心概念** - 解释关键概念和术语
+4. **指南和教程** - 详细的操作指南
+5. **API 参考** - 详细的 API 文档
+6. **常见问题** - 解答用户常见疑问
+
+## 下一步
+
+<CardGroup cols={2}>
+  <Card
+    title="探索更多组件"
+    icon="toolbox"
+    href="https://mintlify.com/docs/components/overview"
+  >
+    了解更多可用组件和如何使用它们。
+  </Card>
+  <Card
+    title="自定义文档"
+    icon="wand-magic-sparkles"
+    href="https://mintlify.com/docs/settings/global"
+  >
+    学习如何自定义你的文档外观和感觉。
+  </Card>
+</CardGroup>
+
+祝你创建出精彩的文档网站！ 

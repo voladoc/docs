@@ -1,0 +1,278 @@
+---
+title: 'Governance Overview'
+description: 'Introduction to VOLA Protocol governance and tokenomics'
+---
+
+# Governance
+
+VOLA Protocol implements a sophisticated ve3,3 governance model, combining Curve Finance's vote-escrowed (ve) mechanism with OlympusDAO's (3,3) game theory model. This hybrid approach aligns the interests of all protocol participants, ensures long-term sustainability, and enhances capital efficiency.
+
+<Frame>
+  ![Governance Overview](/images/governance-overview.png)
+</Frame>
+
+## Governance Model
+
+<Tabs>
+  <Tab title="ve3,3 Model">
+    The ve3,3 governance model merges two powerful tokenomic paradigms:
+    
+    <CardGroup cols={2}>
+      <Card title="Vote-Escrow (ve)" icon="lock-hashtag">
+        Requires tokens to be locked for extended periods to gain voting power and rewards
+      </Card>
+      <Card title="(3,3) Game Theory" icon="chess-king">
+        Creates incentives for cooperative behavior that benefits the entire ecosystem
+      </Card>
+    </CardGroup>
+    
+    This combination encourages long-term participation and aligns stakeholder interests toward protocol sustainability and growth.
+  </Tab>
+  
+  <Tab title="Key Features">
+    <CardGroup cols={2}>
+      <Card title="Long-term Alignment" icon="handshake">
+        Incentivizes long-term holding and participation through time-weighted voting power
+      </Card>
+      <Card title="Capital Efficiency" icon="money-bill-transfer">
+        Optimizes protocol resource allocation through stake-weighted governance
+      </Card>
+      <Card title="Positive-Sum Design" icon="chart-line-up">
+        Creates an environment where cooperation yields better outcomes than competition
+      </Card>
+      <Card title="Dynamic Emission Control" icon="sliders">
+        Allows governance to adjust token emission rates based on market conditions
+      </Card>
+    </CardGroup>
+  </Tab>
+</Tabs>
+
+## VOLA Token
+
+The VOLA token is the native governance token of the protocol, serving as the cornerstone of the governance system.
+
+### Token Utility
+
+<Steps>
+  <Step title="Protocol Governance">
+    VOLA holders can vote on protocol parameters, upgrades, and resource allocation
+  </Step>
+  <Step title="Yield Enhancement">
+    Locked VOLA (veVOLA) provides boosted rewards for protocol participants
+  </Step>
+  <Step title="Fee Distribution">
+    VOLA holders receive a share of protocol revenue
+  </Step>
+  <Step title="Rebalancing Pool Direction">
+    veVOLA holders can vote on reward allocations and protocol parameters
+  </Step>
+</Steps>
+
+### Token Distribution
+
+Total Supply: 100,000,000 VOLA
+
+<CardGroup cols={2}>
+  <Card title="Community Incentives" icon="users">
+    **40%** (40,000,000 VOLA)
+    
+    4-year linear release
+  </Card>
+  <Card title="Team & Advisors" icon="user-group">
+    **20%** (20,000,000 VOLA)
+    
+    2-year lock, then 2-year linear release
+  </Card>
+  <Card title="Ecosystem Development" icon="seedling">
+    **20%** (20,000,000 VOLA)
+    
+    Released under governance control
+  </Card>
+  <Card title="Initial Liquidity" icon="water">
+    **10%** (10,000,000 VOLA)
+    
+    Released at launch
+  </Card>
+  <Card title="Treasury" icon="vault">
+    **10%** (10,000,000 VOLA)
+    
+    Released under governance control
+  </Card>
+</CardGroup>
+
+## veVOLA Mechanism
+
+<Card>
+  veVOLA is the core governance asset in VOLA Protocol, obtained by locking VOLA tokens for a specified period. The longer the lock period, the more veVOLA the user receives.
+</Card>
+
+### Locking Mechanism
+
+<Columns>
+  <Column>
+    **Lock Period Options:**
+    - Minimum: 1 week
+    - Maximum: 4 years
+    
+    **veVOLA Calculation:**
+    ```
+    veVOLA = VOLA locked × (lock time / maximum lock time)
+    ```
+    
+    **Example:**
+    - 1,000 VOLA locked for 1 year (25% of max) = 250 veVOLA
+    - 1,000 VOLA locked for 4 years (100% of max) = 1,000 veVOLA
+  </Column>
+  
+  <Column>
+    **Lock Characteristics:**
+    
+    - Once locked, tokens cannot be withdrawn until the lock period ends
+    - veVOLA balance decreases linearly as the lock period approaches expiration
+    - At lock expiration, veVOLA balance becomes zero and VOLA can be withdrawn
+    - Lock period can be extended, but not shortened
+    - Additional VOLA can be added to an existing lock
+  </Column>
+</Columns>
+
+<Frame>
+  ![veVOLA Decay](/images/vevola-decay.png)
+</Frame>
+
+### veVOLA Benefits
+
+<CardGroup cols={2}>
+  <Card title="Voting Power" icon="check-to-slot">
+    Participate in governance decisions, with voting weight proportional to veVOLA balance
+  </Card>
+  <Card title="Mining Boost" icon="rocket">
+    Increase rewards in liquidity mining and Rebalancing Pool activities by up to 2.5x
+  </Card>
+  <Card title="Protocol Revenue" icon="money-bill-trend-up">
+    Receive a share of protocol fees based on veVOLA holdings
+  </Card>
+  <Card title="Rebalancing Pool Voting" icon="arrow-right-arrow-left">
+    Direct VOLA emissions to preferred strategies and pools
+  </Card>
+</CardGroup>
+
+<Note>
+  The veVOLA system is designed to reward long-term holders and active participants. The longer you lock your VOLA tokens, the greater your influence and benefits within the protocol.
+</Note>
+
+## Rebalancing Pool and Rewards
+
+The Rebalancing Pool is both a risk management mechanism and a key channel for protocol rewards.
+
+<Steps>
+  <Step title="Stake Assets">
+    Users can stake USD.hype in the Rebalancing Pool and receive corresponding pool share tokens (spTokens)
+  </Step>
+  <Step title="Earn Rewards">
+    Stakers earn VOLA rewards and a share of protocol fees
+  </Step>
+  <Step title="Boost with veVOLA">
+    veVOLA holders receive up to 2.5x higher rewards based on their veVOLA balance
+  </Step>
+  <Step title="Claim and Reinvest">
+    Rewards can be claimed and potentially locked for veVOLA to compound benefits
+  </Step>
+</Steps>
+
+### Reward Calculation
+
+The base reward calculation for Rebalancing Pool participants:
+
+```
+User Reward = Pool Base Reward × (User Stake / Total Pool Stake) × User Boost Factor
+```
+
+User Boost Factor is determined by:
+
+```
+User Boost Factor = 1 + min(1.5, User veVOLA / (Total veVOLA × User Stake Ratio))
+```
+
+<Warning>
+  The maximum boost factor is 2.5x, achieved through high veVOLA holdings relative to your stake in the Rebalancing Pool.
+</Warning>
+
+## Governance Process
+
+<Tabs>
+  <Tab title="Proposal Creation">
+    <Steps>
+      <Step title="Proposal Threshold">
+        A user must hold at least 0.5% of total veVOLA to create a proposal
+      </Step>
+      <Step title="Draft Proposal">
+        Author drafts a proposal including:
+        - Description of changes
+        - Technical implementation details
+        - Expected impact
+      </Step>
+      <Step title="Discussion Period">
+        Community discusses the proposal on the forum before formal submission
+      </Step>
+      <Step title="Formal Submission">
+        Proposal is submitted to on-chain governance for voting
+      </Step>
+    </Steps>
+  </Tab>
+  
+  <Tab title="Voting Process">
+    <Steps>
+      <Step title="Voting Period">
+        Proposals are open for voting for 5 days
+      </Step>
+      <Step title="Quorum Requirement">
+        At least 10% of total veVOLA must participate for the vote to be valid
+      </Step>
+      <Step title="Approval Threshold">
+        At least 60% of voting veVOLA must approve for the proposal to pass
+      </Step>
+      <Step title="Timelock">
+        Successfully passed proposals enter a 2-day timelock before implementation
+      </Step>
+    </Steps>
+    
+    <Note>
+      Voting power is determined by a user's veVOLA balance at the time the proposal enters the voting phase.
+    </Note>
+  </Tab>
+  
+  <Tab title="Implementation">
+    <Steps>
+      <Step title="Execution">
+        After the timelock period, the proposal can be executed
+      </Step>
+      <Step title="Monitoring">
+        The community monitors the implementation and effects
+      </Step>
+      <Step title="Feedback">
+        Post-implementation feedback is collected for future improvements
+      </Step>
+    </Steps>
+    
+    <Warning>
+      Emergency proposals with stronger security implications may require a higher approval threshold (75%) but can have a shorter timelock period in critical situations.
+    </Warning>
+  </Tab>
+</Tabs>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Tokenomics" icon="coins" href="/governance/tokenomics">
+    Learn more about VOLA token economics
+  </Card>
+  <Card title="Governance Mechanisms" icon="gears" href="/governance/mechanisms">
+    Explore the details of governance operations
+  </Card>
+  <Card title="Economic Model" icon="chart-pie" href="/governance/economic-model">
+    Understand the ve3,3 economic model in depth
+  </Card>
+  <Card title="Community Forum" icon="comments" href="https://forum.vola.finance">
+    Join the discussion on the VOLA governance forum
+  </Card>
+</CardGroup> 

@@ -1,0 +1,139 @@
+---
+title: 'Core Products'
+description: 'An overview of the main financial products offered by VOLA Protocol'
+---
+
+# Core Products
+
+VOLA Protocol offers a comprehensive suite of financial products designed to enhance capital efficiency, provide precise risk management, and improve yield generation in the Hyperliquid ecosystem.
+
+## Protocol Overview
+
+VOLA is an innovative decentralized finance protocol that revolutionizes risk management through advanced financial engineering.
+
+At its core, VOLA employs sophisticated mathematical models to separate asset volatility, creating complementary financial instruments that serve diverse investor needs.
+
+<Frame>
+  ![Protocol Overview](/images/protocol-overview.png)
+</Frame>
+
+## Core Products Table
+
+| Protocol/Product | What It Does | Who It's For |
+| :-------------- | :---------- | :----------- |
+| **Wave Protocol (USD.hype/HYPE.v)** | Deposit sHYPE → mint USD.hype and HYPE.v → achieve full volatility separation with zero liquidation risk. | Users seeking stable assets or leverage exposure with no liquidation risk and no funding fees. |
+| **HYPE Liquid Staking (hbHYPE)** | Stake HYPE → receive hbHYPE → earn staking rewards while maintaining liquidity. | Holders who want to earn native staking yields (2.9% APY) while preserving asset liquidity and maximizing airdrop capture. |
+
+## Detailed Product Descriptions
+
+### Wave Protocol (Volatility Separation Engine)
+
+<Card>
+  The Wave Protocol is VOLA's innovative volatility separation engine that allows users to decompose the risk-return profile of a single asset (sHYPE) into two distinct components:
+  
+  * **USD.hype**: A fully stable USD-pegged token that eliminates all price volatility
+  * **HYPE.v**: A floating-leverage position that absorbs all market volatility
+</Card>
+
+<Tabs>
+  <Tab title="USD.hype">
+    <div className="flex items-center gap-2 mb-2">
+      <Icon name="dollar-sign" size="md" className="text-green-500" />
+      <span className="font-semibold text-lg">The Stable Component</span>
+    </div>
+    
+    **USD.hype** is the stable-value asset within the VOLA Protocol, characterized by:
+    
+    * Complete isolation from price volatility
+    * Constant value of $1 USD
+    * Target audience: Users seeking capital preservation and stable value
+    
+    The stability of USD.hype at $1 is upheld by the protocol's over-collateralization strategy and dynamic risk management mechanisms.
+  </Tab>
+  
+  <Tab title="HYPE.v">
+    <div className="flex items-center gap-2 mb-2">
+      <Icon name="chart-line" size="md" className="text-blue-500" />
+      <span className="font-semibold text-lg">The Volatility Component</span>
+    </div>
+    
+    **HYPE.v** is the component that embodies volatility, with these key features:
+    
+    * Absorption of all price volatility from the base collateral
+    * Floating leverage multiple that adjusts based on system Collateralization Ratio
+    * Target audience: Users seeking amplified returns without liquidation risk
+    
+    HYPE.v offers the unique benefit of leveraged exposure without liquidation risk, as its leverage adjusts automatically in response to market conditions.
+  </Tab>
+</Tabs>
+
+<Note>
+  The Wave Protocol's innovative "no liquidation risk" design means users are not subject to traditional forced selling of their positions. However, users should understand that HYPE.v's value is still subject to market risk and can theoretically reach zero in extreme market conditions.
+</Note>
+
+### HYPE Liquid Staking (hbHYPE)
+
+<Card>
+  VOLA Protocol's liquid staking derivative (hbHYPE) allows HYPE token holders to earn staking yields while maintaining full liquidity and composability within the DeFi ecosystem.
+</Card>
+
+**Key Features of hbHYPE:**
+
+<CardGroup cols={2}>
+  <Card title="Maximized Liquidity" icon="coins">
+    Receive hbHYPE tokens representing your staked HYPE that remain freely transferable and usable across DeFi
+  </Card>
+  <Card title="Automated Rewards" icon="chart-line-up">
+    Staking rewards automatically accrue into hbHYPE's value without manual claims
+  </Card>
+  <Card title="Strategic Staking" icon="sitemap">
+    HYPE is distributed across diverse validators to enhance network security and airdrop capture
+  </Card>
+  <Card title="Enhanced Returns" icon="piggy-bank">
+    Potential for additional VOLA Protocol incentives beyond base staking yield
+  </Card>
+</CardGroup>
+
+**hbHYPE At a Glance:**
+
+| Feature | Details |
+| :------ | :------ |
+| Ticker | hbHYPE |
+| Type | Liquid Staking Derivative (LSD) |
+| Yield Accrual | Accumulative (non-rebasing; value of hbHYPE appreciates against HYPE) |
+| Denomination | HYPE |
+| Base APY (Est.) | ~2.90% (from native HYPE staking) |
+| Withdrawal Lock | ~7 days (Hyperliquid network unbonding period for native HYPE) |
+| Primary Yield | Native HYPE staking rewards |
+| Additional Yield | Captured HYPE ecosystem airdrops (100% pass-through), VOLA Protocol incentives |
+| Key Risk | Validator slashing |
+
+## Ecosystem Integration
+
+Both core products are designed to work together and integrate with the broader DeFi ecosystem:
+
+<Steps>
+  <Step title="Mint & Hold">
+    Users can mint USD.hype and HYPE.v from sHYPE, or stake HYPE to receive hbHYPE
+  </Step>
+  <Step title="Utilize in DeFi">
+    USD.hype, HYPE.v, and hbHYPE can be deployed across DeFi protocols
+  </Step>
+  <Step title="Maximize Yield">
+    Combine products to create optimized risk-return strategies
+  </Step>
+  <Step title="Participate in Governance">
+    Holders can participate in protocol governance through the VOLA token
+  </Step>
+</Steps>
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Volatility Separation" icon="wave-sine" href="/volatility-separation/overview">
+    Learn more about the Wave Protocol and how it separates volatility
+  </Card>
+  <Card title="Liquid Staking" icon="coins" href="/liquid-staking/overview">
+    Explore hbHYPE and how it enhances staking on Hyperliquid
+  </Card>
+</CardGroup> 

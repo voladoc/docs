@@ -1,71 +1,140 @@
 ---
-title: Introduction
-description: "Welcome to the home of your new documentation"
+title: VOLA Protocol
+description: "A suite of innovative financial products running on HyperEVM"
 ---
 
 <img
   className="block dark:hidden"
   src="/images/hero-light.png"
-  alt="Hero Light"
+  alt="VOLA Protocol"
 />
 <img
   className="hidden dark:block"
   src="/images/hero-dark.png"
-  alt="Hero Dark"
+  alt="VOLA Protocol"
 />
 
-## Setting up
+## What is VOLA?
 
-The first step to world-class documentation is setting up your editing environments.
+VOLA is a suite of innovative financial products running on HyperEVM.
+
+Our goal is to empower users to precisely control their risk exposure and leverage, all while maintaining exceptional capital efficiency and eliminating liquidation risks.
+
+## Core Products
+
+VOLA currently provides **two core primitives**:
 
 <CardGroup cols={2}>
   <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
+    title="Wave Protocol"
+    icon="wave-sine"
+    href="/volatility-separation/overview"
   >
-    Get your docs set up locally for easy development
+    Deposit sHYPE → mint USD.hype and HYPE.v → achieve full volatility separation with zero liquidation risk.
   </Card>
   <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
+    title="HYPE Liquid Staking"
+    icon="coins"
+    href="/liquid-staking/overview"
   >
-    Preview your changes before you push to make sure they're perfect
+    Stake HYPE → receive hbHYPE → earn staking rewards while maintaining liquidity.
   </Card>
 </CardGroup>
 
-## Make it yours
+## Popular Use-Cases
 
-Update your docs to your brand and add valuable content for the best user conversion.
+<Steps>
+  <Step title="Risk-Free Leverage">
+    Use HYPE.v for leveraged exposure to HYPE without liquidation risk or ongoing funding fees.
+  </Step>
+  <Step title="Stable Asset Creation">
+    Mint USD.hype to transform volatile assets into stable USD exposure.
+  </Step>
+  <Step title="Customized Risk Profile">
+    Mint any ratio of USD.hype/HYPE.v to precisely control your market exposure.
+  </Step>
+  <Step title="Stable Yield Farming">
+    Use USD.hype in DeFi protocols to earn yield without exposure to underlying asset volatility.
+  </Step>
+  <Step title="Dual Asset Strategy">
+    Hold both USD.hype and HYPE.v to maintain original asset exposure while unlocking liquidity.
+  </Step>
+  <Step title="Liquid Staking">
+    Stake HYPE through hbHYPE to earn staking rewards while maintaining full liquidity.
+  </Step>
+</Steps>
 
-<CardGroup cols={2}>
+## Protocol Overview
+
+<Tabs>
+  <Tab title="Wave Protocol">
+    <CardGroup cols={2}>
+      <Card title="USD.hype" icon="dollar-sign">
+        A fully stable USD-pegged token that eliminates all price volatility
+      </Card>
+      <Card title="HYPE.v" icon="chart-line">
+        A floating-leverage position that absorbs all market volatility
+      </Card>
+    </CardGroup>
+    
+    The Wave Protocol employs sophisticated mathematical models to separate asset volatility, creating complementary financial instruments that serve diverse investor needs.
+    
+    <div className="mt-4">
+      <Card title="Learn More" icon="arrow-right" href="/volatility-separation/overview">
+        Explore how Wave Protocol's volatility separation engine works and its benefits
+      </Card>
+    </div>
+  </Tab>
+  <Tab title="Liquid Staking">
+    <Card title="hbHYPE" icon="coins">
+      An interest-bearing token that represents staked HYPE and accrued rewards
+    </Card>
+    
+    Our liquid staking solution allows HYPE token holders to participate in network consensus and earn staking yields while maintaining full liquidity.
+    
+    <div className="mt-4">
+      <Card title="Learn More" icon="arrow-right" href="/liquid-staking/overview">
+        Discover the benefits of HYPE liquid staking with hbHYPE
+      </Card>
+    </div>
+  </Tab>
+  <Tab title="Governance">
+    <Card title="VOLA Token" icon="landmark">
+      The native governance token of the VOLA Protocol ecosystem
+    </Card>
+    
+    VOLA Protocol uses a ve3,3 governance model that combines Curve's vote-escrowed (ve) mechanism with OlympusDAO's (3,3) game theory model.
+    
+    <div className="mt-4">
+      <Card title="Learn More" icon="arrow-right" href="/governance/overview">
+        Understand the governance structure and tokenomics of VOLA Protocol
+      </Card>
+    </div>
+  </Tab>
+</Tabs>
+
+## Getting Started
+
+<CardGroup cols={3}>
   <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
+    title="Core Products"
+    icon="cube"
+    href="/introduction/core-products"
   >
-    Customize your docs to your company's colors and brands
+    Learn about VOLA's innovative financial products
   </Card>
   <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
+    title="Use Cases"
+    icon="lightbulb"
+    href="/introduction/use-cases"
   >
-    Automatically generate endpoints from an OpenAPI spec
+    Discover how to utilize VOLA products
   </Card>
   <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/content/components/accordions"
+    title="Launch App"
+    icon="rocket"
+    href="https://app.vola.finance"
   >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
+    Start using VOLA Protocol
   </Card>
 </CardGroup>
