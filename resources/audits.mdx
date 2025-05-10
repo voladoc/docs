@@ -1,0 +1,129 @@
+---
+title: 'Security Audits'
+description: 'VOLA Protocol security audit reports and findings'
+---
+
+# Security Audits
+
+VOLA Protocol prioritizes security as our highest concern. All protocol smart contracts undergo comprehensive security audits by leading firms in the blockchain security industry before deployment.
+
+## Audit Reports
+
+### Core Protocol Audits
+
+<CardGroup cols={2}>
+  <Card title="Wave Protocol Audit by FirmA" icon="shield-check" href="#">
+    Completed June 2023 - 0 critical, 2 high, 3 medium issues (all resolved)
+  </Card>
+  <Card title="Wave Protocol Audit by FirmB" icon="shield-check" href="#">
+    Completed July 2023 - 0 critical, 0 high, 2 medium issues (all resolved)
+  </Card>
+  <Card title="hbHYPE Audit by FirmA" icon="shield-check" href="#">
+    Completed June 2023 - 0 critical, 1 high, 2 medium issues (all resolved)
+  </Card>
+  <Card title="hbHYPE Audit by FirmC" icon="shield-check" href="#">
+    Completed August 2023 - 0 critical, 0 high, 1 medium issues (all resolved)
+  </Card>
+</CardGroup>
+
+### Governance Audits
+
+<CardGroup cols={2}>
+  <Card title="Governance System Audit by FirmB" icon="shield-check" href="#">
+    Completed July 2023 - 0 critical, 1 high, 1 medium issues (all resolved)
+  </Card>
+  <Card title="Token Contract Audit by FirmA" icon="shield-check" href="#">
+    Completed May 2023 - 0 critical, 0 high, 2 medium issues (all resolved)
+  </Card>
+</CardGroup>
+
+## Audit Findings and Resolutions
+
+### Summary of Key Findings
+
+| Severity | Count | Status |
+| :------- | :---- | :----- |
+| Critical | 0 | N/A |
+| High | 4 | All Resolved |
+| Medium | 11 | All Resolved |
+| Low | 23 | All Resolved |
+| Informational | 19 | All Resolved |
+
+### Notable Findings and Resolutions
+
+<AccordionGroup>
+  <Accordion title="Wave Protocol - Reentrancy Risk in Redemption Flow">
+    **Severity:** High
+    
+    **Description:** A potential reentrancy vulnerability was identified in the redemption flow that could allow an attacker to withdraw more collateral than entitled.
+    
+    **Resolution:** Implemented the checks-effects-interactions pattern and added a reentrancy guard to the redemption function. Additional validation was added to ensure state consistency throughout the redemption process.
+  </Accordion>
+  
+  <Accordion title="hbHYPE - Validator Update Mechanism Vulnerability">
+    **Severity:** High
+    
+    **Description:** Under specific conditions, the validator update mechanism could potentially be manipulated to redirect stake to unauthorized validators.
+    
+    **Resolution:** Implemented a multi-signature approval process for validator changes, added time-locks for validator updates, and enhanced access controls around the validator registry.
+  </Accordion>
+  
+  <Accordion title="Governance - Timelock Bypass">
+    **Severity:** Medium
+    
+    **Description:** A specific sequence of governance actions could potentially bypass the intended timelock on sensitive parameter changes.
+    
+    **Resolution:** Restructured the governance flow to enforce timelocks at the execution level rather than the proposal level, ensuring all parameter changes must wait the required timelock period.
+  </Accordion>
+</AccordionGroup>
+
+## Ongoing Security Measures
+
+In addition to formal audits, VOLA Protocol implements several ongoing security practices:
+
+<CardGroup cols={2}>
+  <Card title="Bug Bounty Program" icon="bug">
+    Up to $250,000 in rewards for critical vulnerabilities
+  </Card>
+  <Card title="Continuous Monitoring" icon="eye">
+    24/7 infrastructure and contract monitoring
+  </Card>
+  <Card title="Formal Verification" icon="check-double">
+    Formal verification of critical protocol components
+  </Card>
+  <Card title="Security Council" icon="users-gear">
+    Multi-sig with emergency response capabilities
+  </Card>
+</CardGroup>
+
+## Audit Partners
+
+VOLA Protocol works with the following security firms for audits and ongoing security review:
+
+<CardGroup cols={3}>
+  <Card title="Security Firm A" icon="building-shield">
+    Specializing in DeFi protocol security
+  </Card>
+  <Card title="Security Firm B" icon="building-shield">
+    Experts in formal verification and security analysis
+  </Card>
+  <Card title="Security Firm C" icon="building-shield">
+    Leaders in staking and validator security
+  </Card>
+</CardGroup>
+
+## Reporting Security Issues
+
+If you discover a potential security issue, please report it immediately through our responsible disclosure program:
+
+1. Email: security@volaprotocol.io
+2. Include detailed information about the vulnerability
+3. Do not disclose publicly until we've had a chance to address the issue
+
+<Warning>
+  Never publicly disclose a potential security vulnerability. Responsible disclosure helps protect all users of the protocol.
+</Warning>
+
+## Latest Security Updates
+
+Check our [blog](https://vola.finance/blog) and [social media channels](https://twitter.com/volaprotocol) for the latest security updates and audit announcements. 

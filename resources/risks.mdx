@@ -1,0 +1,195 @@
+---
+title: 'Risk Disclosures'
+description: 'Understanding the risks associated with VOLA Protocol'
+---
+
+# Risk Disclosures
+
+VOLA Protocol strives to create secure and robust financial products, but all DeFi protocols carry inherent risks. This page outlines the key risks users should understand before interacting with the protocol.
+
+## General Protocol Risks
+
+<CardGroup cols={2}>
+  <Card title="Smart Contract Risk" icon="code">
+    Despite multiple audits and security measures, smart contracts may contain undiscovered vulnerabilities
+  </Card>
+  <Card title="Market Risk" icon="chart-line-down">
+    Extreme market volatility can impact protocol solvency and operational parameters
+  </Card>
+  <Card title="Oracle Risk" icon="satellite-dish">
+    Price feed manipulations or failures could affect protocol operations
+  </Card>
+  <Card title="Governance Risk" icon="landmark">
+    Governance decisions may negatively impact protocol operations or economics
+  </Card>
+</CardGroup>
+
+## Wave Protocol Specific Risks
+
+### Collateralization Risks
+
+<Tabs>
+  <Tab title="Undercollateralization Risk">
+    <div className="mb-4">
+      The protocol relies on maintaining sufficient collateralization to ensure solvency:
+    </div>
+    
+    - If collateral value drops significantly and rapidly, the system could become undercollateralized
+    - The minimum CR of 150% provides some buffer, but extreme market conditions could test this limit
+    - Rebalancing mechanisms are designed to mitigate this risk, but have operational limits
+    
+    <Warning>
+      In extreme market conditions, USD.hype could potentially trade below $1 if the system becomes severely undercollateralized.
+    </Warning>
+  </Tab>
+  
+  <Tab title="HYPE.v Volatility Risk">
+    <div className="mb-4">
+      HYPE.v tokens carry amplified volatility by design:
+    </div>
+    
+    - HYPE.v value can decrease significantly during collateral price downturns
+    - The floating leverage multiplier means exposure changes dynamically
+    - In extreme cases, HYPE.v value could approach zero (though never liquidated)
+    
+    <Warning>
+      HYPE.v is intended for users comfortable with high volatility and risk. It is not suitable for risk-averse users.
+    </Warning>
+  </Tab>
+</Tabs>
+
+### Systemic Risks
+
+<AccordionGroup>
+  <Accordion title="Rebalancing Pool Depletion">
+    The Rebalancing Pool has a finite capacity to absorb market stress. If market conditions exceed this capacity, the pool's ability to stabilize the system could be impaired, potentially leading to protocol instability.
+  </Accordion>
+  
+  <Accordion title="Collateral Devaluation">
+    The protocol accepts sHYPE as collateral. Any fundamental issues with the underlying HYPE token (regulatory, technical, or market-based) would directly impact the protocol's solvency and functionality.
+  </Accordion>
+  
+  <Accordion title="Market Liquidity Issues">
+    In times of extreme market stress, liquidity for synthetic assets could dry up, potentially impairing price discovery and arbitrage mechanisms that help maintain system stability.
+  </Accordion>
+</AccordionGroup>
+
+## hbHYPE Specific Risks
+
+### Staking Risks
+
+<Tabs>
+  <Tab title="Validator Risks">
+    <div className="mb-4">
+      The liquid staking system relies on validators performing correctly:
+    </div>
+    
+    - Validator slashing due to downtime or misbehavior can result in principal loss
+    - The protocol's validator diversification strategy aims to minimize this risk
+    - Slashing events would be distributed proportionally across all hbHYPE holders
+    
+    <Warning>
+      While the protocol selects validators carefully, slashing events can still occur and result in losses.
+    </Warning>
+  </Tab>
+  
+  <Tab title="Unbonding Period Risk">
+    <div className="mb-4">
+      Converting hbHYPE back to HYPE requires an unbonding period:
+    </div>
+    
+    - Network unbonding period is approximately 7 days
+    - During this time, users cannot access their HYPE
+    - Market conditions may change significantly during the unbonding period
+    
+    <Note>
+      While secondary markets for hbHYPE provide liquidity, they may not always offer fair value exchange, especially during market stress.
+    </Note>
+  </Tab>
+</Tabs>
+
+### Operational Risks
+
+<AccordionGroup>
+  <Accordion title="Validator Set Management">
+    The protocol's validator selection process involves subjective judgments and may not always select the optimal set of validators, potentially resulting in suboptimal returns or increased risk.
+  </Accordion>
+  
+  <Accordion title="Reward Collection Delays">
+    Technical issues or network congestion could delay reward collection and distribution, temporarily affecting the hbHYPE exchange rate updates.
+  </Accordion>
+  
+  <Accordion title="Chain-Specific Risks">
+    Changes to the underlying blockchain's staking mechanics, reward rates, or unbonding periods could impact hbHYPE's operations.
+  </Accordion>
+</AccordionGroup>
+
+## Governance Risks
+
+<Card>
+  The protocol is governed by VOLA token holders, which introduces potential risks:
+</Card>
+
+- **Misaligned Incentives**: Token holders may vote in ways that prioritize short-term gains over long-term stability
+- **Low Participation**: Low governance participation could allow small groups to exert outsized influence
+- **Parameter Misconfiguration**: Governance could set protocol parameters at suboptimal levels
+- **Regulatory Changes**: Governance models may need to adapt to changing regulatory environments
+
+## Mitigating Factors
+
+While risks exist, VOLA Protocol implements several measures to mitigate them:
+
+<CardGroup cols={2}>
+  <Card title="Multi-Layered Security" icon="shield">
+    Multiple audits, formal verification, and continuous monitoring
+  </Card>
+  <Card title="Conservative Parameters" icon="sliders">
+    Initially conservative risk parameters with gradual optimization
+  </Card>
+  <Card title="Safety Mechanisms" icon="parachute-box">
+    Circuit breakers, rate limiting, and emergency shutdown capabilities
+  </Card>
+  <Card title="Insurance Reserves" icon="vault">
+    Dedicated funds to address emergency scenarios
+  </Card>
+</CardGroup>
+
+## Risk Management Approach
+
+VOLA Protocol takes a proactive approach to risk management:
+
+<Steps>
+  <Step title="Identification">
+    Comprehensive risk analysis and scenario modeling
+  </Step>
+  <Step title="Monitoring">
+    Continuous monitoring of key risk indicators
+  </Step>
+  <Step title="Mitigation">
+    Implementation of preventative measures and safety mechanisms
+  </Step>
+  <Step title="Adaptation">
+    Regular updates to risk management framework based on observed behavior
+  </Step>
+</Steps>
+
+## Further Risk Information
+
+<CardGroup cols={2}>
+  <Card title="Risk Management Framework" icon="shield" href="/volatility-separation/risk-management">
+    Detailed explanation of the protocol's risk management approach
+  </Card>
+  <Card title="Security Audits" icon="clipboard-check" href="/resources/audits">
+    Review independent security assessments
+  </Card>
+  <Card title="Forum Discussions" icon="comments" href="https://forum.vola.finance">
+    Community discussions about risk and mitigation
+  </Card>
+  <Card title="Technical Documentation" icon="file-lines" href="/governance/parameters">
+    Review technical parameters and safety mechanisms
+  </Card>
+</CardGroup>
+
+<Warning>
+  This risk disclosure is not exhaustive. DeFi protocols operate in a rapidly evolving environment, and new risks may emerge over time. Users should conduct their own research before interacting with the protocol.
+</Warning> 
