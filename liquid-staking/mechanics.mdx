@@ -5,281 +5,387 @@ description: 'How VOLA Protocol liquid staking works under the hood'
 
 # Liquid Staking Mechanics
 
-This page explains the technical mechanics behind VOLA Protocol's liquid staking solution, helping you understand how hbHYPE works under the hood.
+<div className="mt-4 mb-8 max-w-4xl mx-auto">
+  <div className="text-xl leading-relaxed mb-6">
+    This page explains the technical mechanics behind VOLA Protocol's liquid staking solution, helping you understand how hbHYPE works under the hood.
+  </div>
+</div>
 
 ## Core Mechanism
 
-<Frame>
+<Frame className="my-8 shadow-lg rounded-xl overflow-hidden">
   ![Liquid Staking Mechanics](/images/liquid-staking-mechanics.png)
 </Frame>
 
-The hbHYPE liquid staking system operates through a well-defined process that maintains both security and liquidity.
+<div className="mb-6">
+  <p className="text-lg">
+    The hbHYPE liquid staking system operates through a well-defined process that maintains both security and liquidity.
+  </p>
+</div>
 
-<Steps>
-  <Step title="User Deposits HYPE">
-    Users deposit their HYPE tokens into VOLA Protocol's smart contracts.
-  </Step>
-  <Step title="Smart Contract Issues hbHYPE">
-    The protocol mints hbHYPE tokens at the current exchange rate, representing the user's staked position.
-  </Step>
-  <Step title="Protocol Stakes HYPE">
-    The deposited HYPE is staked across a diversified set of validators on the Hyperliquid network.
-  </Step>
-  <Step title="Staking Rewards Accrue">
-    As staking rewards are generated, they're reinvested automatically to compound returns.
-  </Step>
-  <Step title="Exchange Rate Increases">
-    The hbHYPE/HYPE exchange rate increases over time, reflecting accrued rewards.
-  </Step>
-  <Step title="Redemption Process">
-    When users redeem hbHYPE, they receive the equivalent amount of HYPE plus accrued rewards, subject to the network unbonding period.
-  </Step>
-</Steps>
+<div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-900/50 p-6 rounded-lg my-8">
+  <Steps>
+    <Step title="User Deposits HYPE">
+      <p>Users deposit their HYPE tokens into VOLA Protocol's smart contracts.</p>
+    </Step>
+    <Step title="Smart Contract Issues hbHYPE">
+      <p>The protocol mints hbHYPE tokens at the current exchange rate, representing the user's staked position.</p>
+    </Step>
+    <Step title="Protocol Stakes HYPE">
+      <p>The deposited HYPE is staked across a diversified set of validators on the Hyperliquid network.</p>
+    </Step>
+    <Step title="Staking Rewards Accrue">
+      <p>As staking rewards are generated, they're reinvested automatically to compound returns.</p>
+    </Step>
+    <Step title="Exchange Rate Increases">
+      <p>The hbHYPE/HYPE exchange rate increases over time, reflecting accrued rewards.</p>
+    </Step>
+    <Step title="Redemption Process">
+      <p>When users redeem hbHYPE, they receive the equivalent amount of HYPE plus accrued rewards, subject to the network unbonding period.</p>
+    </Step>
+  </Steps>
+</div>
 
 ## Exchange Rate Mechanism
 
-The hbHYPE token uses an accumulative (non-rebasing) exchange rate model:
+<div className="mb-6">
+  <p className="text-lg">
+    The hbHYPE token uses an accumulative (non-rebasing) exchange rate model:
+  </p>
+</div>
 
-<Card>
-  **Exchange Rate Calculation:**
+<Card className="bg-blue-50/30 dark:bg-blue-900/20 shadow-md my-6">
+  <div className="font-semibold text-lg mb-3">Exchange Rate Calculation:</div>
   
-  ```
-  hbHYPE/HYPE Exchange Rate = Total HYPE Managed by Protocol / Total hbHYPE Supply
-  ```
+  <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-center my-4">
+    hbHYPE/HYPE Exchange Rate = Total HYPE Managed by Protocol / Total hbHYPE Supply
+  </div>
   
-  This rate increases as staking rewards accrue, meaning each hbHYPE token becomes worth more HYPE over time.
+  <p>This rate increases as staking rewards accrue, meaning each hbHYPE token becomes worth more HYPE over time.</p>
 </Card>
 
 <Tabs>
   <Tab title="Initial State">
-    When the protocol launches:
-    
-    - 1 hbHYPE = 1 HYPE (initial 1:1 ratio)
-    - User deposits 100 HYPE → Receives 100 hbHYPE
-    - Total HYPE managed: 100
-    - Total hbHYPE supply: 100
-    - Exchange rate: 1.0
+    <div className="p-4">
+      <p className="mb-3">When the protocol launches:</p>
+      
+      <ul className="space-y-2 list-disc pl-6">
+        <li>1 hbHYPE = 1 HYPE (initial 1:1 ratio)</li>
+        <li>User deposits 100 HYPE → Receives 100 hbHYPE</li>
+        <li>Total HYPE managed: 100</li>
+        <li>Total hbHYPE supply: 100</li>
+        <li>Exchange rate: 1.0</li>
+      </ul>
+    </div>
   </Tab>
   
   <Tab title="After Rewards">
-    After staking rewards accrue:
-    
-    - Protocol now manages 103 HYPE (original 100 + 3 in rewards)
-    - Total hbHYPE supply remains 100
-    - New exchange rate: 103/100 = 1.03
-    - 1 hbHYPE is now worth 1.03 HYPE
-    - User's 100 hbHYPE is now worth 103 HYPE
+    <div className="p-4">
+      <p className="mb-3">After staking rewards accrue:</p>
+      
+      <ul className="space-y-2 list-disc pl-6">
+        <li>Protocol now manages 103 HYPE (original 100 + 3 in rewards)</li>
+        <li>Total hbHYPE supply remains 100</li>
+        <li>New exchange rate: 103/100 = 1.03</li>
+        <li>1 hbHYPE is now worth 1.03 HYPE</li>
+        <li>User's 100 hbHYPE is now worth 103 HYPE</li>
+      </ul>
+    </div>
   </Tab>
   
   <Tab title="Deposit After Rewards">
-    New user deposits after rewards have accrued:
-    
-    - Current exchange rate is 1.03
-    - User deposits 100 HYPE
-    - User receives 100/1.03 = 97.09 hbHYPE
-    - This 97.09 hbHYPE is worth 100 HYPE at current rate
+    <div className="p-4">
+      <p className="mb-3">New user deposits after rewards have accrued:</p>
+      
+      <ul className="space-y-2 list-disc pl-6">
+        <li>Current exchange rate is 1.03</li>
+        <li>User deposits 100 HYPE</li>
+        <li>User receives 100/1.03 = 97.09 hbHYPE</li>
+        <li>This 97.09 hbHYPE is worth 100 HYPE at current rate</li>
+      </ul>
+    </div>
   </Tab>
 </Tabs>
 
-<Note>
-  This token model means hbHYPE balances remain constant while their value in HYPE increases over time, simplifying integration with other DeFi protocols compared to rebasing tokens.
+<Note className="my-6">
+  <div className="font-medium">Important Note:</div>
+  <p>This token model means hbHYPE balances remain constant while their value in HYPE increases over time, simplifying integration with other DeFi protocols compared to rebasing tokens.</p>
 </Note>
 
 ## Validator Selection and Management
 
-<CardGroup cols={2}>
-  <Card title="Decentralized Approach" icon="network-wired">
-    HYPE is distributed across multiple validators to enhance security and decentralization
+<CardGroup cols={2} className="my-6">
+  <Card title="Decentralized Approach" icon="network-wired" className="shadow-sm hover:shadow-md transition-shadow">
+    <p>HYPE is distributed across multiple validators to enhance security and decentralization</p>
   </Card>
-  <Card title="Selection Criteria" icon="filter">
-    Validators are selected based on performance, reliability, security, and community impact
+  <Card title="Selection Criteria" icon="filter" className="shadow-sm hover:shadow-md transition-shadow">
+    <p>Validators are selected based on performance, reliability, security, and community impact</p>
   </Card>
-  <Card title="Continuous Monitoring" icon="eye">
-    Validator performance is continuously monitored for optimal returns and security
+  <Card title="Continuous Monitoring" icon="eye" className="shadow-sm hover:shadow-md transition-shadow">
+    <p>Validator performance is continuously monitored for optimal returns and security</p>
   </Card>
-  <Card title="Strategic Adjustment" icon="sliders">
-    Validator distribution is adjusted based on performance and airdrop optimization
+  <Card title="Strategic Adjustment" icon="sliders" className="shadow-sm hover:shadow-md transition-shadow">
+    <p>Validator distribution is adjusted based on performance and airdrop optimization</p>
   </Card>
 </CardGroup>
 
 ### Validator Diversification Strategy
 
-<Columns>
-  <Column>
-    **Diversification Categories:**
-    
-    - **Performance-optimized validators**: Selected for maximum staking yields
-    - **Community validators**: Supporting network decentralization
-    - **Ecosystem validators**: Strategic positioning for airdrop capture
-    - **Infrastructure providers**: Professional validation services
-  </Column>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+  <div className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg shadow-sm">
+    <h4 className="text-lg font-semibold mb-4 text-purple-700 dark:text-purple-300 flex items-center">
+      <span className="mr-2">
+        <Icon name="layer-group" size="md" />
+      </span>
+      Diversification Categories
+    </h4>
+    <ul className="space-y-3 list-disc pl-6">
+      <li><strong>Performance-optimized validators</strong>: Selected for maximum staking yields</li>
+      <li><strong>Community validators</strong>: Supporting network decentralization</li>
+      <li><strong>Ecosystem validators</strong>: Strategic positioning for airdrop capture</li>
+      <li><strong>Infrastructure providers</strong>: Professional validation services</li>
+    </ul>
+  </div>
   
-  <Column>
-    **Allocation Strategy:**
-    
-    Exact allocation percentages are adjusted dynamically based on:
-    - Historical performance metrics
-    - Security assessments
-    - Commission rate changes
-    - Ecosystem airdrop patterns
-    - Community governance decisions
-  </Column>
-</Columns>
+  <div className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg shadow-sm">
+    <h4 className="text-lg font-semibold mb-4 text-blue-700 dark:text-blue-300 flex items-center">
+      <span className="mr-2">
+        <Icon name="chart-pie" size="md" />
+      </span>
+      Allocation Strategy
+    </h4>
+    <p className="mb-3">Exact allocation percentages are adjusted dynamically based on:</p>
+    <ul className="space-y-2 list-disc pl-6">
+      <li>Historical performance metrics</li>
+      <li>Security assessments</li>
+      <li>Commission rate changes</li>
+      <li>Ecosystem airdrop patterns</li>
+      <li>Community governance decisions</li>
+    </ul>
+  </div>
+</div>
 
 ## Deposit and Minting Process
 
-<Steps>
-  <Step title="User Initiates Deposit">
-    User connects wallet to the VOLA App and specifies HYPE amount to stake.
-  </Step>
-  <Step title="Smart Contract Interaction">
-    User approves the HYPE token transfer and confirms the staking transaction.
-  </Step>
-  <Step title="Exchange Rate Check">
-    Smart contract retrieves the current hbHYPE/HYPE exchange rate.
-  </Step>
-  <Step title="hbHYPE Calculation">
-    ```
-    hbHYPE to mint = HYPE deposited / current exchange rate
-    ```
-  </Step>
-  <Step title="Minting">
-    Protocol mints the calculated hbHYPE amount and transfers it to the user.
-  </Step>
-  <Step title="Stake Distribution">
-    Protocol distributes the deposited HYPE across validators according to the allocation strategy.
-  </Step>
-</Steps>
+<div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-900/50 p-6 rounded-lg my-8">
+  <Steps>
+    <Step title="User Initiates Deposit">
+      <p>User connects wallet to the VOLA App and specifies HYPE amount to stake.</p>
+    </Step>
+    <Step title="Smart Contract Interaction">
+      <p>User approves the HYPE token transfer and confirms the staking transaction.</p>
+    </Step>
+    <Step title="Exchange Rate Check">
+      <p>Smart contract retrieves the current hbHYPE/HYPE exchange rate.</p>
+    </Step>
+    <Step title="hbHYPE Calculation">
+      <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md font-mono my-2">
+        hbHYPE to mint = HYPE deposited / current exchange rate
+      </div>
+    </Step>
+    <Step title="Minting">
+      <p>Protocol mints the calculated hbHYPE amount and transfers it to the user.</p>
+    </Step>
+    <Step title="Stake Distribution">
+      <p>Protocol distributes the deposited HYPE across validators according to the allocation strategy.</p>
+    </Step>
+  </Steps>
+</div>
 
 ### Minimum Deposit and Fees
 
-<Card>
-  - **Minimum Deposit**: No minimum (gas costs make very small deposits inefficient)
-  - **Deposit Fee**: 0% (protocol covers gas costs for staking operations)
-  - **Management Fee**: Small percentage of staking rewards to sustain protocol operations
+<Card className="shadow-sm bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 my-6">
+  <ul className="space-y-2 list-disc pl-6">
+    <li><strong>Minimum Deposit</strong>: No minimum (gas costs make very small deposits inefficient)</li>
+    <li><strong>Deposit Fee</strong>: 0% (protocol covers gas costs for staking operations)</li>
+    <li><strong>Management Fee</strong>: Small percentage of staking rewards to sustain protocol operations</li>
+  </ul>
 </Card>
 
 ## Redemption and Unbonding
 
-The redemption process handles the conversion of hbHYPE back to HYPE:
+<div className="mb-6">
+  <p className="text-lg">
+    The redemption process handles the conversion of hbHYPE back to HYPE:
+  </p>
+</div>
 
-<Steps>
-  <Step title="User Initiates Redemption">
-    User specifies amount of hbHYPE to redeem for HYPE.
-  </Step>
-  <Step title="hbHYPE Burning">
-    The specified hbHYPE tokens are burned from user's wallet.
-  </Step>
-  <Step title="HYPE Calculation">
-    ```
-    HYPE to receive = hbHYPE redeemed × current exchange rate
-    ```
-  </Step>
-  <Step title="Unbonding Process">
-    Protocol initiates unbonding of equivalent HYPE from validators.
-  </Step>
-  <Step title="Waiting Period">
-    User waits through the Hyperliquid network's mandatory unbonding period (~7 days).
-  </Step>
-  <Step title="HYPE Distribution">
-    After the unbonding period, HYPE is transferred to the user's wallet.
-  </Step>
-</Steps>
+<div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-900/50 p-6 rounded-lg my-8">
+  <Steps>
+    <Step title="User Initiates Redemption">
+      <p>User specifies amount of hbHYPE to redeem for HYPE.</p>
+    </Step>
+    <Step title="hbHYPE Burning">
+      <p>The specified hbHYPE tokens are burned from user's wallet.</p>
+    </Step>
+    <Step title="HYPE Calculation">
+      <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md font-mono my-2">
+        HYPE to receive = hbHYPE redeemed × current exchange rate
+      </div>
+    </Step>
+    <Step title="Unbonding Process">
+      <p>Protocol initiates unbonding of equivalent HYPE from validators.</p>
+    </Step>
+    <Step title="Waiting Period">
+      <p>User waits through the Hyperliquid network's mandatory unbonding period (~7 days).</p>
+    </Step>
+    <Step title="HYPE Distribution">
+      <p>After the unbonding period, HYPE is transferred to the user's wallet.</p>
+    </Step>
+  </Steps>
+</div>
 
 ### Redemption Options
 
 <Tabs>
   <Tab title="Standard Redemption">
-    - Subject to the network's unbonding period (~7 days)
-    - No redemption fee
-    - Receives full value in HYPE based on current exchange rate
+    <div className="p-4">
+      <ul className="space-y-2 list-disc pl-6">
+        <li>Subject to the network's unbonding period (~7 days)</li>
+        <li>No redemption fee</li>
+        <li>Receives full value in HYPE based on current exchange rate</li>
+      </ul>
+    </div>
   </Tab>
   
   <Tab title="Liquidity Markets">
-    - For users who need immediate liquidity
-    - Trade hbHYPE for other assets on secondary markets
-    - Subject to market rates and slippage
-    - Bypass unbonding period
+    <div className="p-4">
+      <ul className="space-y-2 list-disc pl-6">
+        <li>For users who need immediate liquidity</li>
+        <li>Trade hbHYPE for other assets on secondary markets</li>
+        <li>Subject to market rates and slippage</li>
+        <li>Bypass unbonding period</li>
+      </ul>
+    </div>
   </Tab>
 </Tabs>
 
-<Warning>
-  During the unbonding period, your HYPE stops earning staking rewards, but your position is secured and will be delivered after the unbonding completes.
+<Warning className="my-6">
+  <div className="font-medium">Important Warning:</div>
+  <p>During the unbonding period, your HYPE stops earning staking rewards, but your position is secured and will be delivered after the unbonding completes.</p>
 </Warning>
 
 ## Reward Collection and Distribution
 
-<Card>
-  Staking rewards are handled automatically by the protocol:
+<Card className="shadow-sm bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 my-6">
+  <div className="font-semibold text-lg mb-3">Staking rewards are handled automatically by the protocol:</div>
   
-  1. **Collection**: Protocol collects staking rewards from validators
-  2. **Reinvestment**: Rewards are automatically restaked to compound returns
-  3. **Value Accrual**: As rewards are restaked, the hbHYPE/HYPE exchange rate increases
-  4. **User Benefit**: All hbHYPE holders benefit proportionally from rewards
+  <ol className="list-decimal pl-8 space-y-2">
+    <li><strong>Collection</strong>: Protocol collects staking rewards from validators</li>
+    <li><strong>Reinvestment</strong>: Rewards are automatically restaked to compound returns</li>
+    <li><strong>Value Accrual</strong>: As rewards are restaked, the hbHYPE/HYPE exchange rate increases</li>
+    <li><strong>User Benefit</strong>: All hbHYPE holders benefit proportionally from rewards</li>
+  </ol>
 </Card>
 
 ### Reward Types
 
-The protocol manages multiple reward streams:
+<div className="mb-4">
+  <p>The protocol manages multiple reward streams:</p>
+</div>
 
-| Reward Type | Source | Distribution Method |
-| :---------- | :----- | :----------------- |
-| Base Staking Rewards | HYPE network inflation | Automatic (via exchange rate) |
-| Validator Commission Rebates | Optional validator partnerships | Automatic (via exchange rate) |
-| Ecosystem Airdrops | HYPE ecosystem projects | Passed through to hbHYPE holders |
-| VOLA Protocol Incentives | VOLA token emissions | According to governance decisions |
+<div className="overflow-x-auto rounded-lg shadow-sm my-6">
+  <table className="w-full bg-white dark:bg-gray-800 border-collapse">
+    <thead>
+      <tr className="bg-gray-100 dark:bg-gray-700">
+        <th className="px-4 py-3 text-left border-b border-gray-200 dark:border-gray-600 font-medium">Reward Type</th>
+        <th className="px-4 py-3 text-left border-b border-gray-200 dark:border-gray-600 font-medium">Source</th>
+        <th className="px-4 py-3 text-left border-b border-gray-200 dark:border-gray-600 font-medium">Distribution Method</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b border-gray-100 dark:border-gray-700">
+        <td className="px-4 py-3 font-medium">Base Staking Rewards</td>
+        <td className="px-4 py-3">HYPE network inflation</td>
+        <td className="px-4 py-3">Automatic (via exchange rate)</td>
+      </tr>
+      <tr className="border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
+        <td className="px-4 py-3 font-medium">Validator Commission Rebates</td>
+        <td className="px-4 py-3">Optional validator partnerships</td>
+        <td className="px-4 py-3">Automatic (via exchange rate)</td>
+      </tr>
+      <tr className="border-b border-gray-100 dark:border-gray-700">
+        <td className="px-4 py-3 font-medium">Ecosystem Airdrops</td>
+        <td className="px-4 py-3">HYPE ecosystem projects</td>
+        <td className="px-4 py-3">Passed through to hbHYPE holders</td>
+      </tr>
+      <tr className="border-b border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
+        <td className="px-4 py-3 font-medium">VOLA Protocol Incentives</td>
+        <td className="px-4 py-3">VOLA token emissions</td>
+        <td className="px-4 py-3">According to governance decisions</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ## Security Measures
 
 <Tabs>
   <Tab title="Smart Contract Security">
-    - Multi-layered testing framework
-    - Comprehensive audit program with leading security firms
-    - Bug bounty program to incentivize vulnerability discovery
-    - Time-locked upgrades with mandatory delay periods
-    - Emergency pause functionality for critical situations
+    <div className="p-4">
+      <ul className="space-y-2 list-disc pl-6">
+        <li>Multi-layered testing framework</li>
+        <li>Comprehensive audit program with leading security firms</li>
+        <li>Bug bounty program to incentivize vulnerability discovery</li>
+        <li>Time-locked upgrades with mandatory delay periods</li>
+        <li>Emergency pause functionality for critical situations</li>
+      </ul>
+    </div>
   </Tab>
   
   <Tab title="Validator Security">
-    - Strict validator selection criteria
-    - Performance and security monitoring
-    - Diversification to reduce single-validator risk
-    - Slashing protection mechanisms
-    - Regular re-evaluation of validator set
+    <div className="p-4">
+      <ul className="space-y-2 list-disc pl-6">
+        <li>Strict validator selection criteria</li>
+        <li>Performance and security monitoring</li>
+        <li>Diversification to reduce single-validator risk</li>
+        <li>Slashing protection mechanisms</li>
+        <li>Regular re-evaluation of validator set</li>
+      </ul>
+    </div>
   </Tab>
   
   <Tab title="Operational Security">
-    - Multi-signature control of critical functions
-    - Regular security reviews
-    - Transparent incident response procedures
-    - Comprehensive documentation and disclosure policy
-    - Regular security assessments and penetration testing
+    <div className="p-4">
+      <ul className="space-y-2 list-disc pl-6">
+        <li>Multi-signature control of critical functions</li>
+        <li>Regular security reviews</li>
+        <li>Transparent incident response procedures</li>
+        <li>Comprehensive documentation and disclosure policy</li>
+        <li>Regular security assessments and penetration testing</li>
+      </ul>
+    </div>
   </Tab>
 </Tabs>
 
 ## Technical Architecture
 
-<Card>
-  The hbHYPE liquid staking system consists of several key smart contract components:
+<Card className="shadow-md bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 my-6">
+  <div className="font-semibold text-lg mb-3">The hbHYPE liquid staking system consists of several key smart contract components:</div>
   
-  - **hbHYPE Token Contract**: ERC-20 compatible token implementation with exchange rate mechanics
-  - **Staking Manager**: Handles HYPE deposits, withdrawals, and validator interactions
-  - **Validator Registry**: Maintains the current validator set and performance metrics
-  - **Exchange Rate Oracle**: Calculates and updates the hbHYPE/HYPE exchange rate
-  - **Governance Module**: Allows protocol parameter updates through governance voting
+  <ul className="space-y-3 list-disc pl-6">
+    <li><strong>hbHYPE Token Contract</strong>: ERC-20 compatible token implementation with exchange rate mechanics</li>
+    <li><strong>Staking Manager</strong>: Handles HYPE deposits, withdrawals, and validator interactions</li>
+    <li><strong>Validator Registry</strong>: Maintains the current validator set and performance metrics</li>
+    <li><strong>Exchange Rate Oracle</strong>: Calculates and updates the hbHYPE/HYPE exchange rate</li>
+    <li><strong>Governance Module</strong>: Allows protocol parameter updates through governance voting</li>
+  </ul>
 </Card>
 
-<Note>
-  All smart contracts are designed with modularity and upgradeability in mind, allowing for future improvements while maintaining security.
+<Note className="my-6">
+  <div className="font-medium">Design Principles:</div>
+  <p>All smart contracts are designed with modularity and upgradeability in mind, allowing for future improvements while maintaining security.</p>
 </Note>
 
-## Next Steps
+<div className="mt-16">
+  <h2 className="text-2xl font-bold mb-6">Next Steps</h2>
 
-<CardGroup cols={2}>
-  <Card title="Technology Details" icon="microchip" href="/liquid-staking/technology">
-    Explore the technical implementation details of the liquid staking protocol
-  </Card>
-  <Card title="Yield Information" icon="chart-line" href="/liquid-staking/yield">
-    Learn more about the different sources of yield with hbHYPE
-  </Card>
-</CardGroup> 
+  <CardGroup cols={2}>
+    <Card title="Technology Details" icon="microchip" href="/liquid-staking/technology" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Explore the technical implementation details of the liquid staking protocol</p>
+    </Card>
+    <Card title="Yield Information" icon="chart-line" href="/liquid-staking/yield" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Learn more about the different sources of yield with hbHYPE</p>
+    </Card>
+  </CardGroup>
+</div> 

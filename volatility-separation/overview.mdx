@@ -117,51 +117,61 @@ description: 'Introduction to VOLA Wave Protocol and volatility separation'
   <h2 className="text-2xl font-bold mb-6">Core Mechanisms</h2>
 
   <div className="space-y-8">
-    <div>
-      <h3 className="text-xl font-semibold mb-4">Value Invariant Principle</h3>
+    <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-900/50 p-6 rounded-lg shadow-sm">
+      <h3 className="text-xl font-semibold mb-4 flex items-center">
+        <span className="text-primary mr-3">
+          <Icon name="balance-scale" size="md" />
+        </span>
+        Value Invariant Principle
+      </h3>
       
       <p className="mb-4">
         The foundation of the Volatility Separation Engine is a mathematical invariant ensuring that the total value of all synthetic assets (USD.hype and HYPE.v) equals the total value of sHYPE collateral:
       </p>
       
-      <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-center my-4">
+      <div className="bg-gray-100 dark:bg-gray-800 p-5 rounded-md font-mono text-center my-5 shadow-inner">
         sHYPE Total Value ($) = (USD.hype Total Supply × $1) + (HYPE.v Total Supply × HYPE.v Price)
       </div>
       
-      <p>
+      <p className="text-lg">
         This invariant guarantees that the system remains fully collateralized at all times, while providing the mathematical basis for transferring volatility from USD.hype to HYPE.v.
       </p>
     </div>
 
-    <div>
-      <h3 className="text-xl font-semibold mb-4">Dynamic Leverage Mechanism</h3>
+    <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-900/50 p-6 rounded-lg shadow-sm">
+      <h3 className="text-xl font-semibold mb-4 flex items-center">
+        <span className="text-primary mr-3">
+          <Icon name="tachometer-alt" size="md" />
+        </span>
+        Dynamic Leverage Mechanism
+      </h3>
       
       <p className="mb-4">
         HYPE.v features a dynamic leverage multiple that adjusts automatically based on the protocol's Collateralization Ratio (CR):
       </p>
       
-      <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-center my-4">
+      <div className="bg-gray-100 dark:bg-gray-800 p-5 rounded-md font-mono text-center my-5 shadow-inner">
         Leverage (L) = 1 + (1 / (CR - 100%))
       </div>
       
-      <Tabs>
+      <Tabs className="mt-6">
         <Tab title="Concept">
-          <div className="p-4">
+          <div className="p-5 bg-blue-50/30 dark:bg-blue-900/10 rounded-md mt-2">
             <p className="mb-4">As the system's Collateralization Ratio changes, HYPE.v's leverage automatically adjusts:</p>
             
-            <ul className="space-y-2 list-disc pl-6">
+            <ul className="space-y-3 list-disc pl-6">
               <li><strong>Higher CR</strong>: Lower leverage, lower risk, lower potential returns</li>
               <li><strong>Lower CR</strong>: Higher leverage, higher risk, higher potential returns</li>
             </ul>
             
-            <p className="mt-4">This mechanism ensures the system remains solvent while distributing risk appropriately.</p>
+            <p className="mt-4 text-blue-700 dark:text-blue-300 font-medium">This mechanism ensures the system remains solvent while distributing risk appropriately.</p>
           </div>
         </Tab>
         <Tab title="Example">
-          <div className="p-4">
+          <div className="p-5 bg-indigo-50/30 dark:bg-indigo-900/10 rounded-md mt-2">
             <p className="mb-4">If the Collateralization Ratio is 200%:</p>
             
-            <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md font-mono my-4">
+            <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md font-mono my-4 shadow-inner">
               Leverage = 1 + (1 / (200% - 100%)) = 1 + (1 / 100%) = 1 + 1 = 2x
             </div>
             
@@ -169,36 +179,64 @@ description: 'Introduction to VOLA Wave Protocol and volatility separation'
             
             <p className="mb-4">If CR decreases to 150%:</p>
             
-            <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md font-mono my-4">
+            <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md font-mono my-4 shadow-inner">
               Leverage = 1 + (1 / (150% - 100%)) = 1 + (1 / 50%) = 1 + 2 = 3x
             </div>
             
-            <p>At 150% CR, HYPE.v now offers 3x leverage. The same 10% sHYPE price increase would result in approximately 30% gain for HYPE.v.</p>
+            <p className="text-indigo-700 dark:text-indigo-300 font-medium">At 150% CR, HYPE.v now offers 3x leverage. The same 10% sHYPE price increase would result in approximately 30% gain for HYPE.v.</p>
           </div>
         </Tab>
       </Tabs>
     </div>
 
-    <div>
-      <h3 className="text-xl font-semibold mb-4">Risk Management Framework</h3>
+    <div className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800/50 dark:to-gray-900/50 p-6 rounded-lg shadow-sm">
+      <h3 className="text-xl font-semibold mb-4 flex items-center">
+        <span className="text-primary mr-3">
+          <Icon name="shield" size="md" />
+        </span>
+        Risk Management Framework
+      </h3>
       
-      <p className="mb-4">
-        The Volatility Separation Engine employs a comprehensive risk management framework:
+      <p className="mb-5 text-lg">
+        The Volatility Separation Engine employs a comprehensive multi-layered risk management framework:
       </p>
       
-      <CardGroup cols={3}>
-        <Card title="Level 1" icon="shield-halved" className="shadow-sm bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-          <p>Active Stability Mechanism with dynamic fee adjustments to incentivize system-stabilizing behaviors</p>
-        </Card>
-        <Card title="Level 2" icon="shield" className="shadow-sm bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-          <p>Rebalancing Mechanism to actively manage the system's Collateralization Ratio</p>
-        </Card>
-        <Card title="Level 3" icon="shield-check" className="shadow-sm bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
-          <p>Dedicated Stability Pool to provide substantial capital buffering in extreme conditions</p>
-        </Card>
-      </CardGroup>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-gradient-to-br from-gray-50/80 to-gray-100/80 dark:from-gray-800/80 dark:to-gray-900/80 p-5 rounded-lg shadow-sm relative overflow-hidden hover:shadow-md transition-shadow duration-300">
+          <div className="absolute top-0 right-0 h-full w-1 bg-green-400 dark:bg-green-600 opacity-70"></div>
+          <h4 className="text-lg font-semibold mb-3 flex items-center text-green-700 dark:text-green-400">
+            <span className="mr-2">
+              <Icon name="shield-halved" size="md" />
+            </span>
+            Level 1
+          </h4>
+          <p className="relative z-10">Active Stability Mechanism with dynamic fee adjustments to incentivize system-stabilizing behaviors</p>
+        </div>
+        
+        <div className="bg-gradient-to-br from-gray-50/80 to-gray-100/80 dark:from-gray-800/80 dark:to-gray-900/80 p-5 rounded-lg shadow-sm relative overflow-hidden hover:shadow-md transition-shadow duration-300">
+          <div className="absolute top-0 right-0 h-full w-1 bg-blue-400 dark:bg-blue-600 opacity-70"></div>
+          <h4 className="text-lg font-semibold mb-3 flex items-center text-blue-700 dark:text-blue-400">
+            <span className="mr-2">
+              <Icon name="shield" size="md" />
+            </span>
+            Level 2
+          </h4>
+          <p className="relative z-10">Rebalancing Mechanism to actively manage the system's Collateralization Ratio</p>
+        </div>
+        
+        <div className="bg-gradient-to-br from-gray-50/80 to-gray-100/80 dark:from-gray-800/80 dark:to-gray-900/80 p-5 rounded-lg shadow-sm relative overflow-hidden hover:shadow-md transition-shadow duration-300">
+          <div className="absolute top-0 right-0 h-full w-1 bg-purple-400 dark:bg-purple-600 opacity-70"></div>
+          <h4 className="text-lg font-semibold mb-3 flex items-center text-purple-700 dark:text-purple-400">
+            <span className="mr-2">
+              <Icon name="shield-check" size="md" />
+            </span>
+            Level 3
+          </h4>
+          <p className="relative z-10">Dedicated Stability Pool to provide substantial capital buffering in extreme conditions</p>
+        </div>
+      </div>
       
-      <p className="mt-4">
+      <p className="mt-5 text-lg">
         This multi-layered approach helps maintain the system's health and stability even during significant market volatility.
       </p>
     </div>
@@ -208,53 +246,103 @@ description: 'Introduction to VOLA Wave Protocol and volatility separation'
 <div className="my-12">
   <h2 className="text-2xl font-bold mb-6">Key Benefits</h2>
 
-  <Columns>
-    <Column>
-      <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg h-full">
-        <h3 className="text-xl font-semibold mb-4 text-green-600 dark:text-green-400">For Stability Seekers</h3>
-        
-        <ul className="space-y-2 list-disc pl-6">
-          <li>Stable $1 value regardless of market conditions</li>
-          <li>Protection from market volatility</li>
-          <li>Maintains purchasing power</li>
-          <li>Ideal for capital preservation</li>
-          <li>Can be deployed in DeFi for stable yields</li>
-        </ul>
-      </div>
-    </Column>
-    <Column>
-      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg h-full">
-        <h3 className="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">For Leverage Traders</h3>
-        
-        <ul className="space-y-2 list-disc pl-6">
-          <li>Leveraged exposure without liquidation risk</li>
-          <li>No funding fees (unlike perpetual futures)</li>
-          <li>Automatic leverage adjustment</li>
-          <li>No margin maintenance required</li>
-          <li>Potentially amplified returns on market upside</li>
-        </ul>
-      </div>
-    </Column>
-  </Columns>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+    <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg h-full shadow-sm">
+      <h3 className="text-xl font-semibold mb-4 text-green-600 dark:text-green-400 flex items-center">
+        <span className="mr-2">
+          <Icon name="dollar-sign" size="md" />
+        </span>
+        For Stability Seekers
+      </h3>
+      
+      <ul className="space-y-2 list-disc pl-6">
+        <li>Stable $1 value regardless of market conditions</li>
+        <li>Protection from market volatility</li>
+        <li>Maintains purchasing power</li>
+        <li>Ideal for capital preservation</li>
+        <li>Can be deployed in DeFi for stable yields</li>
+      </ul>
+    </div>
+    
+    <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg h-full shadow-sm">
+      <h3 className="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400 flex items-center">
+        <span className="mr-2">
+          <Icon name="chart-line" size="md" />
+        </span>
+        For Leverage Traders
+      </h3>
+      
+      <ul className="space-y-2 list-disc pl-6">
+        <li>Leveraged exposure without liquidation risk</li>
+        <li>No funding fees (unlike perpetual futures)</li>
+        <li>Automatic leverage adjustment</li>
+        <li>No margin maintenance required</li>
+        <li>Potentially amplified returns on market upside</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <div className="my-12">
   <h2 className="text-2xl font-bold mb-6">Use Cases</h2>
 
-  <CardGroup cols={2}>
-    <Card title="Risk-Free Leverage" icon="chart-line" className="shadow-sm hover:shadow-md transition-shadow">
-      <p>Use HYPE.v for leveraged exposure to HYPE without liquidation risk</p>
-    </Card>
-    <Card title="Stable Value Creation" icon="dollar-sign" className="shadow-sm hover:shadow-md transition-shadow">
-      <p>Mint USD.hype to transform volatile assets into stable USD exposure</p>
-    </Card>
-    <Card title="Customized Risk Profile" icon="sliders" className="shadow-sm hover:shadow-md transition-shadow">
-      <p>Mint custom ratios of USD.hype and HYPE.v to precisely control risk</p>
-    </Card>
-    <Card title="Stable Yield Farming" icon="seedling" className="shadow-sm hover:shadow-md transition-shadow">
-      <p>Use USD.hype in DeFi protocols to earn yield without volatility exposure</p>
-    </Card>
-  </CardGroup>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 my-8">
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+      <div className="flex items-start mb-4">
+        <div className="bg-blue-100 dark:bg-blue-800/50 p-2 rounded-lg mr-4">
+          <Icon name="chart-line" size="xl" className="text-blue-600 dark:text-blue-300" />
+        </div>
+        <h3 className="text-xl font-semibold text-blue-700 dark:text-blue-300">Risk-Free Leverage</h3>
+      </div>
+      <p className="text-lg">Use HYPE.v for leveraged exposure to HYPE without liquidation risk</p>
+      <div className="mt-4 text-blue-600 dark:text-blue-400 flex items-center cursor-pointer hover:underline">
+        <span>Learn more</span>
+        <Icon name="arrow-right" className="ml-2" />
+      </div>
+    </div>
+    
+    <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+      <div className="flex items-start mb-4">
+        <div className="bg-green-100 dark:bg-green-800/50 p-2 rounded-lg mr-4">
+          <Icon name="dollar-sign" size="xl" className="text-green-600 dark:text-green-300" />
+        </div>
+        <h3 className="text-xl font-semibold text-green-700 dark:text-green-300">Stable Value Creation</h3>
+      </div>
+      <p className="text-lg">Mint USD.hype to transform volatile assets into stable USD exposure</p>
+      <div className="mt-4 text-green-600 dark:text-green-400 flex items-center cursor-pointer hover:underline">
+        <span>Learn more</span>
+        <Icon name="arrow-right" className="ml-2" />
+      </div>
+    </div>
+    
+    <div className="bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-900/20 dark:to-violet-900/20 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+      <div className="flex items-start mb-4">
+        <div className="bg-purple-100 dark:bg-purple-800/50 p-2 rounded-lg mr-4">
+          <Icon name="sliders" size="xl" className="text-purple-600 dark:text-purple-300" />
+        </div>
+        <h3 className="text-xl font-semibold text-purple-700 dark:text-purple-300">Customized Risk Profile</h3>
+      </div>
+      <p className="text-lg">Mint custom ratios of USD.hype and HYPE.v to precisely control risk</p>
+      <div className="mt-4 text-purple-600 dark:text-purple-400 flex items-center cursor-pointer hover:underline">
+        <span>Learn more</span>
+        <Icon name="arrow-right" className="ml-2" />
+      </div>
+    </div>
+    
+    <div className="bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+      <div className="flex items-start mb-4">
+        <div className="bg-amber-100 dark:bg-amber-800/50 p-2 rounded-lg mr-4">
+          <Icon name="seedling" size="xl" className="text-amber-600 dark:text-amber-300" />
+        </div>
+        <h3 className="text-xl font-semibold text-amber-700 dark:text-amber-300">Stable Yield Farming</h3>
+      </div>
+      <p className="text-lg">Use USD.hype in DeFi protocols to earn yield without volatility exposure</p>
+      <div className="mt-4 text-amber-600 dark:text-amber-400 flex items-center cursor-pointer hover:underline">
+        <span>Learn more</span>
+        <Icon name="arrow-right" className="ml-2" />
+      </div>
+    </div>
+  </div>
 </div>
 
 <div className="my-12">
