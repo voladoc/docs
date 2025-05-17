@@ -5,22 +5,26 @@ description: 'Introduction to VOLA Wave Protocol and volatility separation'
 
 # Volatility Separation Engine
 
-## Introduction
+<div className="mt-4 mb-10 max-w-4xl mx-auto">
+  <div className="text-xl leading-relaxed mb-6">
+    VOLA Protocol's Volatility Separation Engine is an innovative financial primitive designed to meticulously decouple and redistribute the inherent price volatility of sHYPE (the base crypto asset).
+  </div>
+  
+  <p className="mb-6">
+    This engine precisely separates a single asset's risk-return profile into two distinct, complementary financial instruments:
+  </p>
 
-VOLA Protocol's Volatility Separation Engine is an innovative financial primitive designed to meticulously decouple and redistribute the inherent price volatility of sHYPE (the base crypto asset).
+  <CardGroup cols={2}>
+    <Card title="USD.hype" icon="dollar-sign" className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30">
+      <p className="text-lg">A stable asset that maintains $1 value regardless of market conditions</p>
+    </Card>
+    <Card title="HYPE.v" icon="chart-line" className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30">
+      <p className="text-lg">A volatility component with floating leverage and no liquidation risk</p>
+    </Card>
+  </CardGroup>
+</div>
 
-This engine precisely separates a single asset's risk-return profile into two distinct, complementary financial instruments:
-
-<CardGroup cols={2}>
-  <Card title="USD.hype" icon="dollar-sign">
-    A stable asset that maintains $1 value regardless of market conditions
-  </Card>
-  <Card title="HYPE.v" icon="chart-line">
-    A volatility component with floating leverage and no liquidation risk
-  </Card>
-</CardGroup>
-
-<Frame>
+<Frame className="my-8">
   ![Volatility Separation Engine](/images/hero-dark.png)
 </Frame>
 
@@ -28,197 +32,276 @@ This engine precisely separates a single asset's risk-return profile into two di
 
 <Steps>
   <Step title="Deposit Collateral">
-    Users deposit sHYPE as collateral into the Wave Protocol.
+    <p>Users deposit sHYPE as collateral into the Wave Protocol.</p>
   </Step>
   <Step title="Mint Financial Instruments">
-    The protocol mints USD.hype and/or HYPE.v tokens based on the user's preference.
+    <p>The protocol mints USD.hype and/or HYPE.v tokens based on the user's preference.</p>
   </Step>
   <Step title="Volatility Separation">
-    USD.hype absorbs none of the price volatility (stable at $1)
-    HYPE.v absorbs all of the price volatility (with floating leverage)
+    <div>
+      <p>USD.hype absorbs none of the price volatility (stable at $1)</p>
+      <p>HYPE.v absorbs all of the price volatility (with floating leverage)</p>
+    </div>
   </Step>
   <Step title="Automated Risk Management">
-    The protocol continuously manages the system's Collateralization Ratio and dynamically adjusts HYPE.v's leverage.
+    <p>The protocol continuously manages the system's Collateralization Ratio and dynamically adjusts HYPE.v's leverage.</p>
   </Step>
   <Step title="Redemption">
-    Users can redeem their USD.hype and/or HYPE.v for the underlying sHYPE at any time.
+    <p>Users can redeem their USD.hype and/or HYPE.v for the underlying sHYPE at any time.</p>
   </Step>
 </Steps>
 
-## Key Components
+<div className="my-12">
+  <h2 className="text-2xl font-bold mb-6">Key Components</h2>
 
-### USD.hype: The Stable Layer
+  <div className="space-y-8">
+    <div>
+      <h3 className="text-xl font-semibold mb-4 flex items-center">
+        <span className="text-green-500 mr-2">
+          <Icon name="dollar-sign" size="md" />
+        </span>
+        USD.hype: The Stable Layer
+      </h3>
+      
+      <Card className="bg-green-50/50 dark:bg-green-900/20">
+        <div className="space-y-4">
+          <p>USD.hype serves as the stable-value asset within the VOLA Protocol, characterized by:</p>
+          
+          <ul className="space-y-2 list-disc pl-6">
+            <li><strong>Complete Isolation from Price Volatility</strong>: USD.hype maintains its value regardless of sHYPE price fluctuations</li>
+            <li><strong>Constant Value of $1 USD</strong>: Each USD.hype token is designed to consistently hold a value of 1 US Dollar</li>
+            <li><strong>Target Audience</strong>: Designed for users who prioritize capital preservation and are averse to price volatility</li>
+          </ul>
+        </div>
+      </Card>
+      
+      <p className="mt-4">
+        The stability of USD.hype at $1 is upheld through a robust over-collateralization strategy and dynamic risk management mechanisms. As the price of sHYPE changes, the protocol adjusts HYPE.v's value and leverage to shield USD.hype from volatility.
+      </p>
+    </div>
 
-<Card>
-  USD.hype serves as the stable-value asset within the VOLA Protocol, characterized by:
-  
-  - **Complete Isolation from Price Volatility**: USD.hype maintains its value regardless of sHYPE price fluctuations
-  - **Constant Value of $1 USD**: Each USD.hype token is designed to consistently hold a value of 1 US Dollar
-  - **Target Audience**: Designed for users who prioritize capital preservation and are averse to price volatility
-</Card>
+    <div>
+      <h3 className="text-xl font-semibold mb-4 flex items-center">
+        <span className="text-blue-500 mr-2">
+          <Icon name="chart-line" size="md" />
+        </span>
+        HYPE.v: The Volatility Layer
+      </h3>
+      
+      <Card className="bg-blue-50/50 dark:bg-blue-900/20">
+        <div className="space-y-4">
+          <p>HYPE.v embodies all the price volatility from the underlying collateral, featuring:</p>
+          
+          <ul className="space-y-2 list-disc pl-6">
+            <li><strong>Absorption of All Price Volatility</strong>: HYPE.v absorbs the entirety of price fluctuations from sHYPE</li>
+            <li><strong>Floating Leverage Multiple</strong>: HYPE.v's leverage automatically adjusts based on the system's Collateralization Ratio</li>
+            <li><strong>No Liquidation Risk</strong>: Unlike traditional leveraged positions, HYPE.v positions are never forcibly liquidated</li>
+            <li><strong>Target Audience</strong>: Tailored for users who seek amplified returns and understand the associated risks</li>
+          </ul>
+        </div>
+      </Card>
+      
+      <p className="mt-4">
+        When sHYPE price increases, HYPE.v value increases by a greater percentage due to its inherent leverage. Conversely, when sHYPE price decreases, HYPE.v experiences a larger percentage decrease.
+      </p>
+    </div>
+  </div>
 
-The stability of USD.hype at $1 is upheld through a robust over-collateralization strategy and dynamic risk management mechanisms. As the price of sHYPE changes, the protocol adjusts HYPE.v's value and leverage to shield USD.hype from volatility.
+  <Note className="mt-6">
+    <div className="font-medium">Important:</div>
+    HYPE.v's "no liquidation risk" design means users are never subject to forced selling of their positions due to market movements. However, in extreme market conditions where the system's Collateralization Ratio approaches 100%, HYPE.v's value could approach zero.
+  </Note>
+</div>
 
-### HYPE.v: The Volatility Layer
+<div className="my-12">
+  <h2 className="text-2xl font-bold mb-6">Core Mechanisms</h2>
 
-<Card>
-  HYPE.v embodies all the price volatility from the underlying collateral, featuring:
-  
-  - **Absorption of All Price Volatility**: HYPE.v absorbs the entirety of price fluctuations from sHYPE
-  - **Floating Leverage Multiple**: HYPE.v's leverage automatically adjusts based on the system's Collateralization Ratio
-  - **No Liquidation Risk**: Unlike traditional leveraged positions, HYPE.v positions are never forcibly liquidated
-  - **Target Audience**: Tailored for users who seek amplified returns and understand the associated risks
-</Card>
+  <div className="space-y-8">
+    <div>
+      <h3 className="text-xl font-semibold mb-4">Value Invariant Principle</h3>
+      
+      <p className="mb-4">
+        The foundation of the Volatility Separation Engine is a mathematical invariant ensuring that the total value of all synthetic assets (USD.hype and HYPE.v) equals the total value of sHYPE collateral:
+      </p>
+      
+      <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-center my-4">
+        sHYPE Total Value ($) = (USD.hype Total Supply × $1) + (HYPE.v Total Supply × HYPE.v Price)
+      </div>
+      
+      <p>
+        This invariant guarantees that the system remains fully collateralized at all times, while providing the mathematical basis for transferring volatility from USD.hype to HYPE.v.
+      </p>
+    </div>
 
-When sHYPE price increases, HYPE.v value increases by a greater percentage due to its inherent leverage. Conversely, when sHYPE price decreases, HYPE.v experiences a larger percentage decrease.
+    <div>
+      <h3 className="text-xl font-semibold mb-4">Dynamic Leverage Mechanism</h3>
+      
+      <p className="mb-4">
+        HYPE.v features a dynamic leverage multiple that adjusts automatically based on the protocol's Collateralization Ratio (CR):
+      </p>
+      
+      <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-md font-mono text-center my-4">
+        Leverage (L) = 1 + (1 / (CR - 100%))
+      </div>
+      
+      <Tabs>
+        <Tab title="Concept">
+          <div className="p-4">
+            <p className="mb-4">As the system's Collateralization Ratio changes, HYPE.v's leverage automatically adjusts:</p>
+            
+            <ul className="space-y-2 list-disc pl-6">
+              <li><strong>Higher CR</strong>: Lower leverage, lower risk, lower potential returns</li>
+              <li><strong>Lower CR</strong>: Higher leverage, higher risk, higher potential returns</li>
+            </ul>
+            
+            <p className="mt-4">This mechanism ensures the system remains solvent while distributing risk appropriately.</p>
+          </div>
+        </Tab>
+        <Tab title="Example">
+          <div className="p-4">
+            <p className="mb-4">If the Collateralization Ratio is 200%:</p>
+            
+            <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md font-mono my-4">
+              Leverage = 1 + (1 / (200% - 100%)) = 1 + (1 / 100%) = 1 + 1 = 2x
+            </div>
+            
+            <p className="mb-4">At 200% CR, HYPE.v offers 2x leverage. If sHYPE price increases by 10%, HYPE.v value would increase by approximately 20%.</p>
+            
+            <p className="mb-4">If CR decreases to 150%:</p>
+            
+            <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md font-mono my-4">
+              Leverage = 1 + (1 / (150% - 100%)) = 1 + (1 / 50%) = 1 + 2 = 3x
+            </div>
+            
+            <p>At 150% CR, HYPE.v now offers 3x leverage. The same 10% sHYPE price increase would result in approximately 30% gain for HYPE.v.</p>
+          </div>
+        </Tab>
+      </Tabs>
+    </div>
 
-<Note>
-  HYPE.v's "no liquidation risk" design means users are never subject to forced selling of their positions due to market movements. However, in extreme market conditions where the system's Collateralization Ratio approaches 100%, HYPE.v's value could approach zero.
-</Note>
+    <div>
+      <h3 className="text-xl font-semibold mb-4">Risk Management Framework</h3>
+      
+      <p className="mb-4">
+        The Volatility Separation Engine employs a comprehensive risk management framework:
+      </p>
+      
+      <CardGroup cols={3}>
+        <Card title="Level 1" icon="shield-halved" className="shadow-sm bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+          <p>Active Stability Mechanism with dynamic fee adjustments to incentivize system-stabilizing behaviors</p>
+        </Card>
+        <Card title="Level 2" icon="shield" className="shadow-sm bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+          <p>Rebalancing Mechanism to actively manage the system's Collateralization Ratio</p>
+        </Card>
+        <Card title="Level 3" icon="shield-check" className="shadow-sm bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+          <p>Dedicated Stability Pool to provide substantial capital buffering in extreme conditions</p>
+        </Card>
+      </CardGroup>
+      
+      <p className="mt-4">
+        This multi-layered approach helps maintain the system's health and stability even during significant market volatility.
+      </p>
+    </div>
+  </div>
+</div>
 
-## Core Mechanisms
+<div className="my-12">
+  <h2 className="text-2xl font-bold mb-6">Key Benefits</h2>
 
-### Value Invariant Principle
+  <Columns>
+    <Column>
+      <div className="p-4 bg-green-50 dark:bg-green-900/20 rounded-lg h-full">
+        <h3 className="text-xl font-semibold mb-4 text-green-600 dark:text-green-400">For Stability Seekers</h3>
+        
+        <ul className="space-y-2 list-disc pl-6">
+          <li>Stable $1 value regardless of market conditions</li>
+          <li>Protection from market volatility</li>
+          <li>Maintains purchasing power</li>
+          <li>Ideal for capital preservation</li>
+          <li>Can be deployed in DeFi for stable yields</li>
+        </ul>
+      </div>
+    </Column>
+    <Column>
+      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg h-full">
+        <h3 className="text-xl font-semibold mb-4 text-blue-600 dark:text-blue-400">For Leverage Traders</h3>
+        
+        <ul className="space-y-2 list-disc pl-6">
+          <li>Leveraged exposure without liquidation risk</li>
+          <li>No funding fees (unlike perpetual futures)</li>
+          <li>Automatic leverage adjustment</li>
+          <li>No margin maintenance required</li>
+          <li>Potentially amplified returns on market upside</li>
+        </ul>
+      </div>
+    </Column>
+  </Columns>
+</div>
 
-The foundation of the Volatility Separation Engine is a mathematical invariant ensuring that the total value of all synthetic assets (USD.hype and HYPE.v) equals the total value of sHYPE collateral:
+<div className="my-12">
+  <h2 className="text-2xl font-bold mb-6">Use Cases</h2>
 
-```
-sHYPE Total Value ($) = (USD.hype Total Supply × $1) + (HYPE.v Total Supply × HYPE.v Price)
-```
+  <CardGroup cols={2}>
+    <Card title="Risk-Free Leverage" icon="chart-line" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Use HYPE.v for leveraged exposure to HYPE without liquidation risk</p>
+    </Card>
+    <Card title="Stable Value Creation" icon="dollar-sign" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Mint USD.hype to transform volatile assets into stable USD exposure</p>
+    </Card>
+    <Card title="Customized Risk Profile" icon="sliders" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Mint custom ratios of USD.hype and HYPE.v to precisely control risk</p>
+    </Card>
+    <Card title="Stable Yield Farming" icon="seedling" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Use USD.hype in DeFi protocols to earn yield without volatility exposure</p>
+    </Card>
+  </CardGroup>
+</div>
 
-This invariant guarantees that the system remains fully collateralized at all times, while providing the mathematical basis for transferring volatility from USD.hype to HYPE.v.
+<div className="my-12">
+  <h2 className="text-2xl font-bold mb-6">Getting Started</h2>
 
-### Dynamic Leverage Mechanism
+  <div className="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-lg">
+    <Steps>
+      <Step title="Acquire sHYPE">
+        <p>Ensure you have sHYPE tokens in your wallet.</p>
+      </Step>
+      <Step title="Visit VOLA Protocol App">
+        <p>Go to <a href="https://app.vola.finance" className="text-primary hover:underline">app.vola.finance</a> and connect your wallet.</p>
+      </Step>
+      <Step title="Select Asset to Mint">
+        <p>Choose whether to mint USD.hype, HYPE.v, or a custom ratio of both.</p>
+      </Step>
+      <Step title="Enter Amount">
+        <p>Specify the amount of sHYPE you wish to deposit as collateral.</p>
+      </Step>
+      <Step title="Confirm Transaction">
+        <p>Review the details and confirm the transaction to mint your selected assets.</p>
+      </Step>
+    </Steps>
 
-HYPE.v features a dynamic leverage multiple that adjusts automatically based on the protocol's Collateralization Ratio (CR):
+    <div className="mt-6">
+      <Card title="Try it now" icon="rocket" href="https://app.vola.finance/mint" className="shadow-sm bg-primary-50 dark:bg-primary-900/30 hover:shadow-md transition-shadow">
+        <p>Start using the Volatility Separation Engine on VOLA Protocol</p>
+      </Card>
+    </div>
+  </div>
+</div>
 
-```
-Leverage (L) = 1 + (1 / (CR - 100%))
-```
+<div className="mt-16">
+  <h2 className="text-2xl font-bold mb-6">Learn More About Volatility Separation</h2>
 
-<Tabs>
-  <Tab title="Concept">
-    As the system's Collateralization Ratio changes, HYPE.v's leverage automatically adjusts:
-    
-    - **Higher CR**: Lower leverage, lower risk, lower potential returns
-    - **Lower CR**: Higher leverage, higher risk, higher potential returns
-    
-    This mechanism ensures the system remains solvent while distributing risk appropriately.
-  </Tab>
-  <Tab title="Example">
-    If the Collateralization Ratio is 200%:
-    
-    ```
-    Leverage = 1 + (1 / (200% - 100%)) = 1 + (1 / 100%) = 1 + 1 = 2x
-    ```
-    
-    At 200% CR, HYPE.v offers 2x leverage. If sHYPE price increases by 10%, HYPE.v value would increase by approximately 20%.
-    
-    If CR decreases to 150%:
-    
-    ```
-    Leverage = 1 + (1 / (150% - 100%)) = 1 + (1 / 50%) = 1 + 2 = 3x
-    ```
-    
-    At 150% CR, HYPE.v now offers 3x leverage. The same 10% sHYPE price increase would result in approximately 30% gain for HYPE.v.
-  </Tab>
-</Tabs>
-
-### Risk Management Framework
-
-The Volatility Separation Engine employs a comprehensive risk management framework:
-
-<CardGroup cols={3}>
-  <Card title="Level 1" icon="shield-halved">
-    Active Stability Mechanism with dynamic fee adjustments to incentivize system-stabilizing behaviors
-  </Card>
-  <Card title="Level 2" icon="shield">
-    Rebalancing Mechanism to actively manage the system's Collateralization Ratio
-  </Card>
-  <Card title="Level 3" icon="shield-check">
-    Dedicated Stability Pool to provide substantial capital buffering in extreme conditions
-  </Card>
-</CardGroup>
-
-This multi-layered approach helps maintain the system's health and stability even during significant market volatility.
-
-## Key Benefits
-
-<Columns>
-  <Column>
-    ### For Stability Seekers
-    
-    - Stable $1 value regardless of market conditions
-    - Protection from market volatility
-    - Maintains purchasing power
-    - Ideal for capital preservation
-    - Can be deployed in DeFi for stable yields
-  </Column>
-  <Column>
-    ### For Leverage Traders
-    
-    - Leveraged exposure without liquidation risk
-    - No funding fees (unlike perpetual futures)
-    - Automatic leverage adjustment
-    - No margin maintenance required
-    - Potentially amplified returns on market upside
-  </Column>
-</Columns>
-
-## Use Cases
-
-<CardGroup cols={2}>
-  <Card title="Risk-Free Leverage" icon="chart-line">
-    Use HYPE.v for leveraged exposure to HYPE without liquidation risk
-  </Card>
-  <Card title="Stable Value Creation" icon="dollar-sign">
-    Mint USD.hype to transform volatile assets into stable USD exposure
-  </Card>
-  <Card title="Customized Risk Profile" icon="sliders">
-    Mint custom ratios of USD.hype and HYPE.v to precisely control risk
-  </Card>
-  <Card title="Stable Yield Farming" icon="seedling">
-    Use USD.hype in DeFi protocols to earn yield without volatility exposure
-  </Card>
-</CardGroup>
-
-## Getting Started
-
-<Steps>
-  <Step title="Acquire sHYPE">
-    Ensure you have sHYPE tokens in your wallet.
-  </Step>
-  <Step title="Visit VOLA Protocol App">
-    Go to [app.vola.finance](https://app.vola.finance) and connect your wallet.
-  </Step>
-  <Step title="Select Asset to Mint">
-    Choose whether to mint USD.hype, HYPE.v, or a custom ratio of both.
-  </Step>
-  <Step title="Enter Amount">
-    Specify the amount of sHYPE you wish to deposit as collateral.
-  </Step>
-  <Step title="Confirm Transaction">
-    Review the details and confirm the transaction to mint your selected assets.
-  </Step>
-</Steps>
-
-<Card title="Try it now" icon="rocket" href="https://app.vola.finance/mint">
-  Start using the Volatility Separation Engine on VOLA Protocol
-</Card>
-
-## Learn More About Volatility Separation
-
-<CardGroup cols={2}>
-  <Card title="Core Concepts" icon="book" href="/volatility-separation/core-concepts">
-    Explore the fundamental principles behind volatility separation
-  </Card>
-  <Card title="Mechanisms" icon="gears" href="/volatility-separation/mechanisms">
-    Understand the detailed mechanisms that power the engine
-  </Card>
-  <Card title="Risk Management" icon="shield" href="/volatility-separation/risk-management">
-    Learn about the multi-layered risk management framework
-  </Card>
-  <Card title="User Strategies" icon="chess" href="/volatility-separation/user-scenarios">
-    Discover different strategies for using USD.hype and HYPE.v
-  </Card>
-</CardGroup> 
+  <CardGroup cols={2}>
+    <Card title="Core Concepts" icon="book" href="/volatility-separation/core-concepts" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Explore the fundamental principles behind volatility separation</p>
+    </Card>
+    <Card title="Mechanisms" icon="gears" href="/volatility-separation/mechanisms" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Understand the detailed mechanisms that power the engine</p>
+    </Card>
+    <Card title="Risk Management" icon="shield" href="/volatility-separation/risk-management" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Learn about the multi-layered risk management framework</p>
+    </Card>
+    <Card title="User Strategies" icon="chess" href="/volatility-separation/user-scenarios" className="shadow-sm hover:shadow-md transition-shadow">
+      <p>Discover different strategies for using USD.hype and HYPE.v</p>
+    </Card>
+  </CardGroup>
+</div> 

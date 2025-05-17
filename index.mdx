@@ -4,21 +4,27 @@ description: "A suite of innovative financial products running on HyperEVM"
 ---
 
 <img
-  className="block dark:hidden"
+  className="block dark:hidden w-full max-w-5xl mx-auto mb-8"
   src="/images/hero-light.png"
   alt="VOLA Protocol"
 />
 <img
-  className="hidden dark:block"
+  className="hidden dark:block w-full max-w-5xl mx-auto mb-8"
   src="/images/hero-dark.png"
   alt="VOLA Protocol"
 />
 
-## What is VOLA?
+<div className="max-w-4xl mx-auto">
+  <h2 className="text-3xl font-bold mb-4">What is VOLA?</h2>
 
-VOLA is a suite of innovative financial products running on HyperEVM.
+  <p className="text-lg mb-6">
+    VOLA is a suite of innovative financial products running on HyperEVM.
+  </p>
 
-Our goal is to empower users to precisely control their risk exposure and leverage, all while maintaining exceptional capital efficiency and eliminating liquidation risks.
+  <p className="text-lg mb-10">
+    Our goal is to empower users to precisely control their risk exposure and leverage, all while maintaining exceptional capital efficiency and eliminating liquidation risks.
+  </p>
+</div>
 
 ## Core Products
 
@@ -29,112 +35,143 @@ VOLA currently provides **two core primitives**:
     title="Wave Protocol"
     icon="wave-sine"
     href="/volatility-separation/overview"
+    className="p-6 hover:shadow-lg transition-shadow"
   >
-    Deposit sHYPE → mint USD.hype and HYPE.v → achieve full volatility separation with zero liquidation risk.
+    <div className="space-y-2">
+      <p>Deposit sHYPE → mint USD.hype and HYPE.v → achieve full volatility separation with zero liquidation risk.</p>
+      <div className="mt-4 text-sm text-right">
+        <span className="text-primary">Learn more →</span>
+      </div>
+    </div>
   </Card>
   <Card
     title="HYPE Liquid Staking"
     icon="coins"
     href="/liquid-staking/overview"
+    className="p-6 hover:shadow-lg transition-shadow"
   >
-    Stake HYPE → receive hbHYPE → earn staking rewards while maintaining liquidity.
+    <div className="space-y-2">
+      <p>Stake HYPE → receive hbHYPE → earn staking rewards while maintaining liquidity.</p>
+      <div className="mt-4 text-sm text-right">
+        <span className="text-primary">Learn more →</span>
+      </div>
+    </div>
   </Card>
 </CardGroup>
 
-## Popular Use-Cases
+<div className="my-10 border-t border-b border-gray-200 dark:border-gray-800 py-10">
+  <h2 className="text-2xl font-bold mb-6">Popular Use-Cases</h2>
 
-<Steps>
-  <Step title="Risk-Free Leverage">
-    Use HYPE.v for leveraged exposure to HYPE without liquidation risk or ongoing funding fees.
-  </Step>
-  <Step title="Stable Asset Creation">
-    Mint USD.hype to transform volatile assets into stable USD exposure.
-  </Step>
-  <Step title="Customized Risk Profile">
-    Mint any ratio of USD.hype/HYPE.v to precisely control your market exposure.
-  </Step>
-  <Step title="Stable Yield Farming">
-    Use USD.hype in DeFi protocols to earn yield without exposure to underlying asset volatility.
-  </Step>
-  <Step title="Dual Asset Strategy">
-    Hold both USD.hype and HYPE.v to maintain original asset exposure while unlocking liquidity.
-  </Step>
-  <Step title="Liquid Staking">
-    Stake HYPE through hbHYPE to earn staking rewards while maintaining full liquidity.
-  </Step>
-</Steps>
+  <Steps>
+    <Step title="Risk-Free Leverage">
+      <p>Use HYPE.v for leveraged exposure to HYPE without liquidation risk or ongoing funding fees.</p>
+    </Step>
+    <Step title="Stable Asset Creation">
+      <p>Mint USD.hype to transform volatile assets into stable USD exposure.</p>
+    </Step>
+    <Step title="Customized Risk Profile">
+      <p>Mint any ratio of USD.hype/HYPE.v to precisely control your market exposure.</p>
+    </Step>
+    <Step title="Stable Yield Farming">
+      <p>Use USD.hype in DeFi protocols to earn yield without exposure to underlying asset volatility.</p>
+    </Step>
+    <Step title="Dual Asset Strategy">
+      <p>Hold both USD.hype and HYPE.v to maintain original asset exposure while unlocking liquidity.</p>
+    </Step>
+    <Step title="Liquid Staking">
+      <p>Stake HYPE through hbHYPE to earn staking rewards while maintaining full liquidity.</p>
+    </Step>
+  </Steps>
+</div>
 
 ## Protocol Overview
 
 <Tabs>
   <Tab title="Wave Protocol">
-    <CardGroup cols={2}>
-      <Card title="USD.hype" icon="dollar-sign">
-        A fully stable USD-pegged token that eliminates all price volatility
-      </Card>
-      <Card title="HYPE.v" icon="chart-line">
-        A floating-leverage position that absorbs all market volatility
-      </Card>
-    </CardGroup>
-    
-    The Wave Protocol employs sophisticated mathematical models to separate asset volatility, creating complementary financial instruments that serve diverse investor needs.
-    
-    <div className="mt-4">
-      <Card title="Learn More" icon="arrow-right" href="/volatility-separation/overview">
-        Explore how Wave Protocol's volatility separation engine works and its benefits
-      </Card>
+    <div className="py-4">
+      <CardGroup cols={2}>
+        <Card title="USD.hype" icon="dollar-sign" className="shadow-sm">
+          <p>A fully stable USD-pegged token that eliminates all price volatility</p>
+        </Card>
+        <Card title="HYPE.v" icon="chart-line" className="shadow-sm">
+          <p>A floating-leverage position that absorbs all market volatility</p>
+        </Card>
+      </CardGroup>
+      
+      <p className="my-6">
+        The Wave Protocol employs sophisticated mathematical models to separate asset volatility, creating complementary financial instruments that serve diverse investor needs.
+      </p>
+      
+      <div className="mt-6">
+        <Card title="Learn More" icon="arrow-right" href="/volatility-separation/overview" className="hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+          <p>Explore how Wave Protocol's volatility separation engine works and its benefits</p>
+        </Card>
+      </div>
     </div>
   </Tab>
   <Tab title="Liquid Staking">
-    <Card title="hbHYPE" icon="coins">
-      An interest-bearing token that represents staked HYPE and accrued rewards
-    </Card>
-    
-    Our liquid staking solution allows HYPE token holders to participate in network consensus and earn staking yields while maintaining full liquidity.
-    
-    <div className="mt-4">
-      <Card title="Learn More" icon="arrow-right" href="/liquid-staking/overview">
-        Discover the benefits of HYPE liquid staking with hbHYPE
+    <div className="py-4">
+      <Card title="hbHYPE" icon="coins" className="shadow-sm mb-6">
+        <p>An interest-bearing token that represents staked HYPE and accrued rewards</p>
       </Card>
+      
+      <p className="my-6">
+        Our liquid staking solution allows HYPE token holders to participate in network consensus and earn staking yields while maintaining full liquidity.
+      </p>
+      
+      <div className="mt-6">
+        <Card title="Learn More" icon="arrow-right" href="/liquid-staking/overview" className="hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+          <p>Discover the benefits of HYPE liquid staking with hbHYPE</p>
+        </Card>
+      </div>
     </div>
   </Tab>
   <Tab title="Governance">
-    <Card title="VOLA Token" icon="landmark">
-      The native governance token of the VOLA Protocol ecosystem
-    </Card>
-    
-    VOLA Protocol uses a ve3,3 governance model that combines Curve's vote-escrowed (ve) mechanism with OlympusDAO's (3,3) game theory model.
-    
-    <div className="mt-4">
-      <Card title="Learn More" icon="arrow-right" href="/governance/overview">
-        Understand the governance structure and tokenomics of VOLA Protocol
+    <div className="py-4">
+      <Card title="VOLA Token" icon="landmark" className="shadow-sm mb-6">
+        <p>The native governance token of the VOLA Protocol ecosystem</p>
       </Card>
+      
+      <p className="my-6">
+        VOLA Protocol uses a ve3,3 governance model that combines Curve's vote-escrowed (ve) mechanism with OlympusDAO's (3,3) game theory model.
+      </p>
+      
+      <div className="mt-6">
+        <Card title="Learn More" icon="arrow-right" href="/governance/overview" className="hover:bg-primary-50 dark:hover:bg-primary-900 transition-colors">
+          <p>Understand the governance structure and tokenomics of VOLA Protocol</p>
+        </Card>
+      </div>
     </div>
   </Tab>
 </Tabs>
 
-## Getting Started
+<div className="mt-10">
+  <h2 className="text-2xl font-bold mb-6">Getting Started</h2>
 
-<CardGroup cols={3}>
-  <Card
-    title="Core Products"
-    icon="cube"
-    href="/introduction/core-products"
-  >
-    Learn about VOLA's innovative financial products
-  </Card>
-  <Card
-    title="Use Cases"
-    icon="lightbulb"
-    href="/introduction/use-cases"
-  >
-    Discover how to utilize VOLA products
-  </Card>
-  <Card
-    title="Launch App"
-    icon="rocket"
-    href="https://app.vola.finance"
-  >
-    Start using VOLA Protocol
-  </Card>
-</CardGroup>
+  <CardGroup cols={3}>
+    <Card
+      title="Core Products"
+      icon="cube"
+      href="/introduction/core-products"
+      className="shadow-sm hover:shadow-md transition-shadow"
+    >
+      <p>Learn about VOLA's innovative financial products</p>
+    </Card>
+    <Card
+      title="Use Cases"
+      icon="lightbulb"
+      href="/introduction/use-cases"
+      className="shadow-sm hover:shadow-md transition-shadow"
+    >
+      <p>Discover how to utilize VOLA products</p>
+    </Card>
+    <Card
+      title="Launch App"
+      icon="rocket"
+      href="https://app.vola.finance"
+      className="shadow-sm hover:shadow-md transition-shadow"
+    >
+      <p>Start using VOLA Protocol</p>
+    </Card>
+  </CardGroup>
+</div>

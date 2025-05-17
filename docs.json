@@ -8,46 +8,88 @@
     "dark": "#4422DD"
   },
   "favicon": "/favicon.svg",
+  "feedback": {
+    "suggestEdit": true,
+    "raiseIssue": true
+  },
+  "topbarLinks": [
+    {
+      "name": "Launch App",
+      "url": "https://app.vola.finance"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Try VOLA",
+    "url": "https://app.vola.finance"
+  },
+  "anchors": [
+    {
+      "name": "Developer Resources",
+      "icon": "code",
+      "url": "resources/deployed-addresses"
+    },
+    {
+      "name": "API Reference",
+      "icon": "square-terminal",
+      "url": "api-reference"
+    }
+  ],
   "navigation": {
     "tabs": [
       {
         "tab": "Protocol",
         "groups": [
           {
-            "group": "Introduction",
+            "group": "Getting Started",
             "pages": [
-              "index",
-              "introduction/core-products",
-              "introduction/use-cases",
-              "introduction/team",
-              "introduction/important-links"
+              {
+                "group": "Introduction",
+                "icon": "book-open",
+                "pages": [
+                  "index",
+                  "introduction/core-products",
+                  "introduction/use-cases",
+                  "introduction/team",
+                  "introduction/important-links"
+                ]
+              },
+              "quickstart",
+              "development"
             ]
           },
           {
-            "group": "Liquid Staking",
+            "group": "Core Products",
             "pages": [
-              "liquid-staking/overview",
-              "liquid-staking/advantages",
-              "liquid-staking/comparison",
-              "liquid-staking/mechanics",
-              "liquid-staking/technology",
-              "liquid-staking/yield",
-              "liquid-staking/risk-management"
-            ]
-          },
-          {
-            "group": "Volatility Separation",
-            "pages": [
-              "volatility-separation/overview",
-              "volatility-separation/core-concepts",
-              "volatility-separation/mechanisms",
-              "volatility-separation/risk-management",
-              "volatility-separation/fee-structure",
-              "volatility-separation/user-scenarios"
+              {
+                "group": "Liquid Staking",
+                "icon": "coins",
+                "pages": [
+                  "liquid-staking/overview",
+                  "liquid-staking/advantages",
+                  "liquid-staking/comparison",
+                  "liquid-staking/mechanics",
+                  "liquid-staking/technology",
+                  "liquid-staking/yield",
+                  "liquid-staking/risk-management"
+                ]
+              },
+              {
+                "group": "Volatility Separation",
+                "icon": "wave-sine",
+                "pages": [
+                  "volatility-separation/overview",
+                  "volatility-separation/core-concepts",
+                  "volatility-separation/mechanisms",
+                  "volatility-separation/risk-management",
+                  "volatility-separation/fee-structure",
+                  "volatility-separation/user-scenarios"
+                ]
+              }
             ]
           },
           {
             "group": "Governance",
+            "icon": "landmark",
             "pages": [
               "governance/overview",
               "governance/tokenomics",
@@ -57,7 +99,8 @@
             ]
           },
           {
-            "group": "Developer Resources",
+            "group": "Resources",
+            "icon": "folder-open",
             "pages": [
               "resources/deployed-addresses",
               "resources/mechanism",
@@ -107,10 +150,65 @@
     }
   },
   "footer": {
+    "title": "VOLA Protocol",
+    "description": "A suite of innovative financial products on HyperEVM",
     "socials": {
       "twitter": "https://twitter.com/HyperbaseX",
       "github": "https://github.com/volaprotocol",
       "discord": "https://discord.gg/volaprotocol"
+    },
+    "columns": [
+      {
+        "title": "Products",
+        "links": [
+          {
+            "title": "Wave Protocol",
+            "href": "/volatility-separation/overview"
+          },
+          {
+            "title": "Liquid Staking",
+            "href": "/liquid-staking/overview"
+          }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          {
+            "title": "Documentation",
+            "href": "/"
+          },
+          {
+            "title": "API Reference",
+            "href": "/api-reference"
+          }
+        ]
+      },
+      {
+        "title": "Community",
+        "links": [
+          {
+            "title": "Discord",
+            "href": "https://discord.gg/volaprotocol"
+          },
+          {
+            "title": "Twitter",
+            "href": "https://twitter.com/HyperbaseX"
+          }
+        ]
+      }
+    ]
+  },
+  "analytics": {
+    "ga4": {
+      "measurementId": "G-XXXXXXXXXX"
     }
-  }
+  },
+  "search": {
+    "prompt": "Search VOLA docs..."
+  },
+  "versions": [
+    "Latest"
+  ],
+  "backgroundImage": "/images/background.png"
 }
